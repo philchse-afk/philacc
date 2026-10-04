@@ -252,7 +252,6 @@ body {
 .app-banner {
     height: 40px;
     width: auto;
-    margin-left: auto;
     border-radius: var(--r-sm);
 }
 

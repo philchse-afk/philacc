@@ -12,7 +12,7 @@
     "artist": "Calogero & Gaetan roussel",
     "capo": "3",
     "bpm": "200",
-    "recommendedCapo": "3",
+   "recommendedCapo": "3",
     "file": "la nuit n-est jamais noire.json"
   },
   {
@@ -20,7 +20,7 @@
     "artist": "The beatles",
     "capo": "0",
     "bpm": "2000",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "help.json"
   },
   {
@@ -28,47 +28,47 @@
     "artist": "The beatles",
     "capo": "0",
     "bpm": "200",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "you can-t do that.json"
-  },
+  }, 
   {
     "title": "Day tripper",
     "artist": "The beatles",
     "capo": "0",
     "bpm": "138",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "day tripper.json"
-  },
+  },  
   {
     "title": "Yesterday",
     "artist": "The beatles",
     "capo": "0",
     "bpm": "85",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "yesterday.json"
-  },
+  }, 
   {
     "title": "Peny Lane",
     "artist": "The beatles",
     "capo": "0",
     "bpm": "112",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "peny lane.json"
-  },
+  },  
   {
     "title": "The pretender",
     "artist": "Foo Fighters",
     "capo": "0",
     "bpm": "173",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "the pretender.json"
-  },
+  },  
   {
     "title": "Prendre racine",
     "artist": "Calogero",
-    "capo": "4",
-    "bpm": "91",
-    "recommendedCapo": "4",
+    "capo": "0",
+    "bpm": "174",
+   "recommendedCapo": "0",
     "file": "prendre racine.json"
   },
   {
@@ -76,7 +76,7 @@
     "artist": "The beatles",
     "capo": "0",
     "bpm": "72",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "while my guitar gently weeps.json"
   },
   {
@@ -84,15 +84,15 @@
     "artist": "Francis Cabrel",
     "capo": "3",
     "bpm": "78",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "gardien de nuit.json"
   },
-  {
+   {
     "title": "Dur comme fer",
     "artist": "Francis Cabrel",
     "capo": "0",
     "bpm": "102",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "dur comme fer.json"
   },
   {
@@ -100,15 +100,15 @@
     "artist": "Daniel Balavoine",
     "capo": "0",
     "bpm": "72",
-    "recommendedCapo": "5",
+   "recommendedCapo": "5",
     "file": "tous les cris les s-o-s.json"
   },
   {
-    "title": "stranger things have happened",
+    "title": "Stranger Things Have Happened",
     "artist": "Foo Fighters",
     "capo": "0",
     "bpm": "98",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "stranger things have happened.json"
   },
   {
@@ -116,15 +116,15 @@
     "artist": "The Kinks",
     "capo": "0",
     "bpm": "100",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "sunny afternoon.json"
   },
   {
     "title": "The Best of you",
     "artist": "Foo Fighters",
     "capo": "0",
-    "bpm": "130",
-    "recommendedCapo": "4",
+    "bpm": "300",
+   "recommendedCapo": "",
     "file": "the best of you.json"
   },
   {
@@ -132,7 +132,7 @@
     "artist": "The beatles",
     "capo": "0",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "michelle.json"
   },
   {
@@ -140,7 +140,7 @@
     "artist": "The beatles",
     "capo": "0",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "drive my car.json"
   },
   {
@@ -148,7 +148,7 @@
     "artist": "The beatles",
     "capo": "0",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "please please me.json"
   },
   {
@@ -156,7 +156,7 @@
     "artist": "The beatles",
     "capo": "0",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "come together.json"
   },
   {
@@ -164,7 +164,7 @@
     "artist": "Metallica",
     "capo": "0",
     "bpm": "92",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "nothing else matters.json"
   },
   {
@@ -172,7 +172,7 @@
     "artist": "oasis",
     "capo": "2",
     "bpm": "200",
-    "recommendedCapo": "0",
+   "recommendedCapo": "0",
     "file": "wonderwall.json"
   },
   {
@@ -180,15 +180,15 @@
     "artist": "Jean-Louis Aubert",
     "capo": "0",
     "bpm": "115",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "voilà c-est fini.json"
-  },
+  }, 
   {
     "title": "My immortal",
     "artist": "Evanescence",
     "capo": "0",
     "bpm": "75",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "my immortal.json"
   },
   {
@@ -196,7 +196,7 @@
     "artist": "Pdf",
     "capo": "0",
     "bpm": "115",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "travail sur pdf.json"
   },
   {
@@ -204,7 +204,7 @@
     "artist": "Supertramp",
     "capo": "0",
     "bpm": "89",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "give a little bit.json"
   },
   {
@@ -212,7 +212,7 @@
     "artist": "Jean-Louis Aubert",
     "capo": "0",
     "bpm": "200",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "alter ego.json"
   },
   {
@@ -220,15 +220,15 @@
     "artist": "Mark Knopfler",
     "capo": "2",
     "bpm": "150",
-    "recommendedCapo": "2",
+   "recommendedCapo": "2",
     "file": "brothers in arms.json"
   },
-  {
+ {
     "title": "Je te donne",
     "artist": "JJG ",
     "capo": "0",
     "bpm": "150",
-    "recommendedCapo": "0",
+   "recommendedCapo": "0",
     "file": "je te donne.json"
   },
   {
@@ -236,15 +236,15 @@
     "artist": "The beatles",
     "capo": "1",
     "bpm": "",
-    "recommendedCapo": "1",
+   "recommendedCapo": "1",
     "file": "i-m only sleeping.json"
   },
   {
     "title": "now an then",
     "artist": "The beatles",
     "capo": "0",
-    "bpm": "87",
-    "recommendedCapo": "",
+    "bpm": "",
+   "recommendedCapo": "",
     "file": "now an then.json"
   },
   {
@@ -252,7 +252,7 @@
     "artist": "Blackberry Smoke",
     "capo": "0",
     "bpm": "95",
-    "recommendedCapo": "0",
+   "recommendedCapo": "0",
     "file": "one horse town.json"
   },
   {
@@ -260,7 +260,7 @@
     "artist": "FleetWood Mac",
     "capo": "0",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "the chain.json"
   },
   {
@@ -268,7 +268,7 @@
     "artist": "Les innocents",
     "capo": "",
     "bpm": "150",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "de quoi suis je mort.json"
   },
   {
@@ -276,7 +276,7 @@
     "artist": "Francis Cabrel",
     "capo": "2",
     "bpm": "110",
-    "recommendedCapo": "2",
+   "recommendedCapo": "2",
     "file": "ma place dans le trafic.json"
   },
   {
@@ -284,7 +284,7 @@
     "artist": "Pdf",
     "capo": "",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "memo - comptes utilisés moise- claude.json"
   },
   {
@@ -292,7 +292,7 @@
     "artist": "Chris Isaak",
     "capo": "",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "wicked game.json"
   },
   {
@@ -300,7 +300,7 @@
     "artist": "Francis Cabrel",
     "capo": "2",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "les cardinaux en costume.json"
   },
   {
@@ -308,47 +308,15 @@
     "artist": "johnny cash",
     "capo": "0",
     "bpm": "",
-    "recommendedCapo": "0",
+   "recommendedCapo": "0",
     "file": "hurt.json"
-  },
-  {
-    "title": "Hallelujah",
-    "artist": "Jeff Buckley",
-    "capo": "5",
-    "bpm": "",
-    "recommendedCapo": "",
-    "file": "hallelujah.json"
   },
   {
     "title": "Baby did a bad bad thing",
     "artist": "Chris Isaak",
     "capo": "",
     "bpm": "",
-    "recommendedCapo": "",
+   "recommendedCapo": "",
     "file": "baby did a bad bad thing.json"
-  },
-  {
-    "title": "House of the Rising Sun",
-    "artist": "The animals",
-    "capo": "1",
-    "bpm": "",
-    "recommendedCapo": "3",
-    "file": "house of the rising sun.json"
-  },
-  {
-    "title": "in the air tonight",
-    "artist": "phil collins (cover River Crombie)",
-    "capo": "",
-    "bpm": "",
-    "recommendedCapo": "",
-    "file": "in the air tonight.json"
-  },
-  {
-    "title": "goo goo muck",
-    "artist": "the cramps",
-    "capo": "0",
-    "bpm": "142",
-    "recommendedCapo": "",
-    "file": "goo goo muck.json"
-  }
+  } 
 ]
