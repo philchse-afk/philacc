@@ -1,0 +1,14 @@
+{
+  "name": "mes-accords",
+  "version": "1.0.0",
+  "description": "Gestion de répertoire chansons/accords avec comptes multi-utilisateurs",
+  "main": "servAcc.js",
+  "scripts": {
+    "start": "node servAcc.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

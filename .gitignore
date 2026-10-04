@@ -1,0 +1,5 @@
+# Comptes et données personnelles — ne doivent jamais être publiés sur GitHub
+data/users.json
+data/users/
+songs/multimedia/
+node_modules/

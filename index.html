@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes Accords</title>
+    <link rel="stylesheet" href="css/style.css?v=26">
+    <link rel="stylesheet" href="css/song-gauge.css?v=3">
+    <link rel="stylesheet" href="css/auth-gate.css?v=1">
+    <style>
+        #karaoke-overlay {
+            position: fixed; inset: 0; z-index: 5000;
+            background: linear-gradient(-45deg, #05070d, #1b2a4a, #5b3a99, #0d1321, #123a5c);
+            background-size: 400% 400%;
+            animation: karaoke-bg-shift 14s ease-in-out infinite;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: #fff; font-family: Arial, sans-serif;
+        }
+        /* Dégradé qui glisse lentement entre plusieurs teintes sombres (bleu nuit /
+           violet) — toujours assez sombre pour garder les paroles blanches lisibles */
+        @keyframes karaoke-bg-shift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #karaoke-overlay { animation: none; }
+        }
+        /* Vidéo de fond optionnelle (balise <link rel="GPvideo" href="..."> dans le
+           texte de la chanson) : couvre tout l'écran, sous le voile sombre et les
+           paroles. Sans son (l'audio vient du MP3 karaoké). */
+        #karaoke-video-bg {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        /* Voile sombre semi-transparent au-dessus de la vidéo, pour garder les
+           paroles blanches lisibles quel que soit le contenu de la vidéo */
+        #karaoke-video-scrim {
+            position: absolute; inset: 0;
+            background: rgba(6, 8, 18, 0.55);
+        }
+        #karaoke-close {
+            position: absolute; top: 20px; right: 28px;
+            background: rgba(255,255,255,0.1); border: none; color: #fff;
+            font-size: 22px; width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+        }
+        #karaoke-close:hover { background: rgba(255,255,255,0.25); }
+        /* Regroupe le bouton de bascule diagrammes/texte et les boutons de
+           positionnement (⏪/⏩) dans un conteneur flex plutôt que 3 éléments
+           positionnés indépendamment avec des "right" fixes devinés au pixel
+           près : le bouton de bascule change de largeur selon son texte
+           ("🎸 Diagrammes" vs "🔤 Texte"), ce qui les faisait se chevaucher.
+           Le flex + gap les espace correctement quelle que soit cette largeur. */
+        #karaoke-top-controls {
+            position: absolute; top: 20px; right: 80px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        #karaoke-toggle-view {
+            background: rgba(255,255,255,0.1); border: none; color: #fff;
+            font-size: 14px; padding: 10px 16px; border-radius: 20px; cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+        #karaoke-toggle-view:hover { background: rgba(255,255,255,0.25); }
+        #karaoke-toggle-view.active { background: #4fc3f7; color: #1a1a2e; font-weight: bold; }
+        /* Boutons de positionnement rapide (⏪/⏩ 5s) — pour retravailler un
+           passage précis (reprendre une phrase, un pont...) sans quitter le
+           plein écran karaoké. Même style visuel que #karaoke-toggle-view. */
+        #karaoke-seek-back, #karaoke-seek-fwd {
+            background: rgba(255,255,255,0.1); border: none; color: #fff;
+            font-size: 14px; width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+        #karaoke-seek-back:hover, #karaoke-seek-fwd:hover { background: rgba(255,255,255,0.25); }
+        #karaoke-title {
+            position: absolute; top: 24px; left: 32px;
+            font-size: 16px; color: #aaa; letter-spacing: 0.04em;
+        }
+        #karaoke-lines {
+            display: flex; flex-direction: column; align-items: center; gap: 40px;
+            width: 90%; max-width: 1100px;
+            overflow: hidden;
+            position: relative;
+        }
+        .karaoke-line {
+            font-size: 38px; line-height: 1.6; text-align: center;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4em;
+            align-items: flex-end;
+        }
+        /* Ligne qui vient d'être lue : positionnée hors flux (n'affecte pas la mise en
+           page des lignes courante/suivante), s'efface vers le haut en perdant en
+           intensité — voir _karaokeLoop pour l'animation (transform/opacity/filter) */
+        .karaoke-line--prev {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+        /* Net pulse lumineux au moment où une ligne devient la ligne courante (aucun
+           déplacement, juste une intensité qui monte puis retombe) */
+        @keyframes karaoke-line-arrive {
+            0%   { filter: brightness(1.9); }
+            100% { filter: brightness(1); }
+        }
+        .karaoke-line-arrive { animation: karaoke-line-arrive 0.6s ease-out; }
+        /* Ligne suivante : position, opacité et luminosité pilotées en JS à chaque frame
+           (voir _karaokeLoop) pour une remontée fluide et continue vers le centre */
+        .karaoke-line--next {
+            opacity: 0.28;
+            will-change: transform, opacity, filter;
+        }
+        .karaoke-word { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; }
+        /* Ligne d'aperçu supplémentaire (celle d'après la ligne "next") : donne un peu
+           plus de temps d'anticipation pour la lecture — affichage statique (pas de
+           montée en intensité comme .karaoke-line--next, juste un fondu léger au
+           changement de contenu). Même taille que les autres lignes (on ne surcharge
+           PAS font-size ici : un "em" se serait calculé par rapport à la taille du
+           parent #karaoke-lines, pas par rapport aux 38px de .karaoke-line — d'où la
+           taille beaucoup trop petite constatée) ; seule l'opacité la distingue comme
+           "encore loin". */
+        .karaoke-line--next2 {
+            opacity: 0.22;
+            transition: opacity 0.4s ease;
+        }
+        .karaoke-chord {
+            font-size: 1em; font-weight: bold; color: #7a7aaa;
+            white-space: nowrap; min-height: 1.2em; transition: color 0.1s, text-shadow 0.1s;
+        }
+        .karaoke-chord--active {
+            color: #ffd54f;
+            text-shadow: 0 0 18px rgba(255,213,79,0.7);
+        }
+        .karaoke-chord--next { color: #aaaacc; }
+        .karaoke-text { color: #80d8ff; transition: color 0.15s, text-shadow 0.15s; }
+        /* Mot déjà "chanté" d'après le minutage indépendant des paroles (mode "Les 2") */
+        .karaoke-text.sung { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+
+        /* Mode "Paroles" seules : pas d'accords, juste le texte, plus grand, avec le
+           mot en cours d'articulation mis en évidence (façon karaoké chant classique). */
+        .karaoke-text-only { font-size: 1em; color: #80d8ff; transition: color 0.15s, text-shadow 0.15s; }
+        .karaoke-text-only.sung { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .karaoke-text-only.active { color: #ffd54f; text-shadow: 0 0 18px rgba(255,213,79,0.8); }
+
+        /* Types de voix — choeur/lead/mutter/libre (balisage par paires de symboles
+           dans l'éditeur, mêmes classes que dans l'aperçu éditeur, voir style.css
+           .lyric-highlight-X) — recolorées ici en couleur de TEXTE vive plutôt qu'en
+           fond clair, pour rester lisibles sur le fond sombre du karaoké. Une variante
+           existe pour chacun des 3 états (à venir / actif / déjà chanté) : la
+           spécificité à 3 classes (ex. .active.lyric-highlight-choeur) l'emporte
+           naturellement sur les règles de base .active/.sung à 2 classes, sans avoir
+           besoin de :not() — important pour le mode "ligne entière" (marquage ligne /
+           import LRC, voir _isWordTimingEmpirical) où TOUS les mots de la ligne portent
+           .active ensemble : la couleur du type doit y rester visible, sinon plus
+           aucune coloration ne serait jamais visible sur ces chansons.
+           Le choeur était initialement en cyan (#4dd0e1), beaucoup trop proche du
+           bleu par défaut des paroles (#80d8ff) pour se distinguer en plein
+           défilement — passé en VERT, une teinte franchement différente des 3
+           autres (orange/rouge/violet) et du bleu neutre. font-weight:700 ajouté
+           sur les 4 types pour renforcer encore la lisibilité au premier coup d'oeil,
+           y compris sur une ligne qui ne reste affichée que quelques secondes.
+           ATTENTION si ce commentaire est modifié : un commentaire CSS se referme dès
+           qu'il rencontre une étoile suivie d'une barre oblique, quel que soit ce qui
+           précède. Ne jamais faire figurer cette combinaison (étoile, étoile, barre
+           oblique) telle quelle à l'intérieur d'un commentaire — elle le referme
+           prématurément et invalide TOUT le CSS qui suit dans le même bloc <style>
+           (c'est exactement le bug qui a empêché ces couleurs de s'afficher — deux
+           fois de suite, la première fois dans le commentaire d'origine, la seconde
+           dans une première version de cet avertissement lui-même). */
+        .karaoke-text.lyric-highlight-choeur, .karaoke-text-only.lyric-highlight-choeur { color: #66bb6a; font-weight: 400; }
+        .karaoke-text.lyric-highlight-lead,   .karaoke-text-only.lyric-highlight-lead   { color: #ffb74d; font-weight: 400; }
+        .karaoke-text.lyric-highlight-mutter, .karaoke-text-only.lyric-highlight-mutter { color: #e57373; font-weight: 400; }
+        .karaoke-text.lyric-highlight-libre,  .karaoke-text-only.lyric-highlight-libre  { color: #ba68c8; font-weight: 400; }
+        .karaoke-text.sung.lyric-highlight-choeur, .karaoke-text-only.sung.lyric-highlight-choeur { color: #a5d6a7; text-shadow: 0 0 10px rgba(102,187,106,0.6); }
+        .karaoke-text.sung.lyric-highlight-lead,   .karaoke-text-only.sung.lyric-highlight-lead   { color: #ffe0b2; text-shadow: 0 0 10px rgba(255,183,77,0.6); }
+        .karaoke-text.sung.lyric-highlight-mutter, .karaoke-text-only.sung.lyric-highlight-mutter { color: #ffcdd2; text-shadow: 0 0 10px rgba(229,115,115,0.6); }
+        .karaoke-text.sung.lyric-highlight-libre,  .karaoke-text-only.sung.lyric-highlight-libre  { color: #e1bee7; text-shadow: 0 0 10px rgba(186,104,200,0.6); }
+        .karaoke-text.active.lyric-highlight-choeur, .karaoke-text-only.active.lyric-highlight-choeur { color: #a5f0a8; text-shadow: 0 0 18px rgba(102,187,106,0.9); }
+        .karaoke-text.active.lyric-highlight-lead,   .karaoke-text-only.active.lyric-highlight-lead   { color: #ffcf80; text-shadow: 0 0 18px rgba(255,183,77,0.9); }
+        .karaoke-text.active.lyric-highlight-mutter, .karaoke-text-only.active.lyric-highlight-mutter { color: #ff9e9e; text-shadow: 0 0 18px rgba(229,115,115,0.9); }
+        .karaoke-text.active.lyric-highlight-libre,  .karaoke-text-only.active.lyric-highlight-libre  { color: #d49aff; text-shadow: 0 0 18px rgba(186,104,200,0.9); }
+
+        /* Mode Diagrammes */
+        .karaoke-word--diagram { gap: 6px; }
+        .karaoke-diagram-svg { display: block; }
+        .karaoke-diagram-svg svg { width: 90px; height: 110px; opacity: 0.35; transition: opacity 0.15s, transform 0.15s; }
+        .karaoke-diagram-svg.active svg { opacity: 1; transform: scale(1.12); }
+        .karaoke-chord-name { font-size: 0.5em; font-weight: bold; color: #7a7aaa; margin-top: 2px; }
+        .karaoke-chord-name.active { color: #ffd54f; }
+        .karaoke-diagram-placeholder { width: 90px; height: 110px; }
+        #karaoke-progress-bar {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 6px;
+            background: rgba(255,255,255,0.08);
+            cursor: pointer;
+            transition: height 0.1s;
+        }
+        /* Zone cliquable élargie au survol (6px -> 14px) pour faciliter le clic sans
+           dénaturer la finesse de la barre au repos. */
+        #karaoke-progress-bar:hover { height: 14px; }
+        #karaoke-progress-fill {
+            height: 100%; width: 0%; background: linear-gradient(90deg,#4fc3f7,#ffd54f);
+            transition: width 0.1s linear;
+        }
+        /* ===== MINUTAGE KARAOKÉ : surlignage prochain accord dans l'aperçu ===== */
+        .karaoke-next-chord {
+            background: #ff9800 !important;
+            color: #fff !important;
+            border: 2px solid #e65100 !important;
+            border-radius: 4px;
+            box-shadow: 0 0 8px rgba(255, 152, 0, 0.7);
+            font-weight: bold;
+            animation: karaoke-pulse 0.7s ease-in-out infinite alternate;
+        }
+        .karaoke-next-line {
+            outline: 2px solid rgba(255, 152, 0, 0.35);
+            border-radius: 3px;
+            background: rgba(255, 152, 0, 0.06);
+        }
+        @keyframes karaoke-pulse {
+            from { box-shadow: 0 0 5px rgba(255, 152, 0, 0.5); }
+            to   { box-shadow: 0 0 14px rgba(255, 152, 0, 0.95); }
+        }
+        /* ===== FIN MINUTAGE KARAOKÉ ===== */
+        /* ===== PLEIN ÉCRAN PAROLES (fallback CSS) ===== */
+        #song-content-display.lyrics-css-fullscreen {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 10000 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-height: 100vh !important;
+            overflow-y: auto !important;
+            background: var(--bg, #fff) !important;
+            border-radius: 0 !important;
+            padding: 20px 5vw 80px !important;
+            box-shadow: none !important;
+        }
+        /* Plein écran natif : s'assurer que le fond est opaque */
+        #song-content-display:fullscreen,
+        #song-content-display:-webkit-full-screen {
+            background: var(--bg, #fff) !important;
+            padding: 20px 5vw 80px !important;
+            overflow-y: auto !important;
+        }
+        /* ===== FIN PLEIN ÉCRAN PAROLES ===== */
+    </style>
+    <style>
+        /* ===== Auto-scroll karaoké : surlignage des accords en lecture ===== */
+        .lyric-chord-badge.chord-active-scroll {
+            background: #ffe082;
+            border-color: #f9a825;
+            color: #5f3d00;
+            box-shadow: 0 0 0 2px #f9a825, 0 2px 8px rgba(249,168,37,0.45);
+            transform: scale(1.18);
+            transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+            z-index: 2;
+            position: relative;
+        }
+        .lyric-chord-badge.chord-sung-scroll {
+            background: var(--c-chord-bg, #c8e6c9);
+            border-color: var(--c-chord-border, #81c784);
+            color: var(--c-chord-text, #2e7d32);
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        /* ── Panneau accords : ligne active ── */
+        #display-chords [data-line-index].chord-active-scroll {
+            background: rgba(255, 224, 130, 0.18);
+            border-radius: 4px;
+            outline: 1px solid rgba(249, 168, 37, 0.35);
+        }
+
+        /* ── Panneau accords : span de l'accord actif ── */
+        #display-chords span.chord-active-scroll,
+        #display-chords .measure-chord-name.chord-active-scroll {
+            background: #ffe082 !important;
+            border-color: #f9a825 !important;
+            color: #5f3d00 !important;
+            box-shadow: 0 0 0 2px #f9a825, 0 2px 8px rgba(249,168,37,0.45);
+            transform: scale(1.18);
+            transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>    
+</head>
+<body>
+    <!-- Barre latérale -->
+    <div id="sidebar">
+        <div id="action-buttons">
+            <button id="transpose-down" onclick="App.transpose(-1)">-1 demi-ton</button>
+            <button id="transpose-up" onclick="App.transpose(1)">+1 demi-ton</button>
+            <button id="transpose-reset" onclick="App.resetTranspose()">Réinitialiser</button>
+            <button id="back-button" onclick="App.goBack()">← Retour</button>
+            <button id="edit-button" onclick="App.editSong()" style="display: none;">Modifier</button>
+            <button id="save-button" onclick="App.saveSong()" style="display: none;">Sauvegarder</button>
+            <button id="clear-button" onclick="App.clearEditor()" style="display: none;">Effacer</button>
+            <button id="delete-button" onclick="App.deleteSong()" style="display: none;">🗑 Supprimer</button>
+            <!-- Radioboutons type d'étude -->
+            <div class="track-type-container" style="margin-top:6px;">
+                <label>
+                    <input type="radio" name="etudeType" value="tuto" checked>
+                    <span>Tuto</span>
+                </label>
+                <label>
+                    <input type="radio" name="etudeType" value="kfn">
+                    <span>KFN</span>
+                </label>
+            </div>
+            <button id="etudeButton">🎬 Étude</button>
+            <div class="track-type-container" id="karaokeModeContainer" style="margin-top:4px; display:flex; align-items:center; gap:6px; font-size:11px;">
+                <label title="Karaoké accords (noms d'accords / diagrammes, comme aujourd'hui)">
+                    <input type="radio" name="karaokeContentMode" value="acc" id="karaokeModeAcc" onchange="App._setKaraokeContentMode('acc')">
+                    <span>Accords</span>
+                </label>
+                <label title="Karaoké paroles seules, mot par mot, sans accords">
+                    <input type="radio" name="karaokeContentMode" value="paroles" id="karaokeModeParoles" onchange="App._setKaraokeContentMode('paroles')">
+                    <span>Paroles</span>
+                </label>
+                <label title="Accords + surlignage des paroles mot par mot, ensemble">
+                    <input type="radio" name="karaokeContentMode" value="both" id="karaokeModeBoth" onchange="App._setKaraokeContentMode('both')">
+                    <span>Les 2</span>
+                </label>
+            </div>
+            <button id="karaokeButton" onclick="App.openKaraoke()">🎤 Karaoké</button>
+        </div>
+        <!-- Bouton pour générer le PDF -->
+        <div class="track-type-container" style="margin-top:6px;">
+            <label>
+                <input type="radio" name="pdfType" value="ori" checked>
+                <span>Ori</span>
+            </label>
+            <label>
+                <input type="radio" name="pdfType" value="acc">
+                <span>Acc</span>
+            </label>
+            <label>
+                <input type="radio" name="pdfType" value="acc2">
+                <span>2Col</span>
+            </label>
+        </div>
+            <button id="generatePDFButton" style="background-color: #7986F5; color: white; border: none; border-radius: 4px;">
+                📄 Générer PDF
+            </button>
+        <!-- Bouton pour ouvrir les fichier Multimedia -->
+            <span>Type de fichier mp3: </span>
+
+        <!-- Radioboutons pour le type de piste -->
+        <div class="track-type-container">
+            <label>
+                <input type="radio" name="trackType" value="" checked>
+                <span>N</span>
+            </label>
+            <label>
+                <input type="radio" name="trackType" value="bch">
+                <span>Bch</span>
+            </label>
+            <label>
+                <input type="radio" name="trackType" value="bcg">
+                <span>Bcg</span>
+            </label>
+            <label>
+                <input type="radio" name="trackType" value="bgu">
+                <span>Bgu</span>
+            </label>
+        </div>
+
+            <button id="openMP3Button">
+                🎵 Ouvrir MP3
+            </button>
+            <div style="display: flex; gap: 5px; margin: 10px 0; align-items: center; justify-content: space-between; width: 100%;">
+                <button id="playMP3Button" style="padding: 5px 10px;">▶</button>
+                <button id="pauseMP3Button" style="padding: 5px 10px;">⏸</button>
+                <button id="stopMP3Button" style="padding: 5px 10px;">⏹</button>
+                <div class="mp3-speed-control"
+                    title="Ralentir/accélérer la lecture — sans effet sur le calage karaoké (basé sur la position audio, pas le temps réel écoulé)">
+                    <span class="chord-helper-label">Speed</span>
+                    <select id="mp3SpeedSelect">
+                        <option value="0.5">0.5×</option>
+                        <option value="0.6">0.6×</option>
+                        <option value="0.7">0.7×</option>
+                        <option value="0.75">0.75×</option>
+                        <option value="0.8">0.8×</option>
+                        <option value="0.85">0.85×</option>
+                        <option value="0.9">0.9×</option>
+                        <option value="0.95">0.95×</option>
+                        <option value="1" selected style="font-weight:bold;">1×</option>
+                        <option value="1.1">1.1×</option>
+                        <option value="1.25">1.25×</option>
+                        <option value="1.5">1.5×</option>
+                    </select>
+                </div>
+            </div>  
+            <!-- Positionnement libre dans le MP3 : glisser le curseur ou ⏪/⏩ 5s pour
+                 reprendre exactement où on le souhaite (le défilement auto, s'il est
+                 actif, suit automatiquement — il se cale sur la même position audio). -->
+            <div style="display:flex; align-items:center; gap:4px; width:100%; margin-bottom:2px;">
+                <button type="button" id="sidebarMp3Back5" onclick="App.seekMp3(-5)"
+                    title="Reculer de 5 secondes" style="padding:2px 7px; font-size:12px;">
+                    ⏪
+                </button>
+                <input type="range" id="sidebarMp3Seek" min="0" max="0" step="0.1" value="0"
+                    title="Glisser pour se positionner n'importe où dans le morceau"
+                    style="flex:1; min-width:60px; height:16px;">
+                <button type="button" id="sidebarMp3Fwd5" onclick="App.seekMp3(5)"
+                    title="Avancer de 5 secondes" style="padding:2px 7px; font-size:12px;">
+                    ⏩
+                </button>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:11px; color:#8a99aa; width:100%; margin-bottom:8px;">
+                <span id="sidebarMp3TimeCurrent">0:00</span>
+                <span id="sidebarMp3TimeTotal">0:00</span>
+            </div>
+            <button id="openGPButton">
+                🎵 Ouvrir GP
+            </button>
+            <button id="openMP4Button">
+                🎥 Ouvrir MP4
+            </button>
+            <button id="openPDFButton">
+                📄 Ouvrir PDF
+            </button>
+            <!-- note: le radiobouton Ori/Acc ci-dessus s'applique aussi à l'ouverture PDF -->        
+        <!-- Dans ta section de contrôles (ex: près des boutons +1/-1 ton) -->
+        <div style="margin: 10px 0;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="display:flex; gap:2px; flex-shrink:0;">
+                    <button id="scrollWithMP3Btn" title="Lancer le MP3 depuis le début et démarrer le scroll"
+                            style="padding: 8px 6px;" disabled>
+                        ♪ Scroll
+                    </button>
+                    <button id="toggleAutoScroll" title="Scroll sans MP3 (timer sur timestamps ou BPM)"
+                            style="padding: 8px 6px;" disabled>
+                        ▶ Scroll
+                    </button>
+                </div>
+                <span id="scrollSpeedDisplay" style="font-size: 14px; color: #666;">
+                    <span id="currentScrollSpeed">0</span> 🎵
+                </span>
+                <button id="btn-bpm-suggest"
+                        title="Estimer le BPM depuis les timestamps karaoké"
+                        style="display:none; background:none; border:none; font-size:16px; cursor:pointer; opacity:0.7; padding:2px 4px;"
+                        onclick="app.suggestBpmFromTimestamps()">🎯</button>
+            </div>
+            <!-- Tooltip BPM : affiché en dessous, pleine largeur de la sidebar -->
+            <div id="bpm-suggest-tip" style="display:none; margin-top:6px;"></div>
+        </div>
+        <!-- Bouton pour afficher/masquer les accords -->
+        <div style="margin: 10px 0; display: flex; align-items: center; gap: 10px;">
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="showChordsToggle" checked>
+                <span style="margin-left: 5px;">Afficher les accords</span>
+            </label>
+        </div>
+        <!-- Bouton pour afficher/masquer le panneau des accords -->
+        <div style="margin: 10px 0; display: flex; align-items: center; gap: 10px;">
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="showChordsPanelToggle" checked>
+                <span style="margin-left: 5px;">Afficher le panneau accords</span>
+            </label>
+        </div>                
+    </div>
+
+    <!-- Contenu principal -->
+    <div id="main-content">
+        <!-- Onglets -->
+        <div id="tabs">
+            <button class="tab active" onclick="App.showTab(0)">Accueil</button>
+            <button class="tab" onclick="App.showTab(2)">Listes</button>
+            <button class="tab" onclick="App.newSong()">Nouvelle Chanson</button>
+            <div id="auth-account-bar"></div>
+            <img src="img/phizic-banner.png" alt="Phizic" class="app-banner"
+                 title="Auteur : Philippe ANGER — Premier Assistant : Claude AI — Second assistant : Moise AI">
+        </div>
+
+        <!-- Onglet Listes -->
+        <div id="lists-tab" style="display: none;">
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
+                <input type="text" id="list-search-input" placeholder="Rechercher…"
+                    oninput="App.searchLists()"
+                    style="flex:1;min-width:160px;padding:7px 10px;border:1px solid #dde3ec;border-radius:6px;font-size:13px;">
+                <select id="list-liste-filter"
+                    onchange="App.searchLists()"
+                    style="padding:7px 10px;border:1px solid #b3c6e0;border-radius:6px;
+                           font-size:13px;background:#f0f4ff;color:#2c3e50;cursor:pointer;min-width:160px;">
+                    <option value="">— Toutes les listes —</option>
+                </select>
+            </div>
+            <ul id="list-song-list"></ul>
+        </div>
+
+        <!-- Onglet Accueil -->
+        <div id="home-tab">
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
+                <input type="text" id="search-input" placeholder="Rechercher…"
+                    oninput="App.searchSongs()"
+                    style="flex:1;min-width:160px;padding:7px 10px;border:1px solid #dde3ec;border-radius:6px;font-size:13px;">
+                <select id="liste-filter"
+                    onchange="App.searchSongs()"
+                    style="padding:7px 10px;border:1px solid #b3c6e0;border-radius:6px;
+                           font-size:13px;background:#f0f4ff;color:#2c3e50;cursor:pointer;min-width:140px;">
+                    <option value="">— Toutes les listes —</option>
+                </select>
+            </div>
+            <ul id="song-list"></ul>
+        </div>
+
+        <!-- Onglet Éditeur -->
+        <div id="editor-tab" style="display: none;">
+        <div class="form-row">
+            <div class="form-group" style="flex: 2;">
+                <label for="song-title">Titre :</label>
+                <input type="text" id="song-title">
+            </div>
+            <div class="form-group" style="flex: 2;">
+                <label for="song-artist">Artiste :</label>
+                <input type="text" id="song-artist">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="capo">Capo :</label>
+                <input type="number" id="capo" min="0" max="12">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="recommendedCapo">Capo rec. :</label>
+                <input type="number" id="recommendedCapo" min="0" max="12">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="song-key">Tonalité :</label>
+                <input type="text" id="song-key" placeholder="ex : F#m">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="bpm">BPM :</label>
+                <input type="number" id="bpm" min="40" max="200">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="time-sig">Mesure :</label>
+                <select id="time-sig" style="width:100%;padding:7px 6px;border:1px solid #dde3ec;border-radius:4px;font-size:13px;background:#fff;cursor:pointer;">
+                    <option value="">—</option>
+                    <option value="4/4">4/4</option>
+                    <option value="3/4">3/4</option>
+                    <option value="2/4">2/4</option>
+                    <option value="6/8">6/8</option>
+                    <option value="8/8">8/8</option>
+                    <option value="12/8">12/8</option>
+                    <option value="5/4">5/4</option>
+                    <option value="7/8">7/8</option>
+                </select>
+            </div>
+            <div class="form-group ok-check" style="flex: 0 0 auto; align-self: flex-end; padding-bottom: 7px;">
+                <label for="song-ok" title="Cocher quand tous les outils (accords, tuto, KFN, timestamps…) sont réunis pour cette chanson"
+                    style="display:flex; align-items:center; gap:6px; cursor:pointer; white-space:nowrap; margin:0;">
+                    <input type="checkbox" id="song-ok">
+                    <span>OK</span>
+                </label>
+            </div>
+        </div>
+        <!-- Listes / Rythmique / Tuto / KFN : une seule ligne, largeurs des 4 champs
+             texte harmonisées (flex:1 chacun), les 2 cases "embed" restant compactes. -->
+        <div class="form-row">
+            <div class="form-group" style="flex:1;">
+                <label for="song-liste">Listes :</label>
+                <div style="position:relative;">
+                    <input type="text" id="song-liste"
+                        placeholder="Setlist 2024, Acoustique…"
+                        autocomplete="off"
+                        oninput="App._listeSuggest(this.value)"
+                        onblur="setTimeout(()=>App._listeSuggestClose(),150)">
+                    <div id="liste-suggestions" style="
+                        display:none; position:absolute; top:100%; left:0; right:0; z-index:500;
+                        background:#fff; border:1px solid #b3c6e0; border-top:none;
+                        border-radius:0 0 6px 6px; box-shadow:0 4px 12px rgba(0,0,0,0.1);
+                        max-height:160px; overflow-y:auto;
+                    "></div>
+                </div>
+            </div>
+            <div class="form-group" style="flex:1;">
+                <label for="song-rythm">Rythmique
+                    <span tabindex="0" title="b=bas, h=haut, gb=ghost↓, gh=ghost↑ · virgule=croche · /=mesure"
+                        style="display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; border-radius:50%; background:#e2e8f0; color:#5a6b7d; font-size:10px; font-style:normal; font-weight:700; cursor:help; vertical-align:middle;">
+                        i
+                    </span> :
+                </label>
+                <input type="text" id="song-rythm"
+                    placeholder="b,gh,b,h/b,gb,b,h/b,gh,b,gb/b,gh,b,h"
+                    autocomplete="off"
+                    oninput="App._updateRythmPreview(this.value)">
+                <div id="rythm-preview-editor" style="margin-top:8px;overflow-x:auto;min-height:20px;"></div>
+            </div>
+            <div class="form-group" style="flex:1;">
+                <label for="song-tuto">URL Tuto (YouTube) :</label>
+                <input type="url" id="song-tuto" placeholder="https://youtu.be/...">
+            </div>
+            <div class="form-group embed-check">
+                <label for="song-tuto-embed" title="Cocher si l'intégration (embed) du tuto fonctionne">
+                    <input type="checkbox" id="song-tuto-embed" checked>
+                </label>
+            </div>
+            <div class="form-group" style="flex:1;">
+                <label for="song-kfn">URL KFN (YouTube) :</label>
+                <input type="url" id="song-kfn" placeholder="https://youtu.be/...">
+            </div>
+            <div class="form-group embed-check">
+                <label for="song-kfn-embed" title="Cocher si l'intégration (embed) du KFN fonctionne">
+                    <input type="checkbox" id="song-kfn-embed" checked>
+                </label>
+            </div>
+        </div>
+
+            <div class="editor-container" id="editor-container">
+                <!-- Zone édition -->
+                <div class="editor" id="editor-panel">
+                    <div class="toolbar-groups">
+
+                        <!-- Outils Éditeur : flex-basis 100% pour l'isoler sur sa propre ligne
+                             (elle contient le plus de boutons) et laisser Lecteur audio /
+                             Marquage accords / Marquage paroles s'aligner ensemble sur la
+                             ligne suivante. -->
+                        <div class="toolbar-group" style="flex:1 1 100%;">
+                            <div class="toolbar-group-label">Outils éditeur</div>
+                            <div class="toolbar-group-buttons">
+                                <button type="button" id="btn-fullscreen-editor" onclick="App.toggleEditorFullscreen()"
+                                    title="Plein écran édition"
+                                    style="font-size:18px; background:none; border:none; cursor:pointer; opacity:0.6;">
+                                    ⛶
+                                </button>
+                                <button type="button" id="insertAccoladesBtn" onclick="App.insertAccolades()"
+                                    title="Insérer {{}} à la position du curseur"
+                                    style="padding:3px 10px; font-size:13px; font-family:monospace; cursor:pointer;">
+                                    &#123;&#123;&#125;&#125;
+                                </button>
+                                <button type="button" id="insertVvvvBtn" onclick="App.insertPrefix('vvvv')"
+                                    title="Insérer vvvv[Couplet / Verse / Chorus]"
+                                    style="padding:3px 8px; font-size:11px; font-family:monospace; cursor:pointer; background:#f3e6d0; border:1px solid #c8935a; border-radius:3px; color:#7a3f0a;">
+                                    vvvv[]
+                                </button>
+                                <button type="button" id="insertPpppBtn" onclick="App.insertPrefix('pppp')"
+                                    title="Insérer pppp[Pont / Bridge]"
+                                    style="padding:3px 8px; font-size:11px; font-family:monospace; cursor:pointer; background:#d0f0ee; border:1px solid #5aada8; border-radius:3px; color:#0a5a57;">
+                                    pppp[]
+                                </button>
+                                <button type="button" id="insertRrrrBtn" onclick="App.insertPrefix('rrrr')"
+                                    title="Insérer rrrr[Refrain]"
+                                    style="padding:3px 8px; font-size:11px; font-family:monospace; cursor:pointer; background:#e8f5e9; border:1px solid #4d9e50; border-radius:3px; color:#0a5c0c;">
+                                    rrrr[]
+                                </button>
+                                <button type="button" id="insertSsssBtn" onclick="App.insertPrefix('ssss')"
+                                    title="Insérer ssss[Solo / Intro]"
+                                    style="padding:3px 8px; font-size:11px; font-family:monospace; cursor:pointer; background:#e8eaf6; border:1px solid #5a63c8; border-radius:3px; color:#0c0ca0;">
+                                    ssss[]
+                                </button>
+                                <span tabindex="0"
+                                    title="Rappel — PDF &quot;Accords&quot; (mono et double colonne) uniquement :&#10;&#10;vvvv[Couplet…] / vvvv[Verse…] : seule la 1ère section de ce type affiche sa grille d'accords, les suivantes n'affichent que leur étiquette.&#10;pppp[Pont…] / pppp[Bridge…] / pppp[Chorus…] : même règle, groupées ensemble.&#10;&#10;rrrr (Refrain) et ssss (Solo) ne sont jamais concernées par cette règle : toujours affichées en entier.&#10;&#10;Le PDF standard (paroles), lui, compare le contenu réel plutôt que le simple type de section."
+                                    style="display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; font-size:12px; line-height:1; cursor:help; opacity:0.55; user-select:none;">
+                                    📌
+                                </span>
+                                <button type="button" id="insertKvideoBtn" onclick="App.insertKvideoTag()"
+                                    title="Insérer la balise vidéo de fond karaoké (Kvideo) en fin de chanson"
+                                    style="padding:3px 10px; font-size:13px; cursor:pointer; background:#e8d8f4; border:1px solid #9b7fc4; border-radius:3px; color:#4a2f7a;">
+                                    🎬 Kvideo
+                                </button>
+                                <button type="button" id="insertPostitBtn" onclick="App.insertPostitTag()"
+                                    title="Insérer un post-it image à la ligne du curseur (visible à droite des paroles, à cet endroit précis)"
+                                    style="padding:3px 10px; font-size:13px; cursor:pointer; background:#fff9c4; border:1px solid #ffca28; border-radius:3px; color:#7a5c00;">
+                                    📌 Post-it
+                                </button>
+                                <button type="button" id="insertWikiBtn" onclick="App.insertWikiSummary()"
+                                    title="Rechercher la présentation Wikipedia de l'artiste (champ Artiste requis) et l'insérer en fin de texte"
+                                    style="padding:3px 10px; font-size:13px; cursor:pointer; background:#eef1f6; border:1px solid #b8c4d4; border-radius:3px; color:#2c3e50;">
+                                    📖 Wiki
+                                </button>
+                                <button type="button" id="resetMarkingBtn" onclick="App.resetKaraokeMarking()"
+                                    title="Effacer tous les repères de marquage (accords ⏱ ET paroles 🎤) de cette chanson — utile après une modification du contenu qui aurait décalé/désynchronisé les repères existants. Le texte n'est pas touché."
+                                    style="padding:3px 10px; font-size:13px; cursor:pointer; background:#fde0e0; border:1px solid #d97a7a; border-radius:3px; color:#7a1a1a;">
+                                    ↺ Marquage
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Lecteur Audio -->
+                        <div class="toolbar-group" style="flex:1 1 180px;">
+                            <div class="toolbar-group-label">Lecteur audio</div>
+                            <div class="toolbar-group-buttons">
+                                <button type="button" id="editor-mp3-toggle" onclick="App.toggleEditorMp3()"
+                                    title="Lecture MP3"
+                                    style="padding:3px 10px; font-size:13px; cursor:pointer; background:#d4edd4; border:1px solid #5a9e5a; border-radius:3px; color:#1b5e20;">
+                                    ▶ MP3
+                                </button>
+                                <button type="button" id="editor-mp3-stop" onclick="App.stopEditorMp3()"
+                                    title="Stop MP3"
+                                    style="padding:3px 8px; font-size:13px; cursor:pointer; background:#f0f2f5; border:1px solid #c8d0da; border-radius:3px; color:#555;">
+                                    ⏹
+                                </button>
+                                <button type="button" id="openChordGenBtn" onclick="App.openChordGenerator()"
+                                    title="Générateur de diagramme d'accord (crée le code à coller dans chords.js)"
+                                    style="padding:3px 8px; font-size:11px; cursor:pointer; background:#fde8cc; border:1px solid #d99a3a; border-radius:3px; color:#7a4010;">
+                                    🎸 Accord
+                                </button>
+                            </div>
+                            <!-- Positionnement libre dans le MP3 : glisser le curseur ou ⏪/⏩ 5s pour
+                                 reprendre le marquage (⏱/🎤) exactement où on le souhaite, sans avoir
+                                 à réécouter depuis le début. -->
+                            <div style="display:flex; align-items:center; gap:4px; margin-top:6px;">
+                                <button type="button" id="editorMp3Back5" onclick="App.seekMp3(-5)"
+                                    title="Reculer de 5 secondes"
+                                    style="padding:2px 7px; font-size:12px; cursor:pointer; background:#f0f2f5; border:1px solid #c8d0da; border-radius:3px; color:#555;">
+                                    ⏪
+                                </button>
+                                <input type="range" id="editorMp3Seek" min="0" max="0" step="0.1" value="0"
+                                    title="Glisser pour se positionner n'importe où dans le morceau"
+                                    style="flex:1; min-width:70px; height:16px;">
+                                <button type="button" id="editorMp3Fwd5" onclick="App.seekMp3(5)"
+                                    title="Avancer de 5 secondes"
+                                    style="padding:2px 7px; font-size:12px; cursor:pointer; background:#f0f2f5; border:1px solid #c8d0da; border-radius:3px; color:#555;">
+                                    ⏩
+                                </button>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--c-text-muted); margin-top:2px;">
+                                <span id="editorMp3TimeCurrent">0:00</span>
+                                <span id="editorMp3TimeTotal">0:00</span>
+                            </div>
+                            <span id="markingHintDisplay" class="toolbar-group-status"></span>
+                        </div>
+
+                        <!-- Marquage Accords -->
+                        <div class="toolbar-group toolbar-group--stacked" style="flex:0 0 190px;">
+                            <div class="toolbar-group-label">Marquage accords</div>
+                            <div class="toolbar-group-buttons">
+                                <button type="button" id="markTimestampBtn" onclick="App.markKaraokeTimestamp()"
+                                    title="Marquer le timestamp MP3 pour l'accord sous le curseur"
+                                    class="btn-mark"
+                                    style="background:#ffe0b2; border:1px solid #e08a2e; color:#7a3f0a;">
+                                    ⏱ Marquer
+                                </button>
+                                <button type="button" id="markTimestampAutoBtn" onclick="App.markKaraokeTimestampAuto()"
+                                    title="Marque l'accord courant comme repère (ancre), puis calcule automatiquement le temps des accords suivants à partir de leur durée [num/den] et du BPM — nécessite d'avoir renseigné les durées via l'infobulle qui apparaît en cliquant dans un {{accord}}. Réappuyez à tout moment pour poser une nouvelle ancre (utile en cas de changement de rythme)."
+                                    class="btn-mark"
+                                    style="background:#ffd54f; border:1px solid #c99a1e; color:#5c4400;">
+                                    ⏱⚡ Marquer (auto BPM)
+                                </button>
+                                <button type="button" id="resumeChordFromCursorBtn" onclick="App.resumeChordTimestampingFromCursor()"
+                                    title="Reprendre le marquage des accords à partir de l'accord situé à la position du curseur dans l'éditeur — pratique pour affiner une chanson déjà minutée sans tout reprendre depuis le début."
+                                    class="btn-mark"
+                                    style="background:#fff3d6; border:1px solid #c99a1e; color:#5c4400;">
+                                    ▶ Au curseur
+                                </button>
+                            </div>
+                            <span id="karaokeTimerDisplay" class="toolbar-group-status"></span>
+                        </div>
+
+                        <!-- Marquage Paroles -->
+                        <div class="toolbar-group toolbar-group--stacked" style="flex:0 0 190px;">
+                            <div class="toolbar-group-label">Marquage paroles</div>
+                            <div class="toolbar-group-buttons">
+                                <button type="button" id="markWordTimestampBtn" onclick="App.markWordTimestamp()"
+                                    title="Marquage indépendant des paroles (mot par mot) — alimente une future vue karaoké chant dédiée, séparée du marquage par accord ci-dessus."
+                                    class="btn-mark"
+                                    style="background:#c8e6c9; border:1px solid #4d9e50; color:#0a5c0c;">
+                                    🎤 Marquer
+                                </button>
+                                <button type="button" id="markLinesFromChordsBtn" onclick="App.markLinesFromChords()"
+                                    title="Marquage rapide ligne par ligne : réutilise le temps du 1er accord déjà marqué (⏱) sur chaque ligne comme instant de départ de cette ligne — nécessite d'avoir marqué les accords au préalable. Affichera la ligne entière en lecture karaoké plutôt qu'un surlignage mot par mot."
+                                    class="btn-mark"
+                                    style="background:#fff0d0; border:1px solid #d9a03a; color:#7a4a0a;">
+                                    📏 Marquage ligne
+                                </button>
+                                <button type="button" id="importLRCBtn" onclick="App.openLRCImportModal()"
+                                    title="Pré-remplir le minutage des PAROLES (🎤 Marquer) depuis un fichier LRC (LRCLib.net ou collé manuellement)"
+                                    class="btn-mark"
+                                    style="background:#d0e8ff; border:1px solid #4a90d9; color:#1a4d7a;">
+                                    📥 Importer LRC
+                                </button>
+                                <button type="button" id="resumeWordFromCursorBtn" onclick="App.resumeWordTimestampingFromCursor()"
+                                    title="Reprendre le marquage des paroles à partir du mot situé à la position du curseur dans l'éditeur — pratique pour affiner une chanson déjà minutée sans tout reprendre depuis le début."
+                                    class="btn-mark"
+                                    style="background:#e8f5e9; border:1px solid #4d9e50; color:#0a5c0c;">
+                                    ▶ Au curseur
+                                </button>
+                                <button type="button" id="insertSyllableSepBtn" onclick="App.insertSyllableSeparator()"
+                                    title="Insérer un séparateur de syllabe [|] à la position du curseur — permet de marquer les paroles syllabe par syllabe plutôt que mot par mot (ex: cha[|]leu[|]reux)."
+                                    class="btn-mark"
+                                    style="font-family:monospace; background:#e8eaf6; border:1px solid #5a63c8; color:#0c0ca0;">
+                                    [|] Syllabe
+                                </button>
+                            </div>
+                            <span id="wordTimerDisplay" class="toolbar-group-status"></span>
+                        </div>
+
+                    </div>
+                    <div class="highlight-legend" style="display:flex; align-items:center; gap:16px; font-size:11px; color:#666; margin-bottom:5px; flex-wrap:wrap;">
+                        <span style="display:inline-flex; align-items:center; gap:4px;"><span style="width:11px;height:11px;border-radius:3px;background:#d0e8f8;display:inline-block;"></span>**choeur**</span>
+                        <span style="display:inline-flex; align-items:center; gap:4px;"><span style="width:11px;height:11px;border-radius:3px;background:#ffe0b2;display:inline-block;"></span>++lead++</span>
+                        <span style="display:inline-flex; align-items:center; gap:4px;"><span style="width:11px;height:11px;border-radius:3px;background:#fad4d4;display:inline-block;"></span>--mutter--</span>
+                        <span style="display:inline-flex; align-items:center; gap:4px;"><span style="width:11px;height:11px;border-radius:3px;background:#e8d8f4;display:inline-block;"></span>&amp;&amp;libre&amp;&amp;</span>
+                    </div>
+                    <textarea id="song-editor" oninput="App.updatePreview()"></textarea>
+                </div>
+                <!-- Aperçu paroles -->
+                <div class="preview">
+                    <label>Aperçu :</label>
+                    <div id="song-preview"></div>
+                </div>
+                <!-- Nouvelle frame accords (masquée dans l'éditeur) -->
+                <div class="chords-panel" style="display:none;">
+                    <label>Accords transposés :</label>
+                    <div id="transposed-chords"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Affichage Chanson -->
+        <div id="song-display" style="display: none;">
+
+            <!-- contenu chanson -->
+            <div class="song-layout">
+
+                <!-- paroles -->
+                <div class="song-main">
+                    <h2 id="song-title-display"></h2>
+                    <div id="song-toolbar-row" class="song-toolbar-row">
+                        <div id="song-controls-left" class="song-toolbar-zone song-toolbar-left"></div>
+                        <div class="song-toolbar-zone song-toolbar-center">
+                            <div id="song-info-badge" class="song-info-badge"></div>
+                        </div>
+                        <div class="song-toolbar-zone song-toolbar-right">
+                            <div class="highlight-legend">
+                                <span class="sib-item"><span style="width:11px;height:11px;border-radius:3px;background:#d0e8f8;display:inline-block;"></span>Choeur</span>
+                                <span class="sib-item"><span style="width:11px;height:11px;border-radius:3px;background:#ffe0b2;display:inline-block;"></span>Lead</span>
+                                <span class="sib-item"><span style="width:11px;height:11px;border-radius:3px;background:#fad4d4;display:inline-block;"></span>Mutter</span>
+                                <span class="sib-item"><span style="width:11px;height:11px;border-radius:3px;background:#e8d8f4;display:inline-block;"></span>Libre</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rythm-display" style="margin-bottom:10px;overflow-x:auto;"></div>
+                    <div id="song-content-display"></div>
+                </div>
+
+                <!-- accords -->
+                <div class="chords-panel">
+                    <!-- <label>Accords transposés :</label> -->
+                    <div id="display-chords"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <audio id="hiddenAudioPlayer" style="display: none;"></audio>
+
+    <!-- Modale Étude (tuto / kfn) -->
+    <div id="etude-modal" style="display:none;">
+        <div id="etude-modal-overlay" onclick="App.closeEtude()"></div>
+        <div id="etude-modal-content">
+            <div id="etude-modal-header">
+                <span id="etude-modal-title"></span>
+                <button id="etude-modal-close" onclick="App.closeEtude()">✕</button>
+            </div>
+            <iframe id="etude-iframe" src="" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+    <!-- Vue Karaoké plein écran -->
+    <div id="karaoke-overlay" style="display:none;">
+        <video id="karaoke-video-bg" muted loop playsinline style="display:none;"></video>
+        <div id="karaoke-video-scrim" style="display:none;"></div>
+        <button id="karaoke-close" onclick="App.closeKaraoke()">✕</button>
+        <div id="karaoke-top-controls">
+            <button id="karaoke-seek-back" onclick="App.seekMp3(-5)" title="Reculer de 5 secondes">⏪</button>
+            <button id="karaoke-toggle-view" onclick="App.toggleKaraokeView()">🎸 Diagrammes</button>
+            <button id="karaoke-seek-fwd" onclick="App.seekMp3(5)" title="Avancer de 5 secondes">⏩</button>
+        </div>
+        <div id="karaoke-title"></div>
+        <div id="karaoke-lines">
+            <div id="karaoke-line-prev" class="karaoke-line karaoke-line--prev"></div>
+            <div id="karaoke-line-current" class="karaoke-line"></div>
+            <div id="karaoke-line-next" class="karaoke-line karaoke-line--next"></div>
+            <div id="karaoke-line-next2" class="karaoke-line karaoke-line--next2"></div>
+        </div>
+        <div id="karaoke-progress-bar" onclick="App.seekKaraokeProgress(event)" title="Cliquer pour se positionner n'importe où dans le morceau"><div id="karaoke-progress-fill"></div></div>
+    </div>
+
+    <!-- Modale Import LRC -->
+    <div id="lrc-import-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:5000; align-items:center; justify-content:center;">
+        <div style="background:#fff; border-radius:8px; padding:20px; width:min(560px, 92vw); max-height:85vh; display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="margin:0;">📥 Importer le minutage des paroles depuis un fichier LRC</h3>
+                <button type="button" onclick="App.closeLRCImportModal()" style="cursor:pointer; border:none; background:none; font-size:18px;">✕</button>
+            </div>
+            <p style="font-size:13px; color:#555; margin:0;">
+                Recherche automatique sur <strong>LRCLib.net</strong> (titre/artiste déjà saisis dans l'éditeur),
+                ou collez directement un fichier <code>.lrc</code> ci-dessous. Les lignes de paroles sont alignées
+                séquentiellement avec les lignes ChordPro, puis les mots de chaque ligne sont répartis dans
+                l'intervalle de temps correspondant (marquage indépendant 🎤, pas les accords).
+            </p>
+            <button type="button" onclick="App.searchLRCLib()"
+                style="align-self:flex-start; padding:6px 12px; font-size:13px; cursor:pointer; background:#d0e8ff; border:1px solid #4a90d9; border-radius:3px; color:#1a4d7a;">
+                🔎 Chercher sur LRCLib.net
+            </button>
+            <div id="lrc-import-status" style="font-size:12px; color:#666; min-height:16px;"></div>
+            <textarea id="lrc-import-textarea" placeholder="[00:12.30] Première ligne de paroles&#10;[00:15.80] Deuxième ligne..."
+                style="width:100%; min-height:220px; font-family:monospace; font-size:13px; box-sizing:border-box;"></textarea>
+            <label style="font-size:13px; display:flex; align-items:center; gap:6px;"
+                title="Décale TOUS les repères calculés à l'import (positif = plus tard, négatif = plus tôt). Utile si le LRC démarre en avance/retard par rapport au MP3.">
+                Décalage au démarrage :
+                <input type="number" id="lrc-offset" value="0" step="0.1"
+                    style="width:70px; padding:3px 6px; font-family:monospace;">
+                s
+            </label>
+            <div style="display:flex; justify-content:flex-end; gap:8px;">
+                <button type="button" onclick="App.closeLRCImportModal()"
+                    style="padding:6px 14px; cursor:pointer; border:1px solid #ccc; border-radius:3px; background:#f5f5f5;">
+                    Annuler
+                </button>
+                <button type="button" onclick="App.applyLRCImport()"
+                    style="padding:6px 14px; cursor:pointer; border:1px solid #2e7d32; border-radius:3px; background:#c8e6c9; color:#1b5e20; font-weight:bold;">
+                    Importer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="chord-gen-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:5000; align-items:center; justify-content:center;">
+        <div style="background:#fff; border-radius:8px; padding:20px; width:min(480px, 92vw); max-height:90vh; overflow:auto; display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="margin:0;">🎸 Générateur de diagramme d'accord</h3>
+                <button type="button" onclick="App.closeChordGenerator()" style="cursor:pointer; border:none; background:none; font-size:18px;">✕</button>
+            </div>
+            <p style="font-size:12px; color:#666; margin:0;">
+                Cliquez une case pour poser le doigté sur cette corde à cette frette (recliquez pour revenir à vide).
+                Cliquez <strong>O/X</strong> en haut d'une corde pour l'estomper (corde à ne pas jouer). Copiez le code
+                généré en bas et collez-le dans <code>chords.js</code>.
+            </p>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                <label style="font-size:13px;">Nom de l'accord :
+                    <input type="text" id="chordgen-name" placeholder="ex: E/F#" oninput="App._chordGenUpdateCode()"
+                        style="margin-left:4px; padding:3px 6px; font-family:monospace; width:110px;">
+                </label>
+                <label style="font-size:13px;">Frette de départ :
+                    <input type="number" id="chordgen-basefret" value="1" min="1" max="15" onchange="App._chordGenBaseFretChange(this.value)"
+                        style="margin-left:4px; padding:3px 6px; width:50px;">
+                </label>
+            </div>
+            <div id="chordgen-diagram" style="align-self:center;"></div>
+            <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <span style="font-size:12px; color:#666;">Code généré :</span>
+                    <button type="button" id="chordgen-copy-btn" onclick="App.copyChordGenCode()"
+                        style="padding:3px 10px; font-size:12px; cursor:pointer; background:#d0e8ff; border:1px solid #4a90d9; border-radius:3px; color:#1a4d7a;">
+                        📋 Copier
+                    </button>
+                </div>
+                <textarea id="chordgen-code" readonly rows="6"
+                    style="width:100%; box-sizing:border-box; font-family:monospace; font-size:13px; background:#f7f7f9; border:1px solid #ddd; border-radius:4px; padding:8px; resize:vertical;"></textarea>
+                <p style="font-size:11px; color:#999; margin:4px 0 0;">
+                    Convention utilisée : corde muette = <code>-1</code>, corde à vide = <code>0</code>, sinon la frette
+                    <strong>relative</strong> à la frette de départ (frette réelle − (frette de départ − 1)) — la 1ère
+                    ligne affichée dans le diagramme correspond donc toujours à la valeur <code>1</code>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth-gate.js?v=1"></script>
+    <script src="js/chords.js?v=3"></script>
+    <script src="js/app.js?v=48"></script>
+    <script>
+        window.app = App;
+    </script>
+</body>
+</html>

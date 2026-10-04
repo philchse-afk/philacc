@@ -1,0 +1,1741 @@
+{
+  "title": "alter ego",
+  "artist": "Jean Louis Aubert",
+  "capo": "0",
+  "content": "{{C}}{{Bm}}\n{{C}}{{Bm}}\n{{C}}{{Bm}}\n{{D}}\n\n{{C}}il manque un {{Bm}}temps à ma {{C}}vie\n il manque un {{Bm}}temps j'ai comp{{C}}ris\n il me manque {{Bm}}toi,\n mon alt{{D}}er ego\n \n \n {{C}}tu es partie {{Bm}}mon amie  {{C}}\n tu m'as laiss{{Bm}}é seul ici    {{C}}\n mais partout {{Bm}}tu me suis\n mon alt{{D}}er ego\n \n \n ou tu{{Em}} es, {{Cmaj7}}j'irai te c{{D}}hercher\n ou tu {{Em}}vis j{{Cmaj7}}e saurai te tr{{D}}ouver\n ou tu te {{Em}}caches{{Cmaj7}}, laisse moi de{{D}}viner\n dans mon c{{Am7}}oeur rien ne change, t'{{D}}es toujours là mon ange\n \n \n {{C}}il manque ton{{Bm}} rire à l'e{{C}}nnui\n il manque ta {{Bm}}flamme à ma nui{{C}}t\n c'est pas du {{Bm}}jeux,\n mon alt{{D}}er ego\n \n \n ou tu{{Em}} es, {{Cmaj7}}j'irai te c{{D}}hercher\n ou tu{{Em}} vis {{Cmaj7}}je saurai t{{D}}e trouver\n ou tu{{Em}} te c{{Cmaj7}}aches, lais{{D}}se moi deviner\n t'es sûrem{{Am7}}ent baie des anges, sûr{{D}}ement là-bas mon ange\n sûremen{{C}}t là-bas, sûrem{{D}}ent là-bas\n {{C}}{{D}}\n \n ou tu{{Em}} es, {{Cmaj7}}j'irai te c{{D}}hercher\n ou tu{{Em}} vis {{Cmaj7}}je saurai t{{D}}e trouver\n ou qu{{Em}}e tu {{Cmaj7}}sois, je vo{{D}}udrai que tu saches\n Dans mon c{{Am7}}oeur rien ne change, t'{{D}}es toujours là mon ange\n \n \n {{C}}il manque un {{Bm}}temps à ma {{C}}vie\n il manque un {{Bm}}rire, je m'ennu{{C}}ie\n il me manque {{Bm}}toi,\n mon ami{{D}}",
+  "recommendedCapo": "",
+  "bpm": "84",
+  "timeSig": "4/4",
+  "key": "G",
+  "liste": "tri matelots",
+  "tuto": "https://youtu.be/2HptapK9yik?si=oP9O8sw5vE4I5niq",
+  "tuto_embed": true,
+  "kfn": "https://youtu.be/14T9Ate-1nc?si=OwlMmf0HiywFMuxQ",
+  "kfn_embed": true,
+  "karaokeTimestamps": [
+    {
+      "key": "0_0",
+      "lineIndex": 0,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 0.42
+    },
+    {
+      "key": "0_1",
+      "lineIndex": 0,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 3.248763
+    },
+    {
+      "key": "1_0",
+      "lineIndex": 1,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 6.086757
+    },
+    {
+      "key": "1_1",
+      "lineIndex": 1,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 8.979728
+    },
+    {
+      "key": "2_0",
+      "lineIndex": 2,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 11.827618
+    },
+    {
+      "key": "2_1",
+      "lineIndex": 2,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 14.72111
+    },
+    {
+      "key": "3_0",
+      "lineIndex": 3,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 17.552596
+    },
+    {
+      "key": "5_0",
+      "lineIndex": 5,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 23.242654
+    },
+    {
+      "key": "5_1",
+      "lineIndex": 5,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 26.18346
+    },
+    {
+      "key": "5_2",
+      "lineIndex": 5,
+      "chordIndex": 2,
+      "chord": "C",
+      "time": 29.072292
+    },
+    {
+      "key": "6_0",
+      "lineIndex": 6,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 31.920349
+    },
+    {
+      "key": "6_1",
+      "lineIndex": 6,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 34.654979
+    },
+    {
+      "key": "7_0",
+      "lineIndex": 7,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 37.618366
+    },
+    {
+      "key": "8_0",
+      "lineIndex": 8,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 40.493278
+    },
+    {
+      "key": "11_0",
+      "lineIndex": 11,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 46.123859
+    },
+    {
+      "key": "11_1",
+      "lineIndex": 11,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 49.100885
+    },
+    {
+      "key": "11_2",
+      "lineIndex": 11,
+      "chordIndex": 2,
+      "chord": "C",
+      "time": 51.903695
+    },
+    {
+      "key": "12_0",
+      "lineIndex": 12,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 54.77722
+    },
+    {
+      "key": "12_1",
+      "lineIndex": 12,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 57.633504
+    },
+    {
+      "key": "13_0",
+      "lineIndex": 13,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 60.47716
+    },
+    {
+      "key": "14_0",
+      "lineIndex": 14,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 63.35112
+    },
+    {
+      "key": "17_0",
+      "lineIndex": 17,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 69.098718
+    },
+    {
+      "key": "17_1",
+      "lineIndex": 17,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 70.479396
+    },
+    {
+      "key": "17_2",
+      "lineIndex": 17,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 71.910199
+    },
+    {
+      "key": "18_0",
+      "lineIndex": 18,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 74.748877
+    },
+    {
+      "key": "18_1",
+      "lineIndex": 18,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 76.197255
+    },
+    {
+      "key": "18_2",
+      "lineIndex": 18,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 77.635825
+    },
+    {
+      "key": "19_0",
+      "lineIndex": 19,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 80.406098
+    },
+    {
+      "key": "19_1",
+      "lineIndex": 19,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 81.89771
+    },
+    {
+      "key": "19_2",
+      "lineIndex": 19,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 83.384576
+    },
+    {
+      "key": "20_0",
+      "lineIndex": 20,
+      "chordIndex": 0,
+      "chord": "Am7",
+      "time": 86.121099
+    },
+    {
+      "key": "20_1",
+      "lineIndex": 20,
+      "chordIndex": 1,
+      "chord": "D",
+      "time": 89.028982
+    },
+    {
+      "key": "23_0",
+      "lineIndex": 23,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 94.729287
+    },
+    {
+      "key": "23_1",
+      "lineIndex": 23,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 97.675131
+    },
+    {
+      "key": "23_2",
+      "lineIndex": 23,
+      "chordIndex": 2,
+      "chord": "C",
+      "time": 100.499044
+    },
+    {
+      "key": "24_0",
+      "lineIndex": 24,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 103.27761
+    },
+    {
+      "key": "24_1",
+      "lineIndex": 24,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 106.159717
+    },
+    {
+      "key": "25_0",
+      "lineIndex": 25,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 108.991401
+    },
+    {
+      "key": "26_0",
+      "lineIndex": 26,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 111.925342
+    },
+    {
+      "key": "29_0",
+      "lineIndex": 29,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 117.664873
+    },
+    {
+      "key": "29_1",
+      "lineIndex": 29,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 119.03845
+    },
+    {
+      "key": "29_2",
+      "lineIndex": 29,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 120.484223
+    },
+    {
+      "key": "30_0",
+      "lineIndex": 30,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 123.357481
+    },
+    {
+      "key": "30_1",
+      "lineIndex": 30,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 124.795858
+    },
+    {
+      "key": "30_2",
+      "lineIndex": 30,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 126.230753
+    },
+    {
+      "key": "31_0",
+      "lineIndex": 31,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 128.974628
+    },
+    {
+      "key": "31_1",
+      "lineIndex": 31,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 130.414025
+    },
+    {
+      "key": "31_2",
+      "lineIndex": 31,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 131.863501
+    },
+    {
+      "key": "32_0",
+      "lineIndex": 32,
+      "chordIndex": 0,
+      "chord": "Am7",
+      "time": 134.746765
+    },
+    {
+      "key": "32_1",
+      "lineIndex": 32,
+      "chordIndex": 1,
+      "chord": "D",
+      "time": 137.609815
+    },
+    {
+      "key": "33_0",
+      "lineIndex": 33,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 140.492418
+    },
+    {
+      "key": "33_1",
+      "lineIndex": 33,
+      "chordIndex": 1,
+      "chord": "D",
+      "time": 149.002354
+    },
+    {
+      "key": "34_0",
+      "lineIndex": 34,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 154.711375
+    },
+    {
+      "key": "34_1",
+      "lineIndex": 34,
+      "chordIndex": 1,
+      "chord": "D",
+      "time": 160.375878
+    },
+    {
+      "key": "36_0",
+      "lineIndex": 36,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 166.233499
+    },
+    {
+      "key": "36_1",
+      "lineIndex": 36,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 167.554733
+    },
+    {
+      "key": "36_2",
+      "lineIndex": 36,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 169.031127
+    },
+    {
+      "key": "37_0",
+      "lineIndex": 37,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 171.929666
+    },
+    {
+      "key": "37_1",
+      "lineIndex": 37,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 173.322926
+    },
+    {
+      "key": "37_2",
+      "lineIndex": 37,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 174.697023
+    },
+    {
+      "key": "38_0",
+      "lineIndex": 38,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 177.574114
+    },
+    {
+      "key": "38_1",
+      "lineIndex": 38,
+      "chordIndex": 1,
+      "chord": "Cmaj7",
+      "time": 179.005611
+    },
+    {
+      "key": "38_2",
+      "lineIndex": 38,
+      "chordIndex": 2,
+      "chord": "D",
+      "time": 180.476067
+    },
+    {
+      "key": "39_0",
+      "lineIndex": 39,
+      "chordIndex": 0,
+      "chord": "Am7",
+      "time": 183.274942
+    },
+    {
+      "key": "39_1",
+      "lineIndex": 39,
+      "chordIndex": 1,
+      "chord": "D",
+      "time": 185.517337
+    },
+    {
+      "key": "42_0",
+      "lineIndex": 42,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 192.566016
+    },
+    {
+      "key": "42_1",
+      "lineIndex": 42,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 194.760088
+    },
+    {
+      "key": "42_2",
+      "lineIndex": 42,
+      "chordIndex": 2,
+      "chord": "C",
+      "time": 197.631485
+    },
+    {
+      "key": "43_0",
+      "lineIndex": 43,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 200.424579
+    },
+    {
+      "key": "43_1",
+      "lineIndex": 43,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 203.303561
+    },
+    {
+      "key": "44_0",
+      "lineIndex": 44,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 206.178681
+    },
+    {
+      "key": "45_0",
+      "lineIndex": 45,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 210.070494
+    }
+  ],
+  "wordTimestamps": [
+    {
+      "key": "5_0",
+      "lineIndex": 5,
+      "wordIndex": 0,
+      "word": "il",
+      "time": 23.931443
+    },
+    {
+      "key": "5_1",
+      "lineIndex": 5,
+      "wordIndex": 1,
+      "word": "manque",
+      "time": 24.505233
+    },
+    {
+      "key": "5_2",
+      "lineIndex": 5,
+      "wordIndex": 2,
+      "word": "un",
+      "time": 25.420062
+    },
+    {
+      "key": "5_3",
+      "lineIndex": 5,
+      "wordIndex": 3,
+      "word": "temps",
+      "time": 25.85344
+    },
+    {
+      "key": "5_4",
+      "lineIndex": 5,
+      "wordIndex": 4,
+      "word": "à",
+      "time": 27.566674
+    },
+    {
+      "key": "5_5",
+      "lineIndex": 5,
+      "wordIndex": 5,
+      "word": "ma",
+      "time": 28.292108
+    },
+    {
+      "key": "5_6",
+      "lineIndex": 5,
+      "wordIndex": 6,
+      "word": "vie",
+      "time": 28.704079
+    },
+    {
+      "key": "6_0",
+      "lineIndex": 6,
+      "wordIndex": 0,
+      "word": "il",
+      "time": 29.81089
+    },
+    {
+      "key": "6_1",
+      "lineIndex": 6,
+      "wordIndex": 1,
+      "word": "manque",
+      "time": 30.445731
+    },
+    {
+      "key": "6_2",
+      "lineIndex": 6,
+      "wordIndex": 2,
+      "word": "un",
+      "time": 31.262153
+    },
+    {
+      "key": "6_3",
+      "lineIndex": 6,
+      "wordIndex": 3,
+      "word": "temps",
+      "time": 31.681553
+    },
+    {
+      "key": "6_4",
+      "lineIndex": 6,
+      "wordIndex": 4,
+      "word": "j'ai",
+      "time": 33.294065
+    },
+    {
+      "key": "6_5",
+      "lineIndex": 6,
+      "wordIndex": 5,
+      "word": "compris",
+      "time": 34.004044
+    },
+    {
+      "key": "7_0",
+      "lineIndex": 7,
+      "wordIndex": 0,
+      "word": "il",
+      "time": 34.43733
+    },
+    {
+      "key": "7_1",
+      "lineIndex": 7,
+      "wordIndex": 1,
+      "word": "me",
+      "time": 36.075967
+    },
+    {
+      "key": "7_2",
+      "lineIndex": 7,
+      "wordIndex": 2,
+      "word": "manque",
+      "time": 36.885071
+    },
+    {
+      "key": "7_3",
+      "lineIndex": 7,
+      "wordIndex": 3,
+      "word": "toi,",
+      "time": 37.305092
+    },
+    {
+      "key": "8_0",
+      "lineIndex": 8,
+      "wordIndex": 0,
+      "word": "mon",
+      "time": 40.026138
+    },
+    {
+      "key": "8_1",
+      "lineIndex": 8,
+      "wordIndex": 1,
+      "word": "alter",
+      "time": 40.255527
+    },
+    {
+      "key": "8_2",
+      "lineIndex": 8,
+      "wordIndex": 2,
+      "word": "ego",
+      "time": 40.49979
+    },
+    {
+      "key": "11_0",
+      "lineIndex": 11,
+      "wordIndex": 0,
+      "word": "tu",
+      "time": 41.024812
+    },
+    {
+      "key": "11_1",
+      "lineIndex": 11,
+      "wordIndex": 1,
+      "word": "es",
+      "time": 46.817344
+    },
+    {
+      "key": "11_2",
+      "lineIndex": 11,
+      "wordIndex": 2,
+      "word": "partie",
+      "time": 47.330567
+    },
+    {
+      "key": "11_3",
+      "lineIndex": 11,
+      "wordIndex": 3,
+      "word": "mon",
+      "time": 48.220429
+    },
+    {
+      "key": "11_4",
+      "lineIndex": 11,
+      "wordIndex": 4,
+      "word": "amie",
+      "time": 50.430292
+    },
+    {
+      "key": "12_0",
+      "lineIndex": 12,
+      "wordIndex": 0,
+      "word": "tu",
+      "time": 51.21413
+    },
+    {
+      "key": "12_1",
+      "lineIndex": 12,
+      "wordIndex": 1,
+      "word": "m'as",
+      "time": 52.614895
+    },
+    {
+      "key": "12_2",
+      "lineIndex": 12,
+      "wordIndex": 2,
+      "word": "laissé",
+      "time": 53.195609
+    },
+    {
+      "key": "12_3",
+      "lineIndex": 12,
+      "wordIndex": 3,
+      "word": "seul",
+      "time": 54.061991
+    },
+    {
+      "key": "12_4",
+      "lineIndex": 12,
+      "wordIndex": 4,
+      "word": "ici",
+      "time": 56.206406
+    },
+    {
+      "key": "13_0",
+      "lineIndex": 13,
+      "wordIndex": 0,
+      "word": "mais",
+      "time": 57.123344
+    },
+    {
+      "key": "13_1",
+      "lineIndex": 13,
+      "wordIndex": 1,
+      "word": "partout",
+      "time": 58.307819
+    },
+    {
+      "key": "13_2",
+      "lineIndex": 13,
+      "wordIndex": 2,
+      "word": "tu",
+      "time": 59.190125
+    },
+    {
+      "key": "13_3",
+      "lineIndex": 13,
+      "wordIndex": 3,
+      "word": "me",
+      "time": 60.194266
+    },
+    {
+      "key": "13_4",
+      "lineIndex": 13,
+      "wordIndex": 4,
+      "word": "suis",
+      "time": 60.664539
+    },
+    {
+      "key": "14_0",
+      "lineIndex": 14,
+      "wordIndex": 0,
+      "word": "mon",
+      "time": 61.690176
+    },
+    {
+      "key": "14_1",
+      "lineIndex": 14,
+      "wordIndex": 1,
+      "word": "alter",
+      "time": 62.8241
+    },
+    {
+      "key": "14_2",
+      "lineIndex": 14,
+      "wordIndex": 2,
+      "word": "ego",
+      "time": 63.207008
+    },
+    {
+      "key": "17_0",
+      "lineIndex": 17,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 63.713686
+    },
+    {
+      "key": "17_1",
+      "lineIndex": 17,
+      "wordIndex": 1,
+      "word": "tu",
+      "time": 67.729162
+    },
+    {
+      "key": "17_2",
+      "lineIndex": 17,
+      "wordIndex": 2,
+      "word": "es,",
+      "time": 68.32673
+    },
+    {
+      "key": "17_3",
+      "lineIndex": 17,
+      "wordIndex": 3,
+      "word": "j'irai",
+      "time": 69.05284
+    },
+    {
+      "key": "17_4",
+      "lineIndex": 17,
+      "wordIndex": 4,
+      "word": "te",
+      "time": 71.485325
+    },
+    {
+      "key": "17_5",
+      "lineIndex": 17,
+      "wordIndex": 5,
+      "word": "chercher",
+      "time": 71.925831
+    },
+    {
+      "key": "18_0",
+      "lineIndex": 18,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 72.15224
+    },
+    {
+      "key": "18_1",
+      "lineIndex": 18,
+      "wordIndex": 1,
+      "word": "tu",
+      "time": 73.34226
+    },
+    {
+      "key": "18_2",
+      "lineIndex": 18,
+      "wordIndex": 2,
+      "word": "vis",
+      "time": 73.830304
+    },
+    {
+      "key": "18_3",
+      "lineIndex": 18,
+      "wordIndex": 3,
+      "word": "je",
+      "time": 74.761334
+    },
+    {
+      "key": "18_4",
+      "lineIndex": 18,
+      "wordIndex": 4,
+      "word": "saurai",
+      "time": 77.05163
+    },
+    {
+      "key": "18_5",
+      "lineIndex": 18,
+      "wordIndex": 5,
+      "word": "te",
+      "time": 77.503166
+    },
+    {
+      "key": "18_6",
+      "lineIndex": 18,
+      "wordIndex": 6,
+      "word": "trouver",
+      "time": 77.946479
+    },
+    {
+      "key": "19_0",
+      "lineIndex": 19,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 78.273029
+    },
+    {
+      "key": "19_1",
+      "lineIndex": 19,
+      "wordIndex": 1,
+      "word": "tu",
+      "time": 79.021668
+    },
+    {
+      "key": "19_2",
+      "lineIndex": 19,
+      "wordIndex": 2,
+      "word": "te",
+      "time": 79.581545
+    },
+    {
+      "key": "19_3",
+      "lineIndex": 19,
+      "wordIndex": 3,
+      "word": "caches,",
+      "time": 80.382081
+    },
+    {
+      "key": "19_4",
+      "lineIndex": 19,
+      "wordIndex": 4,
+      "word": "laisse",
+      "time": 80.699303
+    },
+    {
+      "key": "19_5",
+      "lineIndex": 19,
+      "wordIndex": 5,
+      "word": "moi",
+      "time": 82.573935
+    },
+    {
+      "key": "19_6",
+      "lineIndex": 19,
+      "wordIndex": 6,
+      "word": "deviner",
+      "time": 83.110271
+    },
+    {
+      "key": "20_0",
+      "lineIndex": 20,
+      "wordIndex": 0,
+      "word": "dans",
+      "time": 83.38505
+    },
+    {
+      "key": "20_1",
+      "lineIndex": 20,
+      "wordIndex": 1,
+      "word": "mon",
+      "time": 85.345671
+    },
+    {
+      "key": "20_2",
+      "lineIndex": 20,
+      "wordIndex": 2,
+      "word": "coeur",
+      "time": 85.68809
+    },
+    {
+      "key": "20_3",
+      "lineIndex": 20,
+      "wordIndex": 3,
+      "word": "rien",
+      "time": 86.073084
+    },
+    {
+      "key": "20_4",
+      "lineIndex": 20,
+      "wordIndex": 4,
+      "word": "ne",
+      "time": 86.663646
+    },
+    {
+      "key": "20_5",
+      "lineIndex": 20,
+      "wordIndex": 5,
+      "word": "change,",
+      "time": 87.107993
+    },
+    {
+      "key": "20_6",
+      "lineIndex": 20,
+      "wordIndex": 6,
+      "word": "t'es",
+      "time": 88.079472
+    },
+    {
+      "key": "20_7",
+      "lineIndex": 20,
+      "wordIndex": 7,
+      "word": "toujours",
+      "time": 88.499217
+    },
+    {
+      "key": "20_8",
+      "lineIndex": 20,
+      "wordIndex": 8,
+      "word": "là",
+      "time": 88.721602
+    },
+    {
+      "key": "20_9",
+      "lineIndex": 20,
+      "wordIndex": 9,
+      "word": "mon",
+      "time": 89.165265
+    },
+    {
+      "key": "20_10",
+      "lineIndex": 20,
+      "wordIndex": 10,
+      "word": "ange",
+      "time": 89.586931
+    },
+    {
+      "key": "23_0",
+      "lineIndex": 23,
+      "wordIndex": 0,
+      "word": "il",
+      "time": 90.296459
+    },
+    {
+      "key": "23_1",
+      "lineIndex": 23,
+      "wordIndex": 1,
+      "word": "manque",
+      "time": 95.639496
+    },
+    {
+      "key": "23_2",
+      "lineIndex": 23,
+      "wordIndex": 2,
+      "word": "ton",
+      "time": 96.014673
+    },
+    {
+      "key": "23_3",
+      "lineIndex": 23,
+      "wordIndex": 3,
+      "word": "rire",
+      "time": 96.87624
+    },
+    {
+      "key": "23_4",
+      "lineIndex": 23,
+      "wordIndex": 4,
+      "word": "à",
+      "time": 97.323168
+    },
+    {
+      "key": "23_5",
+      "lineIndex": 23,
+      "wordIndex": 5,
+      "word": "l'ennui",
+      "time": 98.808888
+    },
+    {
+      "key": "24_0",
+      "lineIndex": 24,
+      "wordIndex": 0,
+      "word": "il",
+      "time": 99.579509
+    },
+    {
+      "key": "24_1",
+      "lineIndex": 24,
+      "wordIndex": 1,
+      "word": "manque",
+      "time": 101.153897
+    },
+    {
+      "key": "24_2",
+      "lineIndex": 24,
+      "wordIndex": 2,
+      "word": "ta",
+      "time": 101.622441
+    },
+    {
+      "key": "24_3",
+      "lineIndex": 24,
+      "wordIndex": 3,
+      "word": "flamme",
+      "time": 102.508305
+    },
+    {
+      "key": "24_4",
+      "lineIndex": 24,
+      "wordIndex": 4,
+      "word": "à",
+      "time": 102.897537
+    },
+    {
+      "key": "24_5",
+      "lineIndex": 24,
+      "wordIndex": 5,
+      "word": "ma",
+      "time": 104.536997
+    },
+    {
+      "key": "24_6",
+      "lineIndex": 24,
+      "wordIndex": 6,
+      "word": "nuit",
+      "time": 105.254322
+    },
+    {
+      "key": "25_0",
+      "lineIndex": 25,
+      "wordIndex": 0,
+      "word": "c'est",
+      "time": 105.721366
+    },
+    {
+      "key": "25_1",
+      "lineIndex": 25,
+      "wordIndex": 1,
+      "word": "pas",
+      "time": 106.938009
+    },
+    {
+      "key": "25_2",
+      "lineIndex": 25,
+      "wordIndex": 2,
+      "word": "du",
+      "time": 107.358127
+    },
+    {
+      "key": "25_3",
+      "lineIndex": 25,
+      "wordIndex": 3,
+      "word": "jeux,",
+      "time": 108.306351
+    },
+    {
+      "key": "26_0",
+      "lineIndex": 26,
+      "wordIndex": 0,
+      "word": "mon",
+      "time": 108.710487
+    },
+    {
+      "key": "26_1",
+      "lineIndex": 26,
+      "wordIndex": 1,
+      "word": "alter",
+      "time": 111.359278
+    },
+    {
+      "key": "26_2",
+      "lineIndex": 26,
+      "wordIndex": 2,
+      "word": "ego",
+      "time": 111.779136
+    },
+    {
+      "key": "29_0",
+      "lineIndex": 29,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 112.25903
+    },
+    {
+      "key": "29_1",
+      "lineIndex": 29,
+      "wordIndex": 1,
+      "word": "tu",
+      "time": 116.787093
+    },
+    {
+      "key": "29_2",
+      "lineIndex": 29,
+      "wordIndex": 2,
+      "word": "es,",
+      "time": 117.189673
+    },
+    {
+      "key": "29_3",
+      "lineIndex": 29,
+      "wordIndex": 3,
+      "word": "j'irai",
+      "time": 117.502702
+    },
+    {
+      "key": "29_4",
+      "lineIndex": 29,
+      "wordIndex": 4,
+      "word": "te",
+      "time": 117.614544
+    },
+    {
+      "key": "29_5",
+      "lineIndex": 29,
+      "wordIndex": 5,
+      "word": "chercher",
+      "time": 120.390664
+    },
+    {
+      "key": "30_0",
+      "lineIndex": 30,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 120.613023
+    },
+    {
+      "key": "30_1",
+      "lineIndex": 30,
+      "wordIndex": 1,
+      "word": "tu",
+      "time": 121.879863
+    },
+    {
+      "key": "30_2",
+      "lineIndex": 30,
+      "wordIndex": 2,
+      "word": "vis",
+      "time": 122.336673
+    },
+    {
+      "key": "30_3",
+      "lineIndex": 30,
+      "wordIndex": 3,
+      "word": "je",
+      "time": 123.261455
+    },
+    {
+      "key": "30_4",
+      "lineIndex": 30,
+      "wordIndex": 4,
+      "word": "saurai",
+      "time": 125.564283
+    },
+    {
+      "key": "30_5",
+      "lineIndex": 30,
+      "wordIndex": 5,
+      "word": "te",
+      "time": 125.972405
+    },
+    {
+      "key": "30_6",
+      "lineIndex": 30,
+      "wordIndex": 6,
+      "word": "trouver",
+      "time": 126.29914
+    },
+    {
+      "key": "31_0",
+      "lineIndex": 31,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 126.684874
+    },
+    {
+      "key": "31_1",
+      "lineIndex": 31,
+      "wordIndex": 1,
+      "word": "tu",
+      "time": 127.617105
+    },
+    {
+      "key": "31_2",
+      "lineIndex": 31,
+      "wordIndex": 2,
+      "word": "te",
+      "time": 128.041259
+    },
+    {
+      "key": "31_3",
+      "lineIndex": 31,
+      "wordIndex": 3,
+      "word": "caches,",
+      "time": 128.462417
+    },
+    {
+      "key": "31_4",
+      "lineIndex": 31,
+      "wordIndex": 4,
+      "word": "laisse",
+      "time": 128.876749
+    },
+    {
+      "key": "31_5",
+      "lineIndex": 31,
+      "wordIndex": 5,
+      "word": "moi",
+      "time": 131.107994
+    },
+    {
+      "key": "31_6",
+      "lineIndex": 31,
+      "wordIndex": 6,
+      "word": "deviner",
+      "time": 131.442936
+    },
+    {
+      "key": "32_0",
+      "lineIndex": 32,
+      "wordIndex": 0,
+      "word": "t'es",
+      "time": 131.854674
+    },
+    {
+      "key": "32_1",
+      "lineIndex": 32,
+      "wordIndex": 1,
+      "word": "sûrement",
+      "time": 134.031107
+    },
+    {
+      "key": "32_2",
+      "lineIndex": 32,
+      "wordIndex": 2,
+      "word": "baie",
+      "time": 134.451706
+    },
+    {
+      "key": "32_3",
+      "lineIndex": 32,
+      "wordIndex": 3,
+      "word": "des",
+      "time": 134.761225
+    },
+    {
+      "key": "32_4",
+      "lineIndex": 32,
+      "wordIndex": 4,
+      "word": "anges,",
+      "time": 135.113
+    },
+    {
+      "key": "32_5",
+      "lineIndex": 32,
+      "wordIndex": 5,
+      "word": "sûrement",
+      "time": 135.41504
+    },
+    {
+      "key": "32_6",
+      "lineIndex": 32,
+      "wordIndex": 6,
+      "word": "là-bas",
+      "time": 136.744456
+    },
+    {
+      "key": "32_7",
+      "lineIndex": 32,
+      "wordIndex": 7,
+      "word": "mon",
+      "time": 137.100302
+    },
+    {
+      "key": "32_8",
+      "lineIndex": 32,
+      "wordIndex": 8,
+      "word": "ange",
+      "time": 137.326395
+    },
+    {
+      "key": "33_0",
+      "lineIndex": 33,
+      "wordIndex": 0,
+      "word": "sûrement",
+      "time": 137.580418
+    },
+    {
+      "key": "33_1",
+      "lineIndex": 33,
+      "wordIndex": 1,
+      "word": "là-bas,",
+      "time": 141.27402
+    },
+    {
+      "key": "33_2",
+      "lineIndex": 33,
+      "wordIndex": 2,
+      "word": "sûrement",
+      "time": 141.779621
+    },
+    {
+      "key": "33_3",
+      "lineIndex": 33,
+      "wordIndex": 3,
+      "word": "là-bas",
+      "time": 142.149
+    },
+    {
+      "key": "36_0",
+      "lineIndex": 36,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 143.615978
+    },
+    {
+      "key": "36_1",
+      "lineIndex": 36,
+      "wordIndex": 1,
+      "word": "tu",
+      "time": 164.843677
+    },
+    {
+      "key": "36_2",
+      "lineIndex": 36,
+      "wordIndex": 2,
+      "word": "es,",
+      "time": 165.306873
+    },
+    {
+      "key": "36_3",
+      "lineIndex": 36,
+      "wordIndex": 3,
+      "word": "j'irai",
+      "time": 166.044194
+    },
+    {
+      "key": "36_4",
+      "lineIndex": 36,
+      "wordIndex": 4,
+      "word": "te",
+      "time": 168.582454
+    },
+    {
+      "key": "36_5",
+      "lineIndex": 36,
+      "wordIndex": 5,
+      "word": "chercher",
+      "time": 169.093537
+    },
+    {
+      "key": "37_0",
+      "lineIndex": 37,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 169.28249
+    },
+    {
+      "key": "37_1",
+      "lineIndex": 37,
+      "wordIndex": 1,
+      "word": "tu",
+      "time": 170.451813
+    },
+    {
+      "key": "37_2",
+      "lineIndex": 37,
+      "wordIndex": 2,
+      "word": "vis",
+      "time": 170.867796
+    },
+    {
+      "key": "37_3",
+      "lineIndex": 37,
+      "wordIndex": 3,
+      "word": "je",
+      "time": 171.585493
+    },
+    {
+      "key": "37_4",
+      "lineIndex": 37,
+      "wordIndex": 4,
+      "word": "saurai",
+      "time": 174.132424
+    },
+    {
+      "key": "37_5",
+      "lineIndex": 37,
+      "wordIndex": 5,
+      "word": "te",
+      "time": 174.730284
+    },
+    {
+      "key": "37_6",
+      "lineIndex": 37,
+      "wordIndex": 6,
+      "word": "trouver",
+      "time": 175.006623
+    },
+    {
+      "key": "38_0",
+      "lineIndex": 38,
+      "wordIndex": 0,
+      "word": "ou",
+      "time": 175.229313
+    },
+    {
+      "key": "38_1",
+      "lineIndex": 38,
+      "wordIndex": 1,
+      "word": "que",
+      "time": 176.191165
+    },
+    {
+      "key": "38_2",
+      "lineIndex": 38,
+      "wordIndex": 2,
+      "word": "tu",
+      "time": 176.642027
+    },
+    {
+      "key": "38_3",
+      "lineIndex": 38,
+      "wordIndex": 3,
+      "word": "sois,",
+      "time": 177.004068
+    },
+    {
+      "key": "38_4",
+      "lineIndex": 38,
+      "wordIndex": 4,
+      "word": "je",
+      "time": 177.501412
+    },
+    {
+      "key": "38_5",
+      "lineIndex": 38,
+      "wordIndex": 5,
+      "word": "voudrai",
+      "time": 179.718525
+    },
+    {
+      "key": "38_6",
+      "lineIndex": 38,
+      "wordIndex": 6,
+      "word": "que",
+      "time": 180.1224
+    },
+    {
+      "key": "38_7",
+      "lineIndex": 38,
+      "wordIndex": 7,
+      "word": "tu",
+      "time": 180.519967
+    },
+    {
+      "key": "38_8",
+      "lineIndex": 38,
+      "wordIndex": 8,
+      "word": "saches",
+      "time": 180.864264
+    },
+    {
+      "key": "39_0",
+      "lineIndex": 39,
+      "wordIndex": 0,
+      "word": "Dans",
+      "time": 181.55116
+    },
+    {
+      "key": "39_1",
+      "lineIndex": 39,
+      "wordIndex": 1,
+      "word": "mon",
+      "time": 182.772244
+    },
+    {
+      "key": "39_2",
+      "lineIndex": 39,
+      "wordIndex": 2,
+      "word": "coeur",
+      "time": 183.132329
+    },
+    {
+      "key": "39_3",
+      "lineIndex": 39,
+      "wordIndex": 3,
+      "word": "rien",
+      "time": 183.494694
+    },
+    {
+      "key": "39_4",
+      "lineIndex": 39,
+      "wordIndex": 4,
+      "word": "ne",
+      "time": 183.834609
+    },
+    {
+      "key": "39_5",
+      "lineIndex": 39,
+      "wordIndex": 5,
+      "word": "change,",
+      "time": 184.337316
+    },
+    {
+      "key": "39_6",
+      "lineIndex": 39,
+      "wordIndex": 6,
+      "word": "t'es",
+      "time": 184.778855
+    },
+    {
+      "key": "39_7",
+      "lineIndex": 39,
+      "wordIndex": 7,
+      "word": "toujours",
+      "time": 185.504484
+    },
+    {
+      "key": "39_8",
+      "lineIndex": 39,
+      "wordIndex": 8,
+      "word": "là",
+      "time": 185.748207
+    },
+    {
+      "key": "39_9",
+      "lineIndex": 39,
+      "wordIndex": 9,
+      "word": "mon",
+      "time": 186.183089
+    },
+    {
+      "key": "39_10",
+      "lineIndex": 39,
+      "wordIndex": 10,
+      "word": "ange",
+      "time": 186.506581
+    },
+    {
+      "key": "42_0",
+      "lineIndex": 42,
+      "wordIndex": 0,
+      "word": "il",
+      "time": 187.021519
+    },
+    {
+      "key": "42_1",
+      "lineIndex": 42,
+      "wordIndex": 1,
+      "word": "manque",
+      "time": 192.555402
+    },
+    {
+      "key": "42_2",
+      "lineIndex": 42,
+      "wordIndex": 2,
+      "word": "un",
+      "time": 192.977382
+    },
+    {
+      "key": "42_3",
+      "lineIndex": 42,
+      "wordIndex": 3,
+      "word": "temps",
+      "time": 193.907939
+    },
+    {
+      "key": "42_4",
+      "lineIndex": 42,
+      "wordIndex": 4,
+      "word": "à",
+      "time": 194.34921
+    },
+    {
+      "key": "42_5",
+      "lineIndex": 42,
+      "wordIndex": 5,
+      "word": "ma",
+      "time": 196.076996
+    },
+    {
+      "key": "42_6",
+      "lineIndex": 42,
+      "wordIndex": 6,
+      "word": "vie",
+      "time": 196.761811
+    },
+    {
+      "key": "43_0",
+      "lineIndex": 43,
+      "wordIndex": 0,
+      "word": "il",
+      "time": 197.259464
+    },
+    {
+      "key": "43_1",
+      "lineIndex": 43,
+      "wordIndex": 1,
+      "word": "manque",
+      "time": 198.395395
+    },
+    {
+      "key": "43_2",
+      "lineIndex": 43,
+      "wordIndex": 2,
+      "word": "un",
+      "time": 198.813061
+    },
+    {
+      "key": "43_3",
+      "lineIndex": 43,
+      "wordIndex": 3,
+      "word": "rire,",
+      "time": 199.736114
+    },
+    {
+      "key": "43_4",
+      "lineIndex": 43,
+      "wordIndex": 4,
+      "word": "je",
+      "time": 200.169856
+    },
+    {
+      "key": "43_5",
+      "lineIndex": 43,
+      "wordIndex": 5,
+      "word": "m'ennuie",
+      "time": 201.860262
+    },
+    {
+      "key": "44_0",
+      "lineIndex": 44,
+      "wordIndex": 0,
+      "word": "il",
+      "time": 202.601636
+    },
+    {
+      "key": "44_1",
+      "lineIndex": 44,
+      "wordIndex": 1,
+      "word": "me",
+      "time": 204.078096
+    },
+    {
+      "key": "44_2",
+      "lineIndex": 44,
+      "wordIndex": 2,
+      "word": "manque",
+      "time": 204.536923
+    },
+    {
+      "key": "44_3",
+      "lineIndex": 44,
+      "wordIndex": 3,
+      "word": "toi,",
+      "time": 205.40204
+    },
+    {
+      "key": "45_0",
+      "lineIndex": 45,
+      "wordIndex": 0,
+      "word": "mon",
+      "time": 205.87796
+    },
+    {
+      "key": "45_1",
+      "lineIndex": 45,
+      "wordIndex": 1,
+      "word": "ami",
+      "time": 208.919886
+    }
+  ]
+}

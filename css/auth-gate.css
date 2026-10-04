@@ -1,0 +1,102 @@
+/* auth-gate.css — écran de connexion, barre de compte, modales admin/import */
+
+#auth-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: linear-gradient(135deg, #1b2a4a, #123a5c);
+    display: flex; align-items: center; justify-content: center;
+    font-family: Arial, sans-serif;
+}
+.auth-card {
+    background: #fff; border-radius: 12px; padding: 32px 36px;
+    width: 100%; max-width: 360px; box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+.auth-card h1 { margin: 0 0 4px; font-size: 22px; text-align: center; }
+.auth-subtitle { text-align: center; color: #667; margin: 0 0 18px; font-size: 14px; }
+.auth-card form { display: flex; flex-direction: column; gap: 14px; }
+.auth-card label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #445; }
+.auth-card input {
+    padding: 10px 12px; border: 1px solid #ccd3dd; border-radius: 8px; font-size: 14px;
+}
+.auth-card button[type="submit"], .auth-card button#auth-logout-pending {
+    margin-top: 6px; padding: 11px; border: none; border-radius: 8px;
+    background: #1a5a8a; color: #fff; font-size: 15px; cursor: pointer;
+}
+.auth-card button[type="submit"]:hover, .auth-card button#auth-logout-pending:hover { background: #144a72; }
+.auth-switch, .auth-hint { text-align: center; font-size: 13px; color: #667; margin-top: 14px; }
+.auth-hint { font-size: 12px; color: #889; }
+.auth-message { padding: 8px 10px; border-radius: 6px; font-size: 13px; margin-bottom: 12px; }
+.auth-message--error { background: #fad4d4; color: #8a2020; }
+#auth-change-pw-error { color: #8a2020; font-size: 13px; min-height: 16px; }
+
+#auth-account-bar {
+    display: flex; align-items: center; gap: 6px;
+    margin-left: auto; padding-right: 10px;
+}
+.auth-bar-user {
+    font-size: 13px; color: var(--c-text-secondary, #667); white-space: nowrap;
+    padding: 0 4px;
+}
+.auth-bar-btn { white-space: nowrap; }
+#auth-bar-logout { background: #fde3b8; color: #8a5a10; border-color: #f3cf94; }
+#auth-bar-logout:hover { background: #fbd48f; color: #6e4400; }
+
+/* Bouton de suppression d'une chanson dans l'éditeur — rouge d'alerte,
+   volontairement distinct des autres boutons pour signaler une action
+   destructive et irréversible. */
+#delete-button {
+    background: #fad4d4 !important;
+    color: #8a2020 !important;
+    border-color: #f3aeae !important;
+}
+#delete-button:hover { background: #f7bcbc !important; }
+
+#auth-modal-backdrop {
+    position: fixed; inset: 0; z-index: 8000;
+    background: rgba(10,15,25,0.55);
+    display: flex; align-items: center; justify-content: center;
+    font-family: Arial, sans-serif;
+}
+.auth-modal {
+    background: #fff; border-radius: 10px; width: 100%; max-width: 480px;
+    max-height: 80vh; display: flex; flex-direction: column; overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.auth-modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; border-bottom: 1px solid #eee;
+}
+.auth-modal-header h2 { margin: 0; font-size: 16px; }
+.auth-modal-header button { border: none; background: none; font-size: 16px; cursor: pointer; color: #888; }
+.auth-modal-body { padding: 14px 18px; overflow-y: auto; }
+.auth-modal-body form { display: flex; flex-direction: column; gap: 12px; }
+.auth-modal-body form label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #445; }
+.auth-modal-body form input {
+    padding: 9px 11px; border: 1px solid #ccd3dd; border-radius: 8px; font-size: 14px;
+}
+.auth-modal-body form button[type="submit"] {
+    align-self: flex-start; padding: 9px 16px;
+}
+
+.auth-import-toolbar { margin-bottom: 10px; }
+.auth-import-toolbar button, .auth-import-list button {
+    border: none; border-radius: 14px; padding: 6px 12px; font-size: 12px;
+    background: #d0e8f8; color: #1a5a8a; cursor: pointer;
+}
+.auth-import-list { list-style: none; margin: 0; padding: 0; }
+.auth-import-list li {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f2f5; font-size: 13px;
+}
+.auth-import-done { color: #2d6a30; font-size: 12px; }
+
+.auth-admin-list { list-style: none; margin: 0; padding: 0; }
+.auth-admin-list li {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; padding: 10px 0; border-bottom: 1px solid #f0f2f5; font-size: 13px; flex-wrap: wrap;
+}
+.auth-admin-status { font-size: 12px; color: #667; }
+.auth-admin-actions button {
+    border: none; border-radius: 12px; padding: 5px 10px; font-size: 12px;
+    margin-left: 4px; cursor: pointer; background: #eef2f7; color: #234;
+}
+.auth-admin-actions button:hover { background: #dde5ee; }
