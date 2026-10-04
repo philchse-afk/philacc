@@ -1,2 +1,5 @@
 .DS_Store
 songs/multimedia/mp4K/
+data/users.json
+data/users/
+node_modules/
