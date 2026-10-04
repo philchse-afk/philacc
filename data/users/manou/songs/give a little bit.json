@@ -1,0 +1,1038 @@
+{
+  "title": "Give a Little bit",
+  "artist": "Supertramp",
+  "capo": "0",
+  "content": "{{A}} [1/4]{{D}} [3/4]{{A}} [1/4]{{D}} [3/4]{{G}} [1/4]{{A}} [3/4]{{G}} [1/4]{{A}} [3/4]\n{{A}} [1/4]{{D}} [3/4]Give a little bit{{A}} [1/4],   {{D}} [3/4] give a little bit of yo{{G}} [1/4]ur lov{{A}} [3/4]e to me {{G}} [1/4]    {{A}}    {{G}} [3/4]\n {{D}}Give a little bit{{A}}, I'{{D}}ll give a little bit of {{G}}my l{{A}}ove to you{{G}}   {{A}}    {{G}}\n {{Bm}}There's so much that we {{E(sus4)}}need to share{{E}}\n {{G}}Send a smile and s{{Bm}}how you c{{A}}are{{D}}    {{A}}\n \n \n {{D}}I'll give a little bit{{A}},  I{{D}}'ll give a little bit of m{{G}}y li{{A}}fe for you{{G}}    {{A}}    {{G}}\n {{D}}So give a little bit{{A}}, gi{{D}}ve a little bit of you{{G}}r tim{{A}}e to me  {{G}}    {{A}}    {{G}}\n {{Bm}}See the man with the {{E(sus4)}}lonely eyes{{E}}\n {{G}}Take his hand, you'll b{{Bm}}e surprise{{A}}d  {{D}}    {{A}}\n \n \n  {{%F#7}}   {{%Bm}}   {{%F#7}}   {{%Bm}}   {{%F#7}}   {{%C}}   {{%G}}   {{%C}}   {{%G}} \n \n \n  {{%A}}   {{%D}}  (8x)\n \n \n {{D}}Give a little bi{{A}}t, g{{D}}ive a little bit of y{{G}}our lov{{A}}e to me{{G}}    {{A}}    {{G}}\n {{D}}Give a little bi{{A}}t, I{{D}}'ll give a little bit of {{G}}my li{{A}}fe to you{{G}}   {{A}}    {{G}}\n {{Bm}}Now's the time that we need to share\n {{C}}So find your{{G}}self, we're {{C}}on our {{G}}way back {{A}}home{{D}}   {{A}}    {{D}}\n .. go{{D}}ing ho{{A}}me  {{D}}\n .. do{{A}}n't you ne{{D}}ed to feel at ho{{A}}me {{D}}\n .. oh{{A}} yeah{{D}}, we gotta sing",
+  "recommendedCapo": "",
+  "bpm": "91",
+  "timeSig": "4/4",
+  "liste": "philou propal",
+  "tuto": "https://youtu.be/H457kQzlYJE?si=EPnDCsN3L_dVjZ3B",
+  "tuto_embed": true,
+  "kfn": "https://youtu.be/dIElvrF9NBU?si=Wof28F2UG8VYo9ns",
+  "kfn_embed": false,
+  "wordTimestamps": [
+    {
+      "key": "1_0",
+      "lineIndex": 1,
+      "wordIndex": 0,
+      "word": "Give",
+      "time": 25.67
+    },
+    {
+      "key": "1_1",
+      "lineIndex": 1,
+      "wordIndex": 1,
+      "word": "a",
+      "time": 25.890846153846155
+    },
+    {
+      "key": "1_2",
+      "lineIndex": 1,
+      "wordIndex": 2,
+      "word": "little",
+      "time": 26.11169230769231
+    },
+    {
+      "key": "1_3",
+      "lineIndex": 1,
+      "wordIndex": 3,
+      "word": "bit,",
+      "time": 26.332538461538462
+    },
+    {
+      "key": "1_4",
+      "lineIndex": 1,
+      "wordIndex": 4,
+      "word": "give",
+      "time": 26.553384615384616
+    },
+    {
+      "key": "1_5",
+      "lineIndex": 1,
+      "wordIndex": 5,
+      "word": "a",
+      "time": 26.77423076923077
+    },
+    {
+      "key": "1_6",
+      "lineIndex": 1,
+      "wordIndex": 6,
+      "word": "little",
+      "time": 26.995076923076923
+    },
+    {
+      "key": "1_7",
+      "lineIndex": 1,
+      "wordIndex": 7,
+      "word": "bit",
+      "time": 27.215923076923076
+    },
+    {
+      "key": "1_8",
+      "lineIndex": 1,
+      "wordIndex": 8,
+      "word": "of",
+      "time": 27.436769230769233
+    },
+    {
+      "key": "1_9",
+      "lineIndex": 1,
+      "wordIndex": 9,
+      "word": "your",
+      "time": 27.657615384615386
+    },
+    {
+      "key": "1_10",
+      "lineIndex": 1,
+      "wordIndex": 10,
+      "word": "love",
+      "time": 27.87846153846154
+    },
+    {
+      "key": "1_11",
+      "lineIndex": 1,
+      "wordIndex": 11,
+      "word": "to",
+      "time": 28.099307692307693
+    },
+    {
+      "key": "1_12",
+      "lineIndex": 1,
+      "wordIndex": 12,
+      "word": "me",
+      "time": 28.320153846153847
+    },
+    {
+      "key": "2_0",
+      "lineIndex": 2,
+      "wordIndex": 0,
+      "word": "Give",
+      "time": 28.86
+    },
+    {
+      "key": "2_1",
+      "lineIndex": 2,
+      "wordIndex": 1,
+      "word": "a",
+      "time": 28.993714285714287
+    },
+    {
+      "key": "2_2",
+      "lineIndex": 2,
+      "wordIndex": 2,
+      "word": "little",
+      "time": 29.12742857142857
+    },
+    {
+      "key": "2_3",
+      "lineIndex": 2,
+      "wordIndex": 3,
+      "word": "bit,",
+      "time": 29.261142857142858
+    },
+    {
+      "key": "2_4",
+      "lineIndex": 2,
+      "wordIndex": 4,
+      "word": "I'll",
+      "time": 29.39485714285714
+    },
+    {
+      "key": "2_5",
+      "lineIndex": 2,
+      "wordIndex": 5,
+      "word": "give",
+      "time": 29.52857142857143
+    },
+    {
+      "key": "2_6",
+      "lineIndex": 2,
+      "wordIndex": 6,
+      "word": "a",
+      "time": 29.662285714285716
+    },
+    {
+      "key": "2_7",
+      "lineIndex": 2,
+      "wordIndex": 7,
+      "word": "little",
+      "time": 29.796
+    },
+    {
+      "key": "2_8",
+      "lineIndex": 2,
+      "wordIndex": 8,
+      "word": "bit",
+      "time": 29.929714285714287
+    },
+    {
+      "key": "2_9",
+      "lineIndex": 2,
+      "wordIndex": 9,
+      "word": "of",
+      "time": 30.063428571428574
+    },
+    {
+      "key": "2_10",
+      "lineIndex": 2,
+      "wordIndex": 10,
+      "word": "my",
+      "time": 30.197142857142858
+    },
+    {
+      "key": "2_11",
+      "lineIndex": 2,
+      "wordIndex": 11,
+      "word": "love",
+      "time": 30.330857142857145
+    },
+    {
+      "key": "2_12",
+      "lineIndex": 2,
+      "wordIndex": 12,
+      "word": "to",
+      "time": 30.46457142857143
+    },
+    {
+      "key": "2_13",
+      "lineIndex": 2,
+      "wordIndex": 13,
+      "word": "you",
+      "time": 30.598285714285716
+    },
+    {
+      "key": "3_0",
+      "lineIndex": 3,
+      "wordIndex": 0,
+      "word": "There's",
+      "time": 30.94
+    },
+    {
+      "key": "3_1",
+      "lineIndex": 3,
+      "wordIndex": 1,
+      "word": "so",
+      "time": 31.206625000000003
+    },
+    {
+      "key": "3_2",
+      "lineIndex": 3,
+      "wordIndex": 2,
+      "word": "much",
+      "time": 31.47325
+    },
+    {
+      "key": "3_3",
+      "lineIndex": 3,
+      "wordIndex": 3,
+      "word": "that",
+      "time": 31.739875
+    },
+    {
+      "key": "3_4",
+      "lineIndex": 3,
+      "wordIndex": 4,
+      "word": "we",
+      "time": 32.0065
+    },
+    {
+      "key": "3_5",
+      "lineIndex": 3,
+      "wordIndex": 5,
+      "word": "need",
+      "time": 32.273125
+    },
+    {
+      "key": "3_6",
+      "lineIndex": 3,
+      "wordIndex": 6,
+      "word": "to",
+      "time": 32.539750000000005
+    },
+    {
+      "key": "3_7",
+      "lineIndex": 3,
+      "wordIndex": 7,
+      "word": "share",
+      "time": 32.806375
+    },
+    {
+      "key": "4_0",
+      "lineIndex": 4,
+      "wordIndex": 0,
+      "word": "Send",
+      "time": 33.31
+    },
+    {
+      "key": "4_1",
+      "lineIndex": 4,
+      "wordIndex": 1,
+      "word": "a",
+      "time": 33.691857142857145
+    },
+    {
+      "key": "4_2",
+      "lineIndex": 4,
+      "wordIndex": 2,
+      "word": "smile",
+      "time": 34.07371428571429
+    },
+    {
+      "key": "4_3",
+      "lineIndex": 4,
+      "wordIndex": 3,
+      "word": "and",
+      "time": 34.45557142857143
+    },
+    {
+      "key": "4_4",
+      "lineIndex": 4,
+      "wordIndex": 4,
+      "word": "show",
+      "time": 34.837428571428575
+    },
+    {
+      "key": "4_5",
+      "lineIndex": 4,
+      "wordIndex": 5,
+      "word": "you",
+      "time": 35.21928571428572
+    },
+    {
+      "key": "4_6",
+      "lineIndex": 4,
+      "wordIndex": 6,
+      "word": "care",
+      "time": 35.60114285714286
+    },
+    {
+      "key": "7_0",
+      "lineIndex": 7,
+      "wordIndex": 0,
+      "word": "I'll",
+      "time": 36.28
+    },
+    {
+      "key": "7_1",
+      "lineIndex": 7,
+      "wordIndex": 1,
+      "word": "give",
+      "time": 36.5194
+    },
+    {
+      "key": "7_2",
+      "lineIndex": 7,
+      "wordIndex": 2,
+      "word": "a",
+      "time": 36.7588
+    },
+    {
+      "key": "7_3",
+      "lineIndex": 7,
+      "wordIndex": 3,
+      "word": "little",
+      "time": 36.9982
+    },
+    {
+      "key": "7_4",
+      "lineIndex": 7,
+      "wordIndex": 4,
+      "word": "bit,",
+      "time": 37.2376
+    },
+    {
+      "key": "7_5",
+      "lineIndex": 7,
+      "wordIndex": 5,
+      "word": "I'll",
+      "time": 37.477
+    },
+    {
+      "key": "7_6",
+      "lineIndex": 7,
+      "wordIndex": 6,
+      "word": "give",
+      "time": 37.7164
+    },
+    {
+      "key": "7_7",
+      "lineIndex": 7,
+      "wordIndex": 7,
+      "word": "a",
+      "time": 37.955799999999996
+    },
+    {
+      "key": "7_8",
+      "lineIndex": 7,
+      "wordIndex": 8,
+      "word": "little",
+      "time": 38.1952
+    },
+    {
+      "key": "7_9",
+      "lineIndex": 7,
+      "wordIndex": 9,
+      "word": "bit",
+      "time": 38.434599999999996
+    },
+    {
+      "key": "7_10",
+      "lineIndex": 7,
+      "wordIndex": 10,
+      "word": "of",
+      "time": 38.674
+    },
+    {
+      "key": "7_11",
+      "lineIndex": 7,
+      "wordIndex": 11,
+      "word": "my",
+      "time": 38.913399999999996
+    },
+    {
+      "key": "7_12",
+      "lineIndex": 7,
+      "wordIndex": 12,
+      "word": "life",
+      "time": 39.1528
+    },
+    {
+      "key": "7_13",
+      "lineIndex": 7,
+      "wordIndex": 13,
+      "word": "for",
+      "time": 39.392199999999995
+    },
+    {
+      "key": "7_14",
+      "lineIndex": 7,
+      "wordIndex": 14,
+      "word": "you",
+      "time": 39.6316
+    },
+    {
+      "key": "8_0",
+      "lineIndex": 8,
+      "wordIndex": 0,
+      "word": "So",
+      "time": 40.269999999999996
+    },
+    {
+      "key": "8_1",
+      "lineIndex": 8,
+      "wordIndex": 1,
+      "word": "give",
+      "time": 40.35485714285714
+    },
+    {
+      "key": "8_2",
+      "lineIndex": 8,
+      "wordIndex": 2,
+      "word": "a",
+      "time": 40.43971428571428
+    },
+    {
+      "key": "8_3",
+      "lineIndex": 8,
+      "wordIndex": 3,
+      "word": "little",
+      "time": 40.52457142857143
+    },
+    {
+      "key": "8_4",
+      "lineIndex": 8,
+      "wordIndex": 4,
+      "word": "bit,",
+      "time": 40.609428571428566
+    },
+    {
+      "key": "8_5",
+      "lineIndex": 8,
+      "wordIndex": 5,
+      "word": "give",
+      "time": 40.69428571428571
+    },
+    {
+      "key": "8_6",
+      "lineIndex": 8,
+      "wordIndex": 6,
+      "word": "a",
+      "time": 40.77914285714286
+    },
+    {
+      "key": "8_7",
+      "lineIndex": 8,
+      "wordIndex": 7,
+      "word": "little",
+      "time": 40.864
+    },
+    {
+      "key": "8_8",
+      "lineIndex": 8,
+      "wordIndex": 8,
+      "word": "bit",
+      "time": 40.94885714285714
+    },
+    {
+      "key": "8_9",
+      "lineIndex": 8,
+      "wordIndex": 9,
+      "word": "of",
+      "time": 41.03371428571429
+    },
+    {
+      "key": "8_10",
+      "lineIndex": 8,
+      "wordIndex": 10,
+      "word": "your",
+      "time": 41.11857142857143
+    },
+    {
+      "key": "8_11",
+      "lineIndex": 8,
+      "wordIndex": 11,
+      "word": "time",
+      "time": 41.203428571428574
+    },
+    {
+      "key": "8_12",
+      "lineIndex": 8,
+      "wordIndex": 12,
+      "word": "to",
+      "time": 41.28828571428571
+    },
+    {
+      "key": "8_13",
+      "lineIndex": 8,
+      "wordIndex": 13,
+      "word": "me",
+      "time": 41.37314285714286
+    },
+    {
+      "key": "9_0",
+      "lineIndex": 9,
+      "wordIndex": 0,
+      "word": "See",
+      "time": 41.59
+    },
+    {
+      "key": "9_1",
+      "lineIndex": 9,
+      "wordIndex": 1,
+      "word": "the",
+      "time": 41.75457142857143
+    },
+    {
+      "key": "9_2",
+      "lineIndex": 9,
+      "wordIndex": 2,
+      "word": "man",
+      "time": 41.91914285714286
+    },
+    {
+      "key": "9_3",
+      "lineIndex": 9,
+      "wordIndex": 3,
+      "word": "with",
+      "time": 42.08371428571429
+    },
+    {
+      "key": "9_4",
+      "lineIndex": 9,
+      "wordIndex": 4,
+      "word": "the",
+      "time": 42.24828571428572
+    },
+    {
+      "key": "9_5",
+      "lineIndex": 9,
+      "wordIndex": 5,
+      "word": "lonely",
+      "time": 42.41285714285715
+    },
+    {
+      "key": "9_6",
+      "lineIndex": 9,
+      "wordIndex": 6,
+      "word": "eyes",
+      "time": 42.57742857142858
+    },
+    {
+      "key": "10_0",
+      "lineIndex": 10,
+      "wordIndex": 0,
+      "word": "Take",
+      "time": 42.870000000000005
+    },
+    {
+      "key": "10_1",
+      "lineIndex": 10,
+      "wordIndex": 1,
+      "word": "his",
+      "time": 43.104000000000006
+    },
+    {
+      "key": "10_2",
+      "lineIndex": 10,
+      "wordIndex": 2,
+      "word": "hand,",
+      "time": 43.338
+    },
+    {
+      "key": "10_3",
+      "lineIndex": 10,
+      "wordIndex": 3,
+      "word": "you'll",
+      "time": 43.572
+    },
+    {
+      "key": "10_4",
+      "lineIndex": 10,
+      "wordIndex": 4,
+      "word": "be",
+      "time": 43.806000000000004
+    },
+    {
+      "key": "10_5",
+      "lineIndex": 10,
+      "wordIndex": 5,
+      "word": "surprised",
+      "time": 44.04
+    },
+    {
+      "key": "16_0",
+      "lineIndex": 16,
+      "wordIndex": 0,
+      "word": "(8x)",
+      "time": 44.43
+    },
+    {
+      "key": "19_0",
+      "lineIndex": 19,
+      "wordIndex": 0,
+      "word": "Give",
+      "time": 46.85
+    },
+    {
+      "key": "19_1",
+      "lineIndex": 19,
+      "wordIndex": 1,
+      "word": "a",
+      "time": 47.02307692307692
+    },
+    {
+      "key": "19_2",
+      "lineIndex": 19,
+      "wordIndex": 2,
+      "word": "little",
+      "time": 47.19615384615385
+    },
+    {
+      "key": "19_3",
+      "lineIndex": 19,
+      "wordIndex": 3,
+      "word": "bit,",
+      "time": 47.36923076923077
+    },
+    {
+      "key": "19_4",
+      "lineIndex": 19,
+      "wordIndex": 4,
+      "word": "give",
+      "time": 47.542307692307695
+    },
+    {
+      "key": "19_5",
+      "lineIndex": 19,
+      "wordIndex": 5,
+      "word": "a",
+      "time": 47.715384615384615
+    },
+    {
+      "key": "19_6",
+      "lineIndex": 19,
+      "wordIndex": 6,
+      "word": "little",
+      "time": 47.88846153846154
+    },
+    {
+      "key": "19_7",
+      "lineIndex": 19,
+      "wordIndex": 7,
+      "word": "bit",
+      "time": 48.06153846153846
+    },
+    {
+      "key": "19_8",
+      "lineIndex": 19,
+      "wordIndex": 8,
+      "word": "of",
+      "time": 48.23461538461539
+    },
+    {
+      "key": "19_9",
+      "lineIndex": 19,
+      "wordIndex": 9,
+      "word": "your",
+      "time": 48.40769230769231
+    },
+    {
+      "key": "19_10",
+      "lineIndex": 19,
+      "wordIndex": 10,
+      "word": "love",
+      "time": 48.580769230769235
+    },
+    {
+      "key": "19_11",
+      "lineIndex": 19,
+      "wordIndex": 11,
+      "word": "to",
+      "time": 48.753846153846155
+    },
+    {
+      "key": "19_12",
+      "lineIndex": 19,
+      "wordIndex": 12,
+      "word": "me",
+      "time": 48.92692307692308
+    },
+    {
+      "key": "20_0",
+      "lineIndex": 20,
+      "wordIndex": 0,
+      "word": "Give",
+      "time": 49.35
+    },
+    {
+      "key": "20_1",
+      "lineIndex": 20,
+      "wordIndex": 1,
+      "word": "a",
+      "time": 49.711285714285715
+    },
+    {
+      "key": "20_2",
+      "lineIndex": 20,
+      "wordIndex": 2,
+      "word": "little",
+      "time": 50.07257142857143
+    },
+    {
+      "key": "20_3",
+      "lineIndex": 20,
+      "wordIndex": 3,
+      "word": "bit,",
+      "time": 50.43385714285714
+    },
+    {
+      "key": "20_4",
+      "lineIndex": 20,
+      "wordIndex": 4,
+      "word": "I'll",
+      "time": 50.79514285714286
+    },
+    {
+      "key": "20_5",
+      "lineIndex": 20,
+      "wordIndex": 5,
+      "word": "give",
+      "time": 51.15642857142857
+    },
+    {
+      "key": "20_6",
+      "lineIndex": 20,
+      "wordIndex": 6,
+      "word": "a",
+      "time": 51.517714285714284
+    },
+    {
+      "key": "20_7",
+      "lineIndex": 20,
+      "wordIndex": 7,
+      "word": "little",
+      "time": 51.879
+    },
+    {
+      "key": "20_8",
+      "lineIndex": 20,
+      "wordIndex": 8,
+      "word": "bit",
+      "time": 52.24028571428571
+    },
+    {
+      "key": "20_9",
+      "lineIndex": 20,
+      "wordIndex": 9,
+      "word": "of",
+      "time": 52.60157142857143
+    },
+    {
+      "key": "20_10",
+      "lineIndex": 20,
+      "wordIndex": 10,
+      "word": "my",
+      "time": 52.962857142857146
+    },
+    {
+      "key": "20_11",
+      "lineIndex": 20,
+      "wordIndex": 11,
+      "word": "life",
+      "time": 53.32414285714286
+    },
+    {
+      "key": "20_12",
+      "lineIndex": 20,
+      "wordIndex": 12,
+      "word": "to",
+      "time": 53.685428571428574
+    },
+    {
+      "key": "20_13",
+      "lineIndex": 20,
+      "wordIndex": 13,
+      "word": "you",
+      "time": 54.04671428571429
+    },
+    {
+      "key": "21_0",
+      "lineIndex": 21,
+      "wordIndex": 0,
+      "word": "Now's",
+      "time": 54.97
+    },
+    {
+      "key": "21_1",
+      "lineIndex": 21,
+      "wordIndex": 1,
+      "word": "the",
+      "time": 55.2265
+    },
+    {
+      "key": "21_2",
+      "lineIndex": 21,
+      "wordIndex": 2,
+      "word": "time",
+      "time": 55.483
+    },
+    {
+      "key": "21_3",
+      "lineIndex": 21,
+      "wordIndex": 3,
+      "word": "that",
+      "time": 55.7395
+    },
+    {
+      "key": "21_4",
+      "lineIndex": 21,
+      "wordIndex": 4,
+      "word": "we",
+      "time": 55.996
+    },
+    {
+      "key": "21_5",
+      "lineIndex": 21,
+      "wordIndex": 5,
+      "word": "need",
+      "time": 56.2525
+    },
+    {
+      "key": "21_6",
+      "lineIndex": 21,
+      "wordIndex": 6,
+      "word": "to",
+      "time": 56.509
+    },
+    {
+      "key": "21_7",
+      "lineIndex": 21,
+      "wordIndex": 7,
+      "word": "share",
+      "time": 56.7655
+    },
+    {
+      "key": "22_0",
+      "lineIndex": 22,
+      "wordIndex": 0,
+      "word": "So",
+      "time": 57.25
+    },
+    {
+      "key": "22_1",
+      "lineIndex": 22,
+      "wordIndex": 1,
+      "word": "find",
+      "time": 57.513
+    },
+    {
+      "key": "22_2",
+      "lineIndex": 22,
+      "wordIndex": 2,
+      "word": "yourself,",
+      "time": 57.775999999999996
+    },
+    {
+      "key": "22_3",
+      "lineIndex": 22,
+      "wordIndex": 3,
+      "word": "we're",
+      "time": 58.039
+    },
+    {
+      "key": "22_4",
+      "lineIndex": 22,
+      "wordIndex": 4,
+      "word": "on",
+      "time": 58.302
+    },
+    {
+      "key": "22_5",
+      "lineIndex": 22,
+      "wordIndex": 5,
+      "word": "our",
+      "time": 58.565
+    },
+    {
+      "key": "22_6",
+      "lineIndex": 22,
+      "wordIndex": 6,
+      "word": "way",
+      "time": 58.827999999999996
+    },
+    {
+      "key": "22_7",
+      "lineIndex": 22,
+      "wordIndex": 7,
+      "word": "back",
+      "time": 59.090999999999994
+    },
+    {
+      "key": "22_8",
+      "lineIndex": 22,
+      "wordIndex": 8,
+      "word": "home",
+      "time": 59.354
+    },
+    {
+      "key": "23_0",
+      "lineIndex": 23,
+      "wordIndex": 0,
+      "word": "..",
+      "time": 59.879999999999995
+    },
+    {
+      "key": "23_1",
+      "lineIndex": 23,
+      "wordIndex": 1,
+      "word": "going",
+      "time": 61.665
+    },
+    {
+      "key": "23_2",
+      "lineIndex": 23,
+      "wordIndex": 2,
+      "word": "home",
+      "time": 63.449999999999996
+    },
+    {
+      "key": "24_0",
+      "lineIndex": 24,
+      "wordIndex": 0,
+      "word": "..",
+      "time": 65.83
+    },
+    {
+      "key": "24_1",
+      "lineIndex": 24,
+      "wordIndex": 1,
+      "word": "don't",
+      "time": 66.073
+    },
+    {
+      "key": "24_2",
+      "lineIndex": 24,
+      "wordIndex": 2,
+      "word": "you",
+      "time": 66.316
+    },
+    {
+      "key": "24_3",
+      "lineIndex": 24,
+      "wordIndex": 3,
+      "word": "need",
+      "time": 66.559
+    },
+    {
+      "key": "24_4",
+      "lineIndex": 24,
+      "wordIndex": 4,
+      "word": "to",
+      "time": 66.80199999999999
+    },
+    {
+      "key": "24_5",
+      "lineIndex": 24,
+      "wordIndex": 5,
+      "word": "feel",
+      "time": 67.045
+    },
+    {
+      "key": "24_6",
+      "lineIndex": 24,
+      "wordIndex": 6,
+      "word": "at",
+      "time": 67.288
+    },
+    {
+      "key": "24_7",
+      "lineIndex": 24,
+      "wordIndex": 7,
+      "word": "home",
+      "time": 67.53099999999999
+    },
+    {
+      "key": "25_0",
+      "lineIndex": 25,
+      "wordIndex": 0,
+      "word": "..",
+      "time": 67.99
+    },
+    {
+      "key": "25_1",
+      "lineIndex": 25,
+      "wordIndex": 1,
+      "word": "oh",
+      "time": 68.6875
+    },
+    {
+      "key": "25_2",
+      "lineIndex": 25,
+      "wordIndex": 2,
+      "word": "yeah,",
+      "time": 69.38499999999999
+    },
+    {
+      "key": "25_3",
+      "lineIndex": 25,
+      "wordIndex": 3,
+      "word": "we",
+      "time": 70.0825
+    },
+    {
+      "key": "25_4",
+      "lineIndex": 25,
+      "wordIndex": 4,
+      "word": "gotta",
+      "time": 70.78
+    },
+    {
+      "key": "25_5",
+      "lineIndex": 25,
+      "wordIndex": 5,
+      "word": "sing",
+      "time": 71.47749999999999
+    }
+  ]
+}

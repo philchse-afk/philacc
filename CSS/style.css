@@ -1,0 +1,1266 @@
+/* style.css — v26 */
+/* =============================================
+   CHARTE GRAPHIQUE — variables CSS globales
+   Palette pastel bleu-ardoise × sauge × menthe
+   ============================================= */
+:root {
+    --c-primary:        #6c8ebf;
+    --c-primary-hover:  #4a7fd4;
+    --c-primary-light:  #e8eef7;
+    --c-primary-border: #b3c6e0;
+
+    --c-accent:         #7daa80;
+    --c-accent-hover:   #5d9162;
+    --c-accent-light:   #eaf3ea;
+    --c-accent-border:  #b5d4b7;
+
+    --c-bg:             #f5f7fa;
+    --c-surface:        #ffffff;
+    --c-surface-2:      #f0f4ff;
+
+    --c-chord-bg:       #daeeda;
+    --c-chord-border:   #a8cfa8;
+    --c-chord-text:     #2d6a30;
+
+    --c-border:         #dde3ec;
+    --c-border-strong:  #b8c4d4;
+    --c-text:           #2c3e50;
+    --c-text-secondary: #5a6a7a;
+    --c-text-muted:     #8a99aa;
+
+    --c-danger:         #e07070;
+    --c-danger-light:   #fdeaea;
+    --c-danger-border:  #f5b8b8;
+
+    --c-cover:          #c47a5a;
+    --c-cover-light:    #fdf0e6;
+    --c-cover-border:   #f0c9a8;
+
+    --c-trimat:         #3d6d94;
+    --c-trimat-light:   #e5f1f8;
+    --c-trimat-border:  #a8cfe0;
+
+    --c-acoustic:        #9b7fc4;
+    --c-acoustic-light:  #f2ecfa;
+    --c-acoustic-border: #d8c7ef;
+
+    --c-ok-bg:       #e6f5ea;
+    --c-ok-bg-hover: #d3ecdb;
+
+    --t-fast: 0.13s ease;
+    --t-base: 0.18s ease;
+    --r-sm:   4px;
+    --r-md:   8px;
+    --r-lg:   12px;
+}
+
+/* =============================================
+   LIGNE D'OUTILS DISPLAY CHANSON
+   Contrôles (piano / plein écran) — étiquette 4 caractéristiques —
+   légende des couleurs, sur une seule ligne répartie gauche/centre/droite.
+   Taille de police harmonisée à 14px (référence : la case "Piano").
+   ============================================= */
+.song-toolbar-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 6px 0 10px;
+    font-size: 14px;
+    /* Le module .metronome-widget est en position:absolute (top:10px;right:10px)
+       par-dessus .song-main, largeur ~200-220px : on réserve cet espace pour
+       que la zone droite (légende couleurs) ne se retrouve jamais masquée
+       dessous. */
+    padding-right: 230px;
+}
+
+.song-toolbar-zone {
+    flex: 1 1 0;
+    min-width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.song-toolbar-left   { justify-content: flex-start; }
+.song-toolbar-center { justify-content: center; }
+.song-toolbar-right  { justify-content: flex-end; }
+
+/* Puce générique icône + texte, partagée par l'étiquette 4 caractéristiques
+   ET la légende des couleurs, pour une taille et un alignement cohérents. */
+.sib-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 1em;
+    color: var(--c-text-secondary);
+    white-space: nowrap;
+}
+
+.sib-icon {
+    font-size: 0.9em;
+    opacity: 0.85;
+}
+
+/* Étiquette Capo / Tonalité / BPM / Mesure : pilule compacte (largeur au
+   contenu, centrée dans la zone centrale par .song-toolbar-center). */
+.song-info-badge {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--c-primary-border);
+    border-radius: 8px;
+    background: var(--c-primary-light);
+    overflow: hidden;
+}
+
+.song-info-badge:empty {
+    display: none;
+}
+
+.song-info-badge .sib-item {
+    padding: 4px 10px;
+}
+
+.song-info-badge .sib-item + .sib-item {
+    border-left: 1px solid var(--c-primary-border);
+}
+
+.song-info-badge .sib-value {
+    font-weight: 600;
+    color: var(--c-text);
+}
+
+/* Légende des couleurs (choeur/lead/mutter/libre) : même taille de police et
+   même style de puce icône+texte que l'étiquette, sans le fond en pilule. */
+.highlight-legend {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    background-color: var(--c-bg);
+    height: 100vh;
+    overflow: hidden;
+    color: var(--c-text);
+}
+
+/* =============================================
+   SIDEBAR
+   ============================================= */
+#sidebar {
+    width: 200px;
+    background: #f4f6f9;
+    padding: 20px;
+    border-radius: var(--r-md);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-right: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border: 1px solid var(--c-border);
+    /* Masquée par défaut au chargement de la page : évite le flash de la
+       barre d'outils avant que showTab(0) (appelé par App.init()) ne l'occulte
+       explicitement en JS. Elle est réaffichée par displaySong() / showTab(1). */
+    display: none;
+}
+
+#sidebar button {
+    display: block;
+    width: 100%;
+    padding: 9px 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--c-accent-border);
+    background: var(--c-accent);
+    color: #fff;
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+#sidebar button:hover {
+    background: var(--c-accent-hover);
+    border-color: var(--c-accent-hover);
+    box-shadow: 0 2px 8px rgba(93,145,98,0.2);
+}
+
+#sidebar button:active {
+    background: #4a7a4d;
+    transform: translateY(1px);
+}
+
+/* =============================================
+   MAIN CONTENT
+   ============================================= */
+#main-content {
+    flex: 1;
+    background: var(--c-surface);
+    padding: 20px;
+    border-radius: var(--r-md);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    overflow-y: auto;
+    height: 100vh;
+    border: 1px solid var(--c-border);
+}
+
+/* =============================================
+   ONGLETS
+   ============================================= */
+#tabs {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 6px;
+}
+
+.tab {
+    padding: 8px 18px;
+    border: 1px solid var(--c-border);
+    background: var(--c-surface-2);
+    cursor: pointer;
+    border-radius: var(--r-sm);
+    font-size: 13px;
+    color: var(--c-text-secondary);
+    transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.tab:hover {
+    background: var(--c-primary-light);
+    border-color: var(--c-primary-border);
+    color: var(--c-primary);
+    box-shadow: 0 2px 6px rgba(108,142,191,0.15);
+}
+
+.tab.active {
+    background: var(--c-primary);
+    color: #fff;
+    border-color: var(--c-primary);
+    box-shadow: 0 2px 8px rgba(74,127,212,0.25);
+}
+
+.app-banner {
+    height: 40px;
+    width: auto;
+    margin-left: auto;
+    border-radius: var(--r-sm);
+}
+
+/* =============================================
+   FORMULAIRES
+   ============================================= */
+.form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--c-text-secondary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 7px 9px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    box-sizing: border-box;
+    font-size: 13px;
+    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 3px rgba(108,142,191,0.15);
+}
+
+/* =============================================
+   ÉDITEUR
+   ============================================= */
+.editor-container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+/* Regroupement des boutons de la barre d'outils de l'éditeur en encadrés
+   thématiques (Outils éditeur / Lecteur audio / Marquage accords / Marquage
+   paroles) — un encadré par "fonction", avec un petit intitulé en majuscules
+   pour s'y retrouver d'un coup d'oeil. */
+.toolbar-groups {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.toolbar-group {
+    background: var(--c-surface-2);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    padding: 6px 10px 8px;
+}
+
+.toolbar-group-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--c-text-muted);
+    margin-bottom: 5px;
+}
+
+.toolbar-group-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Marquage accords / Marquage paroles : boutons empilés en colonne plutôt
+   qu'en ligne, pour un visuel homogène côte à côte (même largeur de colonne,
+   cf. .btn-mark) entre les deux encadrés. */
+.toolbar-group--stacked .toolbar-group-buttons {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.toolbar-group-status {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--c-text-muted);
+    line-height: 1.3;
+}
+
+/* Boutons des encadrés "Marquage accords" / "Marquage paroles" : même boîte
+   (largeur pleine de la colonne, padding, taille de police) pour que les deux
+   colonnes s'alignent visuellement, seule la couleur thématique de chaque
+   bouton reste définie au cas par cas. */
+.btn-mark {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    font-size: 13px;
+    text-align: left;
+    border-radius: var(--r-sm);
+    cursor: pointer;
+}
+
+.editor, .preview {
+    flex: 1;
+    min-width: 0;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 15px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+#song-editor {
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    font-family: monospace;
+    transition: border-color var(--t-fast);
+}
+
+#song-editor:focus {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 3px rgba(108,142,191,0.12);
+}
+
+#song-preview {
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    background: var(--c-surface);
+    overflow-y: auto;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+/* =============================================
+   LISTE CHANSONS
+   ============================================= */
+#song-list {
+    list-style: none;
+    padding: 0 0 60px 0;
+    margin: 0;
+}
+
+#song-list li {
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+#song-list li:hover {
+    background: var(--c-primary-light);
+    border-color: var(--c-primary-border);
+    box-shadow: 0 2px 6px rgba(108,142,191,0.12);
+}
+
+/* =============================================
+   GRILLE ARTISTES
+   ============================================= */
+.songs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 4px 0;
+}
+
+.artist-block {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow var(--t-base);
+}
+
+.artist-block:hover { box-shadow: 0 3px 12px rgba(108,142,191,0.15); }
+
+.artist-header {
+    background: var(--c-accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 8px 12px;
+    letter-spacing: 0.03em;
+}
+
+.song-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    border-top: 1px solid var(--c-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background var(--t-fast);
+}
+
+.song-item:hover { background: var(--c-accent-light); }
+
+.song-capo {
+    font-size: 11px;
+    color: var(--c-text-muted);
+    background: var(--c-surface-2);
+    border: 1px solid var(--c-primary-border);
+    border-radius: var(--r-sm);
+    padding: 1px 6px;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+/* Compteur d'ouvertures (ce navigateur uniquement, voir App._incrementOpenCount
+   dans app.js) — affiché dans la liste des chansons juste avant la jauge de
+   médias (song-gauge), pour voir d'un coup d'oeil les chansons les plus
+   répétées. Volontairement discret au départ : ce n'est qu'une indication
+   personnelle, pas un chiffre partagé entre les membres du groupe.
+   min-width prévoit jusqu'à 4 chiffres (9999) sans que le badge ne se déforme
+   ni ne fasse sauter l'alignement de la jauge juste à côté. */
+.song-open-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.6em;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    /* margin-left: auto — et non une valeur fixe — pour reprendre le rôle que
+       song-gauge.css donne normalement à .song-gauge seul (le pousser tout à
+       droite de la ligne). Le badge existant désormais AVANT la jauge dans le
+       DOM, c'est lui qui doit porter cette poussée pour que le duo badge+jauges
+       voyage groupé à droite, plutôt que chacun parte de son côté (c'était le
+       bug signalé : la jauge se poussait encore toute seule via SON propre
+       margin-left:auto, pendant que le badge restait collé au titre). */
+    margin-left: auto;
+    /* Espace resserré avant les jauges — même valeur que le gap interne entre
+       les dots eux-mêmes (song-gauge.css: .song-gauge { gap: 3px; }), pour que
+       le badge se lise comme un 7e "dot" du même groupe plutôt qu'un élément à
+       part. */
+    margin-right: 3px;
+    padding: 1px 6px;
+    border-radius: var(--r-sm);
+    border: 1px solid transparent;
+    transition: background var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+}
+
+/* La jauge ne doit plus se pousser elle-même à droite (annule le
+   margin-left:auto que song-gauge.css lui donne normalement) : c'est
+   désormais le badge juste avant elle qui porte cette poussée pour tout le
+   groupe — voir commentaire ci-dessus. !important nécessaire pour primer sur
+   song-gauge.css sans avoir à le modifier (fichier séparé, chargé après
+   celui-ci). Uniquement quand un badge précède réellement la jauge : sur les
+   chansons sans compteur affiché, .song-gauge garde son margin-left:auto
+   d'origine et se pousse à droite normalement, seule. */
+.song-open-count + .song-gauge {
+    margin-left: 0 !important;
+}
+
+/* Paliers de couleur "chaleur" par pas de 5 ouvertures (voir _openCountTier
+   dans app.js) : neutre au départ, puis progression jaune → orange → rouge à
+   mesure que la chanson a été rejouée. Le dernier palier (--7, 35+) plafonne
+   au rouge le plus soutenu : au-delà, on ne cherche pas une teinte "encore
+   plus chaude", le message "très répétée" est déjà passé. */
+.song-open-count--0 { background: var(--c-surface-2); border-color: var(--c-primary-border); color: var(--c-text-muted); }
+.song-open-count--1 { background: #fff9db; border-color: #e6d675; color: #8a7a1a; }
+.song-open-count--2 { background: #fff2b8; border-color: #e0c23e; color: #7a5c00; }
+.song-open-count--3 { background: #ffe0b2; border-color: #e0a13e; color: #7a4a10; }
+.song-open-count--4 { background: #ffcc80; border-color: #e08a2e; color: #7a3f0a; }
+.song-open-count--5 { background: #ffab73; border-color: #d9702a; color: #6b2f00; }
+.song-open-count--6 { background: #ff8a65; border-color: #d94e1a; color: #ffffff; }
+.song-open-count--7 { background: #e5432e; border-color: #b71c1c; color: #ffffff; }
+
+.artist-block--cover  { border-color: var(--c-cover-border); }
+.artist-header--cover { background: var(--c-cover); }
+.artist-block--cover .song-item:hover { background: var(--c-cover-light); }
+
+.artist-block--trimat  { border-color: var(--c-trimat-border); }
+.artist-header--trimat { background: var(--c-trimat); }
+.artist-block--trimat .song-item:hover { background: var(--c-trimat-light); }
+
+.artist-block--acoustic  { border-color: var(--c-acoustic-border); }
+.artist-header--acoustic { background: var(--c-acoustic); }
+.artist-block--acoustic .song-item:hover { background: var(--c-acoustic-light); }
+
+/* Chanson marquée 'OK' (tous les outils réunis) dans l'onglet Listes */
+.song-item--ok { background: var(--c-ok-bg); }
+.song-item--ok:hover { background: var(--c-ok-bg-hover); }
+
+/* Onglet Listes : espace en bas pour que la dernière ligne ne soit pas coupée
+   par le bord du conteneur scrollable (#main-content) */
+#list-song-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 60px 0;
+}
+
+.no-results {
+    color: var(--c-text-muted);
+    font-style: italic;
+    padding: 12px;
+    list-style: none;
+}
+
+@media (max-width: 1100px) { .songs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px)  { .songs-grid { grid-template-columns: 1fr; } }
+
+/* =============================================
+   VUE CHANSON
+   ============================================= */
+#song-display {
+    padding: 20px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+}
+
+#song-content-display {
+    position: relative;
+    overflow-y: auto;
+    max-height: 700px;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+/* Post-it images : ancre invisible dans le texte (aucune taille propre) +
+   vignette flottante positionnée en absolu par _renderPostits(). Comme la
+   vignette est un enfant du conteneur qui défile, elle suit naturellement le
+   scroll de sa ligne d'ancrage, sans code de scroll dédié. */
+.postit-anchor {
+    display: inline-block;
+    width: 0;
+    height: 0;
+}
+
+/* ── Post-it : vignette ──────────────────────────────────────────────── */
+/* Taille de base calée sur le métronome (~200px de large) */
+.postit-marker {
+    position: absolute;
+    right: 6px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ffca28;
+    border-radius: 8px;
+    background-color: #fff9c4;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+    cursor: pointer;
+    z-index: 40;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.postit-marker:hover {
+    border-color: #f9a825;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.32);
+    z-index: 60;
+}
+
+/* ── Post-it : tooltip image pleine taille au survol ───────────────── */
+/* Affiché par JS (_renderPostits), max 3× la largeur du métronome */
+.postit-tooltip {
+    display: none;
+    position: fixed;
+    z-index: 9900;
+    border: 2px solid #ffca28;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.38);
+    background: #fff9c4;
+    padding: 4px;
+    pointer-events: none;
+    max-width: min(990px, 120vw);  /* 3 × 330px, jamais plus large que 120vw */
+}
+
+.postit-tooltip img {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 7px;
+    object-fit: contain;
+}
+
+.song-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.song-main {
+    flex: 1;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 20px;
+    position: relative;
+}
+
+/* =============================================
+   PANNEAU ACCORDS
+   ============================================= */
+.chords-panel {
+    flex: 1;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 15px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    min-height: 300px;
+    border-left: 1px solid var(--c-border);
+    position: sticky;
+    top: 10px;
+    height: fit-content;
+}
+
+#transposed-chords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    background: var(--c-surface);
+    overflow-y: auto;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+#transposed-chords span {
+    background: var(--c-chord-bg);
+    border: 1px solid var(--c-chord-border);
+    border-radius: var(--r-sm);
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 13px;
+    color: var(--c-chord-text);
+    transition: background var(--t-fast), box-shadow var(--t-fast);
+}
+
+#transposed-chords span:hover {
+    background: #c0e4c0;
+    box-shadow: 0 2px 6px rgba(45,106,48,0.15);
+}
+
+.chord-line {
+    min-height: 28px;
+    margin-bottom: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chord-line.empty { opacity: 0; }
+
+#display-chords {
+    margin-top: 10px;
+    overflow-y: auto;
+    max-height: 777px;
+}
+
+#display-chords .chord-line {
+    min-height: 28px;
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+}
+
+#display-chords span {
+    background: var(--c-chord-bg);
+    border: 1px solid var(--c-chord-border);
+    border-radius: var(--r-sm);
+    padding: 5px 10px;
+    font-weight: bold;
+    color: var(--c-chord-text);
+    transition: background var(--t-fast);
+}
+
+#display-chords span:hover { background: #c0e4c0; }
+
+/* =============================================
+   BOUTONS GÉNÉRIQUES
+   ============================================= */
+#song-display button,
+#action-buttons button,
+.song-controls button {
+    transition: background var(--t-fast), border-color var(--t-fast),
+                box-shadow var(--t-fast), transform var(--t-fast);
+}
+
+#song-display button:hover,
+#action-buttons button:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    filter: brightness(1.08);
+}
+
+#song-display button:active,
+#action-buttons button:active {
+    transform: translateY(1px);
+    filter: brightness(0.95);
+}
+
+#playMP3Button, #pauseMP3Button, #stopMP3Button {
+    background: var(--c-surface-2);
+    border: 1px solid var(--c-primary-border);
+    border-radius: var(--r-sm);
+    color: var(--c-primary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+}
+
+#playMP3Button:hover  { background: var(--c-primary-light); box-shadow: 0 2px 6px rgba(108,142,191,0.2); }
+#pauseMP3Button:hover { background: var(--c-primary-light); box-shadow: 0 2px 6px rgba(108,142,191,0.2); }
+#stopMP3Button:hover  { background: var(--c-danger-light); border-color: var(--c-danger-border); color: var(--c-danger); }
+#playMP3Button:active, #pauseMP3Button:active, #stopMP3Button:active { transform: translateY(1px); }
+
+#scrollWithMP3Btn, #toggleAutoScroll {
+    background: var(--c-surface-2);
+    border: 1px solid var(--c-primary-border);
+    border-radius: var(--r-sm);
+    color: var(--c-primary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+}
+
+#scrollWithMP3Btn:hover, #toggleAutoScroll:hover {
+    background: var(--c-primary-light);
+    border-color: var(--c-primary);
+    box-shadow: 0 2px 6px rgba(108,142,191,0.2);
+}
+
+#scrollWithMP3Btn:active, #toggleAutoScroll:active { transform: translateY(1px); }
+#scrollWithMP3Btn:disabled, #toggleAutoScroll:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* État actif (lecture en cours) */
+#scrollWithMP3Btn.scroll-btn--active,
+#toggleAutoScroll.scroll-btn--active {
+    background: var(--c-accent) !important;
+    border-color: var(--c-accent-hover) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(93,145,98,0.3);
+}
+
+#scrollWithMP3Btn.scroll-btn--active:hover,
+#toggleAutoScroll.scroll-btn--active:hover {
+    background: var(--c-accent-hover) !important;
+    box-shadow: 0 3px 10px rgba(93,145,98,0.4);
+}
+
+#btn-bpm-suggest { transition: opacity var(--t-fast), transform var(--t-fast); }
+#btn-bpm-suggest:hover { opacity: 1 !important; transform: scale(1.15); }
+
+#btn-fullscreen-lyrics { transition: opacity var(--t-fast), transform var(--t-fast); }
+#btn-fullscreen-lyrics:hover { opacity: 1 !important; transform: scale(1.15); }
+
+#generatePDFButton {
+    background: #8b9fea !important;
+    border-color: #7080cc !important;
+    transition: background var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast) !important;
+}
+#generatePDFButton:hover { background: #6c7fd4 !important; box-shadow: 0 2px 8px rgba(108,127,212,0.25) !important; }
+#generatePDFButton:active { transform: translateY(1px) !important; }
+
+/* =============================================
+   TRACK TYPE RADIO
+   ============================================= */
+.track-type-container {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px 8px;
+    font-size: 12px;
+    background: var(--c-accent);
+    color: #fff;
+    border-radius: var(--r-sm);
+    padding: 5px 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.track-type-container span:first-child { font-weight: bold; }
+.track-type-container label { display: flex; align-items: center; gap: 3px; cursor: pointer; transition: color var(--t-fast); white-space: nowrap; }
+.track-type-container label:hover { color: #e0f0e0; }
+.track-type-container input[type="radio"] { accent-color: var(--c-primary-light); margin-right: 2px; width: 12px; height: 14px; }
+
+.embed-check {
+    flex: 0 0 34px !important;
+    max-width: 34px;
+    min-width: 0;
+    box-sizing: border-box;
+    align-self: flex-end;
+    padding-bottom: 7px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+.embed-check label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0;
+}
+.embed-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* =============================================
+   MODALE ÉTUDE
+   ============================================= */
+#etude-modal {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 1000;
+    align-items: center; justify-content: center;
+    box-sizing: border-box;
+}
+
+#etude-modal-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.65);
+    cursor: pointer;
+    transition: background var(--t-base);
+}
+
+#etude-modal-overlay:hover { background: rgba(0,0,0,0.72); }
+
+#etude-modal-content {
+    position: relative; z-index: 1001;
+    background: #1a1a1a;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    width: 860px; max-width: 90vw;
+    display: flex; flex-direction: column;
+}
+
+#etude-modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 16px;
+    background: #2a2a2a; color: #fff;
+    font-size: 14px; font-weight: bold;
+}
+
+#etude-modal-close {
+    background: transparent; border: none; color: #aaa;
+    font-size: 18px; cursor: pointer; padding: 0 4px; line-height: 1; width: auto; margin: 0;
+    transition: color var(--t-fast), transform var(--t-fast);
+}
+
+#etude-modal-close:hover { color: #ff6b6b; transform: scale(1.2); background: transparent; }
+#etude-iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+
+/* =============================================
+   MODE MESURE
+   ============================================= */
+.chord-line.measure-line { display:flex; flex-wrap:nowrap; gap:6px; padding:2px 0; margin-bottom:6px; background:transparent; border:none; min-height:52px; align-items:stretch; }
+
+.measure-block {
+    display:flex; align-items:stretch; gap:3px; min-width:0;
+    background: #f5f8f5; border:1px solid var(--c-chord-border);
+    border-radius: var(--r-sm); padding:4px; box-sizing:border-box;
+    transition: box-shadow var(--t-fast);
+}
+.measure-block:hover { box-shadow: 0 2px 8px rgba(45,106,48,0.12); }
+
+.measure-chord {
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+    position:relative; min-width:0; padding:4px 6px 8px;
+    border-radius: var(--r-sm); background: var(--c-surface);
+    border:1px solid #dcedc8; overflow:hidden;
+    transition: background var(--t-fast);
+}
+.measure-chord:hover { background: var(--c-accent-light); }
+.measure-chord-name { font-weight:bold; font-size:14px; color: var(--c-chord-text); white-space:nowrap; z-index:1; line-height:1.3; }
+.measure-chord-dur  { font-size:9px; color: var(--c-text-muted); margin-top:2px; z-index:1; line-height:1; }
+.measure-chord-bar  { position:absolute; bottom:0; left:0; height:4px; background:linear-gradient(90deg,var(--c-accent),var(--c-accent-hover)); border-radius:0 0 var(--r-sm) 0; transition:width 0.3s ease; }
+
+/* =============================================
+   HELPER DURÉE D'ACCORD
+   ============================================= */
+.chord-helper-bubble { position:fixed; z-index:10500; display:none; align-items:center; gap:4px; background:var(--c-surface); border:1px solid var(--c-chord-border); border-radius:var(--r-md); padding:4px 7px; box-shadow:0 4px 16px rgba(0,0,0,0.12); font-family:Arial,sans-serif; font-size:12px; white-space:nowrap; }
+.chord-helper-label { font-size:10px; color:var(--c-text-muted); margin-right:2px; }
+.chord-helper-btn { background:var(--c-accent-light); border:1px solid var(--c-chord-border); border-radius:var(--r-sm); padding:2px 6px; font-size:11px; font-weight:bold; color:var(--c-chord-text); cursor:pointer; transition:background var(--t-fast),color var(--t-fast); width:auto; display:inline-block; margin:0; }
+.chord-helper-btn:hover { background:var(--c-accent); color:#fff; border-color:var(--c-accent-hover); }
+
+/* Contrôle de vitesse du lecteur MP3 : même langage visuel que la bulle de
+   durée d'accord ci-dessus (bordure, fond, rayon, palette), mais en ligne
+   dans la barre de contrôles (pas en popup flottante) et empilé libellé/combo
+   au lieu d'aligné horizontalement, pour rester compact et permettre aux
+   boutons ▶/⏸/⏹ et à ce contrôle de se répartir sur toute la largeur. */
+.mp3-speed-control {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    background: var(--c-surface);
+    border: 1px solid var(--c-chord-border);
+    border-radius: var(--r-md);
+    padding: 2px 8px;
+    font-family: Arial, sans-serif;
+}
+.mp3-speed-control .chord-helper-label { margin: 0; line-height: 1.3; }
+.mp3-speed-control select {
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--c-chord-text);
+    cursor: pointer;
+    padding: 0;
+    text-align: center;
+}
+.chord-helper-clear { background:transparent; border:1px solid var(--c-danger-border); border-radius:var(--r-sm); padding:2px 6px; font-size:10px; color:var(--c-danger); cursor:pointer; width:auto; display:inline-block; margin:0; transition:background var(--t-fast); }
+.chord-helper-clear:hover { background:var(--c-danger-light); }
+.chord-helper-pivot { background:transparent; border:1px solid #c99a1e; border-radius:var(--r-sm); padding:2px 7px; font-size:11px; color:#7a5c00; cursor:pointer; width:auto; display:inline-block; margin:0 0 0 4px; transition:background var(--t-fast), color var(--t-fast); }
+.chord-helper-pivot:hover { background:#fff3cd; }
+.chord-helper-pivot.active { background:#ffd54f; color:#5c4400; font-weight:bold; }
+
+/* =============================================
+   MÉTRONOME
+   ============================================= */
+.metronome-widget { position:absolute; top:10px; right:10px; z-index:500; background:#1e2235; border:1px solid #3a4060; border-radius:var(--r-lg); padding:8px 12px; box-shadow:0 4px 16px rgba(0,0,0,0.28); color:#eee; font-family:Arial,sans-serif; min-width:200px; user-select:none; }
+.metro-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:7px; }
+.metro-title { font-size:11px; font-weight:bold; color:var(--c-chord-border); letter-spacing:0.04em; }
+.metro-close { background:transparent; border:none; color:#666; font-size:12px; cursor:pointer; padding:0; width:auto; margin:0; line-height:1; transition:color var(--t-fast),transform var(--t-fast); }
+.metro-close:hover { color:#ff6b6b; transform:scale(1.2); background:transparent; }
+.metro-beats { display:flex; justify-content:center; gap:6px; margin-bottom:8px; }
+.metro-beat { width:10px; height:10px; border-radius:50%; background:#333; transition:background 0.07s,transform 0.07s; }
+.metro-beat.active { background:var(--c-accent); transform:scale(1.3); }
+.metro-beat.active.first { background:#e07a50; transform:scale(1.45); }
+.metro-controls { display:flex; flex-direction:column; gap:6px; }
+.metro-btn { width:100%; padding:5px; background:#3a5a3e; color:#fff; border:1px solid #4a7a4e; border-radius:var(--r-sm); font-size:14px; cursor:pointer; margin:0; transition:background var(--t-fast),box-shadow var(--t-fast),transform var(--t-fast); }
+.metro-btn:hover { background:#4a7a4e; box-shadow:0 2px 6px rgba(74,122,78,0.3); }
+.metro-btn:active { transform:translateY(1px); }
+.metro-bpm-group { display:flex; align-items:center; gap:8px; }
+.metro-slider { flex:1; accent-color:var(--c-accent); cursor:pointer; height:3px; }
+#metro-bpm-display { font-size:11px; color:#bbb; min-width:52px; text-align:right; }
+.metro-sig { display:flex; align-items:center; justify-content:center; gap:10px; }
+.metro-sig-btn { background:#2a2e45; border:1px solid #4a5070; color:#ddd; border-radius:var(--r-sm); padding:1px 8px; font-size:14px; cursor:pointer; width:auto; margin:0; line-height:1.4; transition:background var(--t-fast),border-color var(--t-fast); }
+.metro-sig-btn:hover { background:#3a4060; border-color:#6a7090; }
+#metro-sig-display { font-size:12px; font-weight:bold; color:var(--c-chord-border); min-width:28px; text-align:center; }
+
+/* =============================================
+   PAROLES AVEC BADGES
+   ============================================= */
+.lyrics-block { display:flex; flex-wrap:wrap; align-items:flex-end; margin-bottom:12px; line-height:1; }
+.lyrics-line { display:block; margin-bottom:6px; font-family:monospace; font-size:22px; line-height:1.6; }
+.lyric-segment { display:inline-flex; flex-direction:column; align-items:flex-start; vertical-align:bottom; }
+
+.lyric-chord-badge { display:inline-block; background:var(--c-chord-bg); border:1px solid var(--c-chord-border); border-radius:5px; padding:2px 7px; font-weight:bold; font-family:monospace; color:var(--c-chord-text); white-space:nowrap; margin-bottom:3px; line-height:1.3; min-width:1em; transition:background var(--t-fast),box-shadow var(--t-fast); }
+
+/* Intensité de couleur selon la durée de l'accord (affichage chanson + scroll) :
+   [1/1] dense → [1/2] estompé → [1/4] clair → autres [x/y] pâle. Sans durée
+   renseignée : couleur distincte (ambre) pour repérer d'un coup d'œil les accords
+   pas encore annotés. */
+.lyric-chord-badge.chord-dur-double { background:#1e5c1e; border-color:#144214; color:#fff; }
+.lyric-chord-badge.chord-dur-dense  { background:#4f9e4f; border-color:#3d8b3d; color:#fff; }
+.lyric-chord-badge.chord-dur-medium { background:#a8d5a8; border-color:#8ec98e; color:#1f4d21; }
+.lyric-chord-badge.chord-dur-light  { background:#d5ecd5; border-color:#b8dfb8; color:#3a6b3c; }
+.lyric-chord-badge.chord-dur-pale   { background:#eef7ee; border-color:#d5e8d5; color:#6a8a6a; }
+.lyric-chord-badge.chord-dur-none   { background:#ffe0b2; border-color:#e0a940; color:#7a3f0a; }
+.lyric-chord-badge:not(.lyric-chord-empty):hover { filter:brightness(0.92); box-shadow:0 2px 6px rgba(45,106,48,0.15); cursor:default; }
+.lyric-chord-empty { background:transparent !important; border-color:transparent !important; color:transparent !important; }
+.lyric-text { display:inline; font-family:monospace; font-size:22px; color:var(--c-text); white-space:pre; }
+
+/* Surlignage inline dans les paroles — couleurs reprises des pastilles de la jauge
+   médias (cohérence visuelle avec l'onglet Listes) :
+     **choeur**     → bleu pastel  (pastille MP3)    : chant à 2 voix
+     ++lead++       → orange pastel (déjà en place)  : guitare lead
+     --mutter--     → rouge/rose pastel (pastille PDF)  : parties "mutter"
+     &&libre&&      → violet pastel (pastille Étude)    : parties "libres" */
+mark.lyric-highlight-choeur,
+mark.lyric-highlight-lead,
+mark.lyric-highlight-mutter,
+mark.lyric-highlight-libre {
+    color: inherit;
+    border-radius: 4px;
+    padding: 1px 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+mark.lyric-highlight-choeur { background: #d0e8f8; }
+mark.lyric-highlight-lead   { background: #ffe0b2; }
+mark.lyric-highlight-mutter { background: #fad4d4; }
+mark.lyric-highlight-libre  { background: #e8d8f4; }
+
+/* =============================================
+   ÉTIQUETTES DE SECTION
+   ============================================= */
+.chord-section-label { font-weight:bold; font-size:15px; padding:2px 4px; margin-bottom:4px; border-radius:var(--r-sm); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.chord-section-badge { display:inline-block; border:1px solid; border-radius:var(--r-sm); padding:3px 10px; font-weight:bold; font-size:13px; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+
+/* =============================================
+   BOUTONS INLINE (transpo, modales…)
+   ============================================= */
+.btn-inline { font-family:monospace; cursor:pointer; border-radius:var(--r-sm); transition:background var(--t-fast),box-shadow var(--t-fast),transform var(--t-fast); }
+.btn-inline:hover { box-shadow:0 2px 6px rgba(0,0,0,0.12); filter:brightness(1.07); }
+.btn-inline:active { transform:translateY(1px); filter:brightness(0.95); }
+.btn-warm { padding:3px 8px; font-size:11px; background:#fae8d8; border:1px solid #d4a070; color:#7a3f0a; }
+.btn-warm:hover { background:#f5d4b8; }
+.btn-cool { padding:3px 8px; font-size:11px; background:var(--c-primary-light); border:1px solid var(--c-primary-border); color:var(--c-primary); }
+.btn-cool:hover { background:#d4e4f4; }
+.btn-neutral { padding:6px 14px; font-size:13px; background:var(--c-bg); border:1px solid var(--c-border-strong); color:var(--c-text-secondary); }
+.btn-neutral:hover { background:#e8ecf2; }
+.btn-confirm { padding:6px 14px; font-size:13px; background:var(--c-chord-bg); border:1px solid var(--c-chord-border); color:var(--c-chord-text); font-weight:bold; }
+.btn-confirm:hover { background:#c0e4c0; }
+
+/* =============================================
+   AUTOSCROLL : surbrillance accord actif
+   ============================================= */
+.autoscroll-line-active { background:rgba(108,142,191,0.10) !important; border-radius:var(--r-sm); }
+.autoscroll-chord-active { background:var(--c-primary) !important; color:#fff !important; border-radius:var(--r-sm); font-weight:bold; outline:2px solid var(--c-primary-hover); animation:autoscroll-pulse 0.6s ease-in-out infinite alternate; }
+@keyframes autoscroll-pulse { from { outline-color:var(--c-primary-hover); } to { outline-color:var(--c-primary-light); } }
+
+/* =============================================
+   MINUTAGE KARAOKÉ : surbrillance aperçu
+   ============================================= */
+.karaoke-next-chord { background:#f5a623 !important; color:#fff !important; border:2px solid #d4881a !important; border-radius:var(--r-sm); box-shadow:0 0 8px rgba(245,166,35,0.6); font-weight:bold; animation:karaoke-pulse 0.7s ease-in-out infinite alternate; }
+.karaoke-next-line  { outline:2px solid rgba(245,166,35,0.3); border-radius:var(--r-sm); background:rgba(245,166,35,0.06); }
+/* Marquage indépendant des paroles (🎤 Marquer) : couleur distincte du marquage
+   par accord (⏱ Marquer) ci-dessus, pour ne pas les confondre visuellement. */
+.karaoke-next-word-line { outline:2px solid rgba(77,158,80,0.35); border-radius:var(--r-sm); background:rgba(77,158,80,0.07); }
+/* Mot (ou syllabe exacte si le mot est découpé par [|]) à venir dans le
+   marquage des paroles — surlignage précis, plus marqué que celui de la
+   ligne ci-dessus qui ne fait que situer le contexte. */
+.karaoke-next-word { background:rgba(77,158,80,0.55); border-radius:2px; padding:0 1px; font-weight:bold; }
+@keyframes karaoke-pulse { from { box-shadow:0 0 5px rgba(245,166,35,0.4); } to { box-shadow:0 0 14px rgba(245,166,35,0.85); } }
+
+/* =============================================
+   PLEIN ÉCRAN PAROLES
+   ============================================= */
+#song-content-display.lyrics-css-fullscreen { position:fixed !important; inset:0 !important; z-index:10000 !important; width:100vw !important; height:100vh !important; max-height:100vh !important; overflow-y:auto !important; background:var(--c-surface) !important; border-radius:0 !important; padding:20px 5vw 80px !important; box-shadow:none !important; }
+#song-content-display:fullscreen, #song-content-display:-webkit-full-screen { background:var(--c-surface) !important; padding:20px 5vw 80px !important; overflow-y:auto !important; }
+
+/* Plein écran de l'éditeur : englobe éditeur (toolbar + légende + textarea) ET
+   l'aperçu côte à côte, pour garder les deux visibles pendant le marquage karaoké
+   (notamment utile avec le marquage automatique ⏱⚡, qui a besoin de l'aperçu). */
+#editor-container.editor-css-fullscreen {
+    position:fixed !important; inset:0 !important; z-index:10000 !important;
+    width:100vw !important; height:100vh !important;
+    box-sizing:border-box !important; padding:20px 3vw !important;
+    background:var(--c-surface) !important; box-shadow:none !important;
+    display:flex !important; flex-direction:row !important; gap:16px !important;
+}
+#editor-container:fullscreen, #editor-container:-webkit-full-screen {
+    background:var(--c-surface) !important; padding:20px 3vw !important; box-sizing:border-box !important;
+    display:flex !important; flex-direction:row !important; gap:16px !important;
+}
+#editor-container.editor-css-fullscreen .editor,
+#editor-container.editor-css-fullscreen .preview,
+#editor-container:fullscreen .editor, #editor-container:fullscreen .preview,
+#editor-container:-webkit-full-screen .editor, #editor-container:-webkit-full-screen .preview {
+    height:100% !important; max-height:100% !important;
+}
+#editor-container.editor-css-fullscreen #song-editor,
+#editor-container:fullscreen #song-editor, #editor-container:-webkit-full-screen #song-editor,
+#editor-container.editor-css-fullscreen #song-preview,
+#editor-container:fullscreen #song-preview, #editor-container:-webkit-full-screen #song-preview {
+    flex:1 !important; height:auto !important;
+}
+/* En dessous de ~900px de large, l'aperçu passe sous l'éditeur plutôt que de les
+   écraser tous les deux à une largeur illisible */
+@media (max-width: 900px) {
+    #editor-container.editor-css-fullscreen,
+    #editor-container:fullscreen, #editor-container:-webkit-full-screen {
+        flex-direction:column !important;
+    }
+    #editor-container.editor-css-fullscreen .editor,
+    #editor-container.editor-css-fullscreen .preview,
+    #editor-container:fullscreen .editor, #editor-container:fullscreen .preview,
+    #editor-container:-webkit-full-screen .editor, #editor-container:-webkit-full-screen .preview {
+        height:50% !important;
+    }
+}
+
+/* Badge liste dans l'onglet Listes */
+.song-liste-badge {
+    font-size: 10px;
+    color: var(--c-primary);
+    background: var(--c-primary-light);
+    border: 1px solid var(--c-primary-border);
+    border-radius: var(--r-sm);
+    padding: 1px 5px;
+    margin-left: 4px;
+    white-space: nowrap;
+}
+
+/* =============================================
+   DIAGRAMME RYTHMIQUE
+   ============================================= */
+.rythm-diagram {
+    display: inline-flex;
+    gap: 6px;
+    align-items: flex-end;
+    background: #4a7a4e;
+    border-radius: 10px;
+    padding: 8px 12px 6px;
+    user-select: none;
+}
+.rythm-beat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.rythm-beat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    font-family: Arial, sans-serif;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+}
+.rythm-stroke {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 28px;
+}
+.rythm-bar-sep {
+    width: 2px;
+    align-self: stretch;
+    background: rgba(255,255,255,0.18);
+    border-radius: 1px;
+    margin: 0 2px;
+}
+.rythm-stroke svg { display: block; }
+
+/* =============================================
+   BARRES DE POSITIONNEMENT MP3 (éditeur + panneau latéral)
+   Reprennent le bleu utilisé au survol des onglets Accueil/Listes/Nouvelle
+   chanson (--c-primary, voir .tab:hover) pour une identité visuelle cohérente
+   dans toute l'application. Remplissage progressif piloté par la variable CSS
+   --range-progress (mise à jour en JS, voir App._bindMp3SeekControl) : c'est
+   la technique standard pour obtenir un rendu "rempli" sur Chrome/Safari, qui
+   n'ont pas d'équivalent au ::-moz-range-progress de Firefox.
+   ============================================= */
+#editorMp3Seek, #sidebarMp3Seek {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(to right,
+        var(--c-primary) 0%, var(--c-primary) var(--range-progress, 0%),
+        var(--c-primary-light) var(--range-progress, 0%), var(--c-primary-light) 100%);
+}
+#editorMp3Seek::-webkit-slider-thumb, #sidebarMp3Seek::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--c-primary);
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+#editorMp3Seek::-moz-range-track, #sidebarMp3Seek::-moz-range-track {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--c-primary-light);
+}
+#editorMp3Seek::-moz-range-progress, #sidebarMp3Seek::-moz-range-progress {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--c-primary);
+}
+#editorMp3Seek::-moz-range-thumb, #sidebarMp3Seek::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--c-primary);
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    cursor: pointer;
+}

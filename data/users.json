@@ -1,0 +1,36 @@
+[
+  {
+    "id": "cce425de-3423-4693-b928-1a638703bee7",
+    "username": "philweb",
+    "passwordHash": "31f54cd12b5645a1cdbcda37f5337c22:6086c3a3d956c457dca2c6707c631eb5c7fe85e3c9cba4f355b3acbc447e60043a32f4f6835b6433fd102975c4b5889fce44b94cdc20d8f554c745e164287663",
+    "role": "admin",
+    "status": "approved",
+    "createdAt": "2026-08-28T12:19:00.425Z"
+  },
+  {
+    "id": "8c6e1741-50b0-4cd4-a906-361e586c73a0",
+    "username": "manou",
+    "passwordHash": "758e54652c752e77daef5bbb2e3d960d:07cf9de220bbdb47f8fe0a38c2d3327657d74f996511312fb0be0acdbedb5cddd9f7b44d336948b09b1dc60b32a72cef2fc52567f4d78be328b6ee32ac4d4cbc",
+    "role": "user",
+    "status": "approved",
+    "createdAt": "2026-08-28T12:27:35.076Z"
+  },
+  {
+    "id": "3a3059c1-1719-464a-9269-65c3bc5b8d69",
+    "username": "richard",
+    "passwordHash": "3117717466fd86f834b00ae57fd7af6c:2ead79f031c743eb6b87878ed21f5a9135228aee74b2307eb445ade0a44e598710a4c1f05f2db3b461a25ed6e42c0d6b4f793a8b417e331da22bd1347036a42a",
+    "role": "user",
+    "status": "approved",
+    "createdAt": "2026-08-28T12:28:56.458Z",
+    "mustChangePassword": false
+  },
+  {
+    "id": "609f0474-f125-4e2c-af4d-6d1f2c6a3c77",
+    "username": "phil",
+    "passwordHash": "76d7f5aa76a6f373e3a93d20898d0829:2e9a567dc63dd2759cd5df520840f67cb051db6465aa8e3399849789e4a60f07de3c2e662c8b5228071b96a625a4b3566f08760e7d2ad2e6d2d61804800050dc",
+    "role": "user",
+    "status": "approved",
+    "createdAt": "2026-08-28T17:01:20.329Z",
+    "mustChangePassword": false
+  }
+]

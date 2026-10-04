@@ -1,0 +1,113 @@
+/* =============================================
+   JAUGES MÉDIAS — liste de chansons
+   Palette pastel cohérente avec style.css
+   ============================================= */
+
+.song-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+/* Conteneur des dots */
+.song-gauge {
+    display: inline-flex;
+    gap: 3px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+/* Dot de base */
+.sg-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    font-size: 11px;
+    line-height: 1;
+    cursor: default;
+    transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sg-dot:hover {
+    transform: scale(1.2);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* État chargement */
+.sg-dot--unknown {
+    background: #e8edf4;
+    color: #b0bcc8;
+    animation: sg-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes sg-pulse {
+    0%, 100% { opacity: 0.5; }
+    50%       { opacity: 1;   }
+}
+
+/* Absent */
+.sg-dot--off {
+    background: #f0f2f5;
+    color: #c8d0da;
+}
+
+/* Présent — base */
+.sg-dot--on {
+    background: #d4edd4;
+    color: #2d6a30;
+}
+
+/* Repères présents mais média requis manquant (ex : karaoké sans MP3) —
+   orange d'alerte, volontairement distinct du vert "on" et du gris "off",
+   pour signaler "quelque chose existe mais n'est pas exploitable en l'état". */
+.sg-dot--warn {
+    background: #fde3b8;
+    color: #8a5a10;
+}
+
+/* Présent — par type (pastels cohérents) */
+.sg-dot--on[data-type="mp3"]     { background: #d0e8f8; color: #1a5a8a; }
+.sg-dot--on[data-type="mp4"]     { background: #cdeee8; color: #0d6b5a; }
+.sg-dot--on[data-type="pdf"]     { background: #fad4d4; color: #8a2020; }
+.sg-dot--on[data-type="gp"]      { background: #fde8cc; color: #7a4010; }
+.sg-dot--on[data-type="etude"]   { background: #e8d8f4; color: #5a1a8a; }
+.sg-dot--on[data-type="karaoke"] { background: #d4edd4; color: #1b5e20; }
+
+/* MP3 "complet" : les 4 pistes (N / bch / bcg / bgu) existent toutes pour cette
+   chanson → bleu plus vif que l'état "on" pastel habituel, pour se distinguer
+   au premier coup d'œil des chansons n'ayant qu'une partie des pistes. */
+.sg-dot--full[data-type="mp3"] {
+    background: #8fcdf2;
+    color: #0d3f66;
+    box-shadow: 0 0 4px rgba(26,90,138,0.45);
+}
+
+/* MP3 "partiel" : seules l'originale (N) et Bch existent (pas bcg/bgu) → bleu
+   intermédiaire, un peu plus clair que le bleu vif "complet" ci-dessus, mais
+   plus soutenu que le bleu pastel par défaut. */
+.sg-dot--partial[data-type="mp3"] {
+    background: #b3ddf5;
+    color: #14507a;
+}
+
+/* Karaoké "complet" : accords ET paroles sont tous les deux minutés (+ MP3
+   présent) → vert plus vif que l'état "on" pastel habituel, pour se
+   distinguer au premier coup d'œil des chansons n'ayant qu'un seul des deux
+   marquages. */
+.sg-dot--full[data-type="karaoke"] {
+    background: #a1e4b0;
+    color: #0d3d10;
+    box-shadow: 0 0 4px rgba(13,90,20,0.45);
+}
+
+/* Karaoké "partiel" : un seul des deux marquages (accords OU paroles) existe
+   → vert intermédiaire, un peu plus soutenu que le vert pastel par défaut,
+   mais moins vif que le "complet" ci-dessus. */
+.sg-dot--partial[data-type="karaoke"] {
+    background: #d4edd4;
+    color: #155c1a;
+}

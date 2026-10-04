@@ -1,0 +1,10 @@
+{
+  "name": "sit-zic",
+  "version": "1.0.0",
+  "description": "Application d'accords de chansons",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}

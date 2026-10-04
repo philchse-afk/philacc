@@ -1,0 +1,74 @@
+[
+  {
+    "title": "La corrida",
+    "artist": "Francis cabrel",
+    "capo": "0",
+    "bpm": "",
+    "recommendedCapo": "",
+    "file": "la corrida.json"
+  },
+  {
+    "title": "La nuit n'est jamais noire",
+    "artist": "Calogero & Gaetan roussel",
+    "capo": "3",
+    "bpm": "200",
+   "recommendedCapo": "3",
+    "file": "la nuit n-est jamais noire.json"
+  },
+  {
+    "title": "Help",
+    "artist": "The beatles",
+    "capo": "0",
+    "bpm": "2000",
+   "recommendedCapo": "",
+    "file": "help.json"
+  },
+  {
+    "title": "You can't do that",
+    "artist": "The beatles",
+    "capo": "0",
+    "bpm": "200",
+   "recommendedCapo": "",
+    "file": "you can-t do that.json"
+  }, 
+  {
+    "title": "Day tripper",
+    "artist": "The beatles",
+    "capo": "0",
+    "bpm": "138",
+   "recommendedCapo": "",
+    "file": "day tripper.json"
+  },  
+  {
+    "title": "Yesterday",
+    "artist": "The beatles",
+    "capo": "0",
+    "bpm": "85",
+   "recommendedCapo": "",
+    "file": "yesterday.json"
+  }, 
+  {
+    "title": "Peny Lane",
+    "artist": "The beatles",
+    "capo": "0",
+    "bpm": "112",
+   "recommendedCapo": "",
+    "file": "peny lane.json"
+  },  
+  {
+    "title": "The pretender",
+    "artist": "Foo Fighters",
+    "capo": "0",
+    "bpm": "173",
+   "recommendedCapo": "",
+    "file": "the pretender.json"
+  },
+  {
+    "title": "stranger things have happened",
+    "artist": "Foo Fighters",
+    "capo": "0",
+    "bpm": "200",
+   "recommendedCapo": "",
+    "file": "stranger things have happened.json"
+  }
+]

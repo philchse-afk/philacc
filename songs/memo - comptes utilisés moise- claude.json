@@ -1,0 +1,187 @@
+{
+  "title": "memo <> comptes utilisés moise, claude",
+  "artist": "Pdf",
+  "capo": "",
+  "content": "++moise:\nphilippe.anger@etampes-rugbt-club.com\nrsereta91@gmail.com\nphilchse@gmail.com\nph.anger@emailasso.net\n\n--claude:\nrsereta91@gmail.com\nphilchse@gmail.com\nph.anger@orange.fr\n\n&&Phrase test mar[|]quage syl[|]labe pa[|]role\nrrrr[refrain 2] \n{{G6}}  **Que vida ! {{D2}} Que tri[|]ste !\n{{C(add9)}}  --De que pais se {{D2}}trata\n{{G6}}  &&Del mio, no{{A(sus2)}}...\n{{C}}  ++Del mio n{{D2}}o se puede\n{{G6}}  Que vida{{D2}}, **que triste {{A(sus2)}}!...\n\n<link rel=\"image1\" href=\"img/image1.png\">\n{{C#m(No2)}}[1/1]",
+  "recommendedCapo": "",
+  "bpm": "110",
+  "liste": "Version pour pdf optimisé",
+  "wordTimestamps": [
+    {
+      "key": "13_0",
+      "lineIndex": 13,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "Que",
+      "time": 1.964709
+    },
+    {
+      "key": "13_1",
+      "lineIndex": 13,
+      "wordIndex": 1,
+      "syllableIndex": 0,
+      "word": "vida",
+      "time": 2.618137
+    },
+    {
+      "key": "13_2",
+      "lineIndex": 13,
+      "wordIndex": 2,
+      "syllableIndex": 0,
+      "word": "Que",
+      "time": 3.245916
+    },
+    {
+      "key": "13_3_0",
+      "lineIndex": 13,
+      "wordIndex": 3,
+      "syllableIndex": 0,
+      "word": "tri",
+      "time": 3.768596
+    },
+    {
+      "key": "13_3_1",
+      "lineIndex": 13,
+      "wordIndex": 3,
+      "syllableIndex": 1,
+      "word": "ste !",
+      "time": 4.432295
+    },
+    {
+      "key": "14_0",
+      "lineIndex": 14,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "De",
+      "time": 5.072292
+    },
+    {
+      "key": "14_1",
+      "lineIndex": 14,
+      "wordIndex": 1,
+      "syllableIndex": 0,
+      "word": "que",
+      "time": 5.669949
+    },
+    {
+      "key": "14_2",
+      "lineIndex": 14,
+      "wordIndex": 2,
+      "syllableIndex": 0,
+      "word": "pais",
+      "time": 6.322356
+    },
+    {
+      "key": "14_3",
+      "lineIndex": 14,
+      "wordIndex": 3,
+      "syllableIndex": 0,
+      "word": "se",
+      "time": 6.938077
+    },
+    {
+      "key": "14_4",
+      "lineIndex": 14,
+      "wordIndex": 4,
+      "syllableIndex": 0,
+      "word": "trata",
+      "time": 7.492404
+    },
+    {
+      "key": "15_0",
+      "lineIndex": 15,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "Del",
+      "time": 8.193732
+    },
+    {
+      "key": "15_1",
+      "lineIndex": 15,
+      "wordIndex": 1,
+      "syllableIndex": 0,
+      "word": "mio,",
+      "time": 8.768717
+    },
+    {
+      "key": "15_2",
+      "lineIndex": 15,
+      "wordIndex": 2,
+      "syllableIndex": 0,
+      "word": "no...",
+      "time": 9.428721
+    },
+    {
+      "key": "16_0",
+      "lineIndex": 16,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "Del",
+      "time": 10.138091
+    },
+    {
+      "key": "16_1",
+      "lineIndex": 16,
+      "wordIndex": 1,
+      "syllableIndex": 0,
+      "word": "mio",
+      "time": 10.718588
+    },
+    {
+      "key": "16_2",
+      "lineIndex": 16,
+      "wordIndex": 2,
+      "syllableIndex": 0,
+      "word": "no",
+      "time": 11.27235
+    },
+    {
+      "key": "16_3",
+      "lineIndex": 16,
+      "wordIndex": 3,
+      "syllableIndex": 0,
+      "word": "se",
+      "time": 11.868706
+    },
+    {
+      "key": "16_4",
+      "lineIndex": 16,
+      "wordIndex": 4,
+      "syllableIndex": 0,
+      "word": "puede",
+      "time": 12.473424
+    },
+    {
+      "key": "17_0",
+      "lineIndex": 17,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "Que",
+      "time": 13.118646
+    },
+    {
+      "key": "17_1",
+      "lineIndex": 17,
+      "wordIndex": 1,
+      "syllableIndex": 0,
+      "word": "vida,",
+      "time": 13.761685
+    },
+    {
+      "key": "17_2",
+      "lineIndex": 17,
+      "wordIndex": 2,
+      "syllableIndex": 0,
+      "word": "que",
+      "time": 14.382092
+    },
+    {
+      "key": "17_3",
+      "lineIndex": 17,
+      "wordIndex": 3,
+      "syllableIndex": 0,
+      "word": "triste !...",
+      "time": 14.912244
+    }
+  ]
+}

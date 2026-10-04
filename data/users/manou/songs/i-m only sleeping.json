@@ -1,0 +1,583 @@
+{
+  "title": "I'm only sleeping",
+  "artist": "The beatles",
+  "capo": "1",
+  "content": "vvvv[Couplet 1]\n {{Dm}} [1/1]When I wake up early in the{{Gm}} [1/1] morning            \n {{F}} [1/2]Lift my{{A#}} [1/2] head                                              \n {{F}} [1/2]I'm still{{A7}} [1/2] yawning                             \n {{Dm}} [1/1]When I'm in the middle of a {{Gm}} [1/1]dream              \n {{F}} [1/2]Stay in{{A#}} [1/2] bed                                     \n {{F}} [1/2]Float u{{A#}} [1/2]pstre{{Gm}} [1/1]am                                     \n Pl{{F}} [1/1]ease, don't wake me                               \n {{Gm}} [1/1]No,don't shake me                                   \n {{Am}} [1/1]Leave me where {{Gm}} [1/1]I am                                       \n I'm only sl{{A#maj7}} [2/2]eeping...                                           \n\npppp[Chorus]                                                                         \n >>>>G ------2-------------------                                                           \n >>>>D -0--3-----3----0----------\n\nvvvv[Couplet 2] \n {{Dm}} [1/1]Everybody seems to think I'm{{Gm}} [1/1] lazy                         \n I d{{F}} [1/2]on't m{{A#}} [1/2]ind                                                 \n I t{{F}} [1/2]hink they're{{A7}} [1/2] crazy                                      \n {{Dm}} [1/1]Running evrywhere at such a {{Gm}} [1/1]speed                         \n {{F}} [1/2]'Til they{{A#}} [1/2] find\n Th{{F}} [1/2]ere's{{A#}} [1/2] no {{Gm}} [1/1]need\n Pl{{F}} [1/1]ease, don't spoil my{{Gm}} [1/1] day\n I'm miles a{{Am}} [1/1]way\n And after {{Gm}} [1/1]all\n I'm only s{{A#maj7}} [12/2]leeping...\n\npppp[Chorus]\n    {{Dm}} [1/1]   \npppp[chorus]\n\npppp[Refrain] \n {{Cm7}} [1/1]Keeping an eye on the {{D7}} [1/1]world going by m{{Gm}} [2/2]y window, taking my time.\n\nvvvv[Couplet 3]  \n {{Dm}} [1/1]Lying there and staring at th{{Gm}} [1/1]e ceiling\n {{F}} [1/2]Waiting {{A#}} [1/2]for\n A s{{F}} [1/2]leepy{{A7}} [1/2] feeling\n {{Dm}} [1/1]{{Gm}} [1/1]              \n {{F}} [1/2]{{A#}} [1/2]                                    \n {{F}} [1/2]{{A#}} [1/2]{{Gm}} [1/1]                                     \n Pl{{F}} [1/1]ease, don't spoil my{{Gm}} [1/1] day\n I'm miles a{{Am}} [1/1]way\n And after {{Gm}} [1/1]all\n I'm only s{{A#maj7}} [2/2]leeping...\n\npppp[Chorus]\n    {{Dm}} [1/1]   \npppp[chorus]\n\npppp[Refrain] \n {{Cm7}} [1/1]Keeping an eye on the {{D7}} [1/1]world going by m{{Gm}} [2/2]y window, taking my time.\n\nvvvv[Couplet 4] \n {{Dm}} [1/1]When I wake up early in the{{Gm}} [1/1] morning            \n {{F}} [1/2]Lift my{{A#}} [1/2] head                                              \n {{F}} [1/2]I'm still{{A7}} [1/2] yawning                             \n {{Dm}} [1/1]When I'm in the middle of a {{Gm}} [1/1]dream              \n {{F}} [1/2]Stay in{{A#}} [1/2] bed                                     \n {{F}} [1/2]Float u{{A#}} [1/2]pstre{{Gm}} [1/1]am                                     \n Pl{{F}} [1/1]ease, don't wake me                               \n {{Gm}} [1/1]No,don't shake me                                   \n {{Am}} [1/1]Leave me where {{Gm}} [1/1]I am                                       \n I'm only sl{{A#maj7}} [2/2]eeping...   \n\npppp[Chorus ]\n   {{Dm}} [2/2]\n\n<link rel=\"Only\" href=\"songs/multimedia/mp4K/i-m only sleeping.mp4\">",
+  "recommendedCapo": "1",
+  "bpm": "",
+  "liste": "tri matelots",
+  "tuto": "https://youtu.be/Bt4EZ2ZID9g?si=uLwiG6TK_XsG6uaM",
+  "tuto_embed": true,
+  "kfn": "https://youtu.be/9Cep4U8SgZI?si=s2UbYmpc2A9RUjkY",
+  "kfn_embed": true,
+  "ok": true,
+  "karaokeTimestamps": [
+    {
+      "key": "1_0",
+      "lineIndex": 1,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 0.509905
+    },
+    {
+      "key": "1_1",
+      "lineIndex": 1,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 2.787583
+    },
+    {
+      "key": "2_0",
+      "lineIndex": 2,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 5.101409
+    },
+    {
+      "key": "2_1",
+      "lineIndex": 2,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 6.143474
+    },
+    {
+      "key": "3_0",
+      "lineIndex": 3,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 7.397321
+    },
+    {
+      "key": "3_1",
+      "lineIndex": 3,
+      "chordIndex": 1,
+      "chord": "A7",
+      "time": 8.488402
+    },
+    {
+      "key": "4_0",
+      "lineIndex": 4,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 9.703651
+    },
+    {
+      "key": "4_1",
+      "lineIndex": 4,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 12.010587
+    },
+    {
+      "key": "5_0",
+      "lineIndex": 5,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 14.361471
+    },
+    {
+      "key": "5_1",
+      "lineIndex": 5,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 15.427085
+    },
+    {
+      "key": "6_0",
+      "lineIndex": 6,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 16.655257
+    },
+    {
+      "key": "6_1",
+      "lineIndex": 6,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 17.788025
+    },
+    {
+      "key": "6_2",
+      "lineIndex": 6,
+      "chordIndex": 2,
+      "chord": "Gm",
+      "time": 18.931872
+    },
+    {
+      "key": "7_0",
+      "lineIndex": 7,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 21.323746
+    },
+    {
+      "key": "8_0",
+      "lineIndex": 8,
+      "chordIndex": 0,
+      "chord": "Gm",
+      "time": 23.64272
+    },
+    {
+      "key": "9_0",
+      "lineIndex": 9,
+      "chordIndex": 0,
+      "chord": "Am",
+      "time": 25.959497
+    },
+    {
+      "key": "9_1",
+      "lineIndex": 9,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 28.221574
+    },
+    {
+      "key": "10_0",
+      "lineIndex": 10,
+      "chordIndex": 0,
+      "chord": "A#maj7",
+      "time": 30.556859
+    },
+    {
+      "key": "17_0",
+      "lineIndex": 17,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 35.082342
+    },
+    {
+      "key": "17_1",
+      "lineIndex": 17,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 37.530849
+    },
+    {
+      "key": "18_0",
+      "lineIndex": 18,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 39.865847
+    },
+    {
+      "key": "18_1",
+      "lineIndex": 18,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 40.923422
+    },
+    {
+      "key": "19_0",
+      "lineIndex": 19,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 42.155878
+    },
+    {
+      "key": "19_1",
+      "lineIndex": 19,
+      "chordIndex": 1,
+      "chord": "A7",
+      "time": 43.260088
+    },
+    {
+      "key": "20_0",
+      "lineIndex": 20,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 44.475655
+    },
+    {
+      "key": "20_1",
+      "lineIndex": 20,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 46.79796
+    },
+    {
+      "key": "21_0",
+      "lineIndex": 21,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 49.156554
+    },
+    {
+      "key": "21_1",
+      "lineIndex": 21,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 50.225813
+    },
+    {
+      "key": "22_0",
+      "lineIndex": 22,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 51.456138
+    },
+    {
+      "key": "22_1",
+      "lineIndex": 22,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 52.558399
+    },
+    {
+      "key": "22_2",
+      "lineIndex": 22,
+      "chordIndex": 2,
+      "chord": "Gm",
+      "time": 53.77456
+    },
+    {
+      "key": "23_0",
+      "lineIndex": 23,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 56.09418
+    },
+    {
+      "key": "23_1",
+      "lineIndex": 23,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 58.316099
+    },
+    {
+      "key": "24_0",
+      "lineIndex": 24,
+      "chordIndex": 0,
+      "chord": "Am",
+      "time": 60.599536
+    },
+    {
+      "key": "25_0",
+      "lineIndex": 25,
+      "chordIndex": 0,
+      "chord": "Gm",
+      "time": 63.002732
+    },
+    {
+      "key": "26_0",
+      "lineIndex": 26,
+      "chordIndex": 0,
+      "chord": "A#maj7",
+      "time": 65.345793
+    },
+    {
+      "key": "29_0",
+      "lineIndex": 29,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 70.028655
+    },
+    {
+      "key": "33_0",
+      "lineIndex": 33,
+      "chordIndex": 0,
+      "chord": "Cm7",
+      "time": 74.694812
+    },
+    {
+      "key": "33_1",
+      "lineIndex": 33,
+      "chordIndex": 1,
+      "chord": "D7",
+      "time": 77.056365
+    },
+    {
+      "key": "33_2",
+      "lineIndex": 33,
+      "chordIndex": 2,
+      "chord": "Gm",
+      "time": 79.292495
+    },
+    {
+      "key": "36_0",
+      "lineIndex": 36,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 84.002863
+    },
+    {
+      "key": "36_1",
+      "lineIndex": 36,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 86.327857
+    },
+    {
+      "key": "37_0",
+      "lineIndex": 37,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 88.825622
+    },
+    {
+      "key": "37_1",
+      "lineIndex": 37,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 89.532172
+    },
+    {
+      "key": "38_0",
+      "lineIndex": 38,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 90.97084
+    },
+    {
+      "key": "38_1",
+      "lineIndex": 38,
+      "chordIndex": 1,
+      "chord": "A7",
+      "time": 91.995881
+    },
+    {
+      "key": "39_0",
+      "lineIndex": 39,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 93.245325
+    },
+    {
+      "key": "39_1",
+      "lineIndex": 39,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 95.593789
+    },
+    {
+      "key": "40_0",
+      "lineIndex": 40,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 97.9085
+    },
+    {
+      "key": "40_1",
+      "lineIndex": 40,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 99.043724
+    },
+    {
+      "key": "41_0",
+      "lineIndex": 41,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 100.21069
+    },
+    {
+      "key": "41_1",
+      "lineIndex": 41,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 101.354082
+    },
+    {
+      "key": "41_2",
+      "lineIndex": 41,
+      "chordIndex": 2,
+      "chord": "Gm",
+      "time": 102.610537
+    },
+    {
+      "key": "42_0",
+      "lineIndex": 42,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 104.891103
+    },
+    {
+      "key": "42_1",
+      "lineIndex": 42,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 107.294464
+    },
+    {
+      "key": "43_0",
+      "lineIndex": 43,
+      "chordIndex": 0,
+      "chord": "Am",
+      "time": 109.617776
+    },
+    {
+      "key": "44_0",
+      "lineIndex": 44,
+      "chordIndex": 0,
+      "chord": "Gm",
+      "time": 111.975075
+    },
+    {
+      "key": "45_0",
+      "lineIndex": 45,
+      "chordIndex": 0,
+      "chord": "A#maj7",
+      "time": 114.284515
+    },
+    {
+      "key": "48_0",
+      "lineIndex": 48,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 118.9206
+    },
+    {
+      "key": "52_0",
+      "lineIndex": 52,
+      "chordIndex": 0,
+      "chord": "Cm7",
+      "time": 123.715121
+    },
+    {
+      "key": "52_1",
+      "lineIndex": 52,
+      "chordIndex": 1,
+      "chord": "D7",
+      "time": 125.953344
+    },
+    {
+      "key": "52_2",
+      "lineIndex": 52,
+      "chordIndex": 2,
+      "chord": "Gm",
+      "time": 128.258265
+    },
+    {
+      "key": "55_0",
+      "lineIndex": 55,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 133.052493
+    },
+    {
+      "key": "55_1",
+      "lineIndex": 55,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 135.333687
+    },
+    {
+      "key": "56_0",
+      "lineIndex": 56,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 137.697176
+    },
+    {
+      "key": "56_1",
+      "lineIndex": 56,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 138.700504
+    },
+    {
+      "key": "57_0",
+      "lineIndex": 57,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 139.970906
+    },
+    {
+      "key": "57_1",
+      "lineIndex": 57,
+      "chordIndex": 1,
+      "chord": "A7",
+      "time": 141.0369
+    },
+    {
+      "key": "58_0",
+      "lineIndex": 58,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 142.36898
+    },
+    {
+      "key": "58_1",
+      "lineIndex": 58,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 144.661345
+    },
+    {
+      "key": "59_0",
+      "lineIndex": 59,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 146.944942
+    },
+    {
+      "key": "59_1",
+      "lineIndex": 59,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 148.024463
+    },
+    {
+      "key": "60_0",
+      "lineIndex": 60,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 149.28691
+    },
+    {
+      "key": "60_1",
+      "lineIndex": 60,
+      "chordIndex": 1,
+      "chord": "A#",
+      "time": 150.415406
+    },
+    {
+      "key": "60_2",
+      "lineIndex": 60,
+      "chordIndex": 2,
+      "chord": "Gm",
+      "time": 152.60636
+    },
+    {
+      "key": "61_0",
+      "lineIndex": 61,
+      "chordIndex": 0,
+      "chord": "F",
+      "time": 153.992021
+    },
+    {
+      "key": "62_0",
+      "lineIndex": 62,
+      "chordIndex": 0,
+      "chord": "Gm",
+      "time": 156.316673
+    },
+    {
+      "key": "63_0",
+      "lineIndex": 63,
+      "chordIndex": 0,
+      "chord": "Am",
+      "time": 158.672073
+    },
+    {
+      "key": "63_1",
+      "lineIndex": 63,
+      "chordIndex": 1,
+      "chord": "Gm",
+      "time": 160.992328
+    },
+    {
+      "key": "64_0",
+      "lineIndex": 64,
+      "chordIndex": 0,
+      "chord": "A#maj7",
+      "time": 163.384285
+    },
+    {
+      "key": "67_0",
+      "lineIndex": 67,
+      "chordIndex": 0,
+      "chord": "Dm",
+      "time": 168.212734
+    }
+  ]
+}

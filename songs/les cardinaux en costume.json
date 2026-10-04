@@ -1,0 +1,2326 @@
+{
+  "title": "Les Cardinaux en Costume",
+  "artist": "Francis Cabrel",
+  "capo": "2",
+  "content": "vvvv[couplet 1]\n{{Em}}  Magyd dort dans la lu{{Cmaj7}}[|]mière\n{{D2}}  Celle des phares et du {{C(add9)}}périph\n{{Em}}  Une joue contre la t{{Cmaj7}}erre\n{{D2}}  Une main sur son {{C(add9)}}canif\n{{G6}}  Qu'un homme dorme sur le b{{D}}it[|]ume\n ça n{{Cmaj7}}'a pas l'air d'in[|]quie[|]ter{{B7}}\n{{Em}}  les cardinaux en cos{{Cmaj7}}[|]tumes\n{{D2}}  Derrière les vitres t{{C(add9)}}ein[|]tées       {{C(add9)}}\n \nvvvv[couplet 2] \n{{Em}}  Et Sabrina qui se {{Cmaj7}}cache\n Et qui espère {{D2}}autre chose pour sa {{C(add9)}}fille\n{{Em}}  Que cet argent qu'elle{{Cmaj7}} arrache\n Des {{D2}}mains de ceux qui la désh{{C(add9)}}abille\n{{G6}}  Elle augmente le {{D}}volume\n Pour {{Cmaj7}}ne pas savoir qui ils sont{{B7}}\n{{Em}}  Des cardinaux en cos{{Cmaj7}}tume\n{{D2}}  et des donneurs de le{{C(add9)}}çons          {{C(add9)}}\n \nrrrr[refrain 1] \n{{G6}}  Que vida !{{D2}} Que triste !\n{{C(add9)}}  De que pais se tra{{D2}}ta\n{{G6}}  Del mio, n{{A(sus2)}}o...\n{{C}}  Del mio no se puede\n {{G6}} Que vida,{{D2}} que triste {{A(sus2)}}!...\n \nvvvv[couplet 3] \n{{Em}}  Et Mamadou qu'on tran{{Cmaj7}}sfère\n{{D2}}  A l'arrière de l'{{C(add9)}}avion\n{{Em}}  Vers un endroit de la {{Cmaj7}}terre\n{{D2}}  Qu'il ne connait que de{{C(add9)}} nom\n{{G6}}  Lui léger comme une p{{D}}lume\n Malhe{{Cmaj7}}ureux comme un enfant    {{B7}}\n{{Em}}  Des cardinaux en cos{{Cmaj7}}tume\n{{D2}}  Sur les sièges de dev{{C(add9)}}ant           {{C(add9)}}\n \nvvvv[couplet 4] \n{{Em}}  N'Guyen la clandestin{{Cmaj7}}e\n{{D2}}  D'elle, on n'a aucune {{C(add9)}}trace\n{{Em}}  Venue coudre à la mach{{Cmaj7}}ine\n{{D2}}  Celle qui tombe, on la remp{{C(add9)}}lace\n{{G6}}  C'est pour du potage qui {{D}}fume\n C'est{{Cmaj7}} payé au rendement       {{B7}}\n{{Em}}  Pour les robes et les cos{{Cmaj7}}tumes\n{{D2}}  des cardinaux impatie{{C(add9)}}nts           {{C(add9)}}\n \nrrrr[refrain 2] \n{{G6}}  Que vida !{{D2}} Que triste !\n{{C(add9)}}  De que pais se {{D2}}trata\n{{G6}}  Del mio, no{{A(sus2)}}...\n{{C}}  Del mio n{{D2}}o se puede\n{{G6}}  Que vida{{D2}}, que triste {{A(sus2)}}!...\n \nvvvv[couplet 5] \n{{Em}}  N'Guyen la clande{{Cmaj7}}stine\n{{D2}}  Et Mamadou qu'on trans{{C(add9)}}fère\n{{Em}}  Et Sabrina qui ta{{Cmaj7}}pine\n{{D2}}  Et ce Magyd qui dort p{{C(add9)}}ar terre\n{{G6}}  Quand la salle se rallume{{D}}\n Le mo{{Cmaj7}}nde sort en silence      {{B7}}\n{{Em}}  Les cardinaux en costume{{Cmaj7}}\n {{D2}}N'étaient pas à la séan{{C(add9)}}ce            {{C(add9)}}\n \nrrrr[refrain 3] \n {{G6}}Que vida !{{D2}} Que triste !\n {{C(add9)}}De que pais {{D2}}se trata\n{{G6}}  Del mio, no{{A(sus2)}}...\n{{C}}  Del mio n{{D2}}o se puede\n {{G6}}Que vida, {{D2}}que triste !{{A(sus2)}}...\n\nrrrr[ refrain fin] \n {{G6}}Que vida !{{D2}} Que triste !\n {{C(add9)}}De que pais {{D2}}se trata\n{{G6}}  Del mio, no{{A(sus2)}}...\n{{C}}  Del mio n{{D2}}o se puede\n {{G6}}Que vida, {{D2}}que triste !{{A(sus2)}}...\n\n[04:14.12]",
+  "recommendedCapo": "",
+  "bpm": "",
+  "timeSig": "4/4",
+  "liste": "philou propal, Accoustique Phil",
+  "tuto": "https://youtu.be/bZOWcO8_OaE?si=r8e9i70ZOr13a1tF",
+  "tuto_embed": true,
+  "wordTimestamps": [
+    {
+      "key": "1_0",
+      "lineIndex": 1,
+      "wordIndex": 0,
+      "word": "Magyd",
+      "time": 12.33,
+      "source": "lrc"
+    },
+    {
+      "key": "1_1",
+      "lineIndex": 1,
+      "wordIndex": 1,
+      "word": "dort",
+      "time": 12.7485,
+      "source": "lrc"
+    },
+    {
+      "key": "1_2",
+      "lineIndex": 1,
+      "wordIndex": 2,
+      "word": "dans",
+      "time": 13.167,
+      "source": "lrc"
+    },
+    {
+      "key": "1_3",
+      "lineIndex": 1,
+      "wordIndex": 3,
+      "word": "la",
+      "time": 13.5855,
+      "source": "lrc"
+    },
+    {
+      "key": "1_4",
+      "lineIndex": 1,
+      "wordIndex": 4,
+      "word": "lu",
+      "time": 14.004,
+      "source": "lrc"
+    },
+    {
+      "key": "1_4",
+      "lineIndex": 1,
+      "wordIndex": 4,
+      "word": "mière",
+      "time": 14.4225,
+      "source": "lrc"
+    },
+    {
+      "key": "2_0",
+      "lineIndex": 2,
+      "wordIndex": 0,
+      "word": "Celle",
+      "time": 15.12,
+      "source": "lrc"
+    },
+    {
+      "key": "2_1",
+      "lineIndex": 2,
+      "wordIndex": 1,
+      "word": "des",
+      "time": 15.798,
+      "source": "lrc"
+    },
+    {
+      "key": "2_2",
+      "lineIndex": 2,
+      "wordIndex": 2,
+      "word": "phares",
+      "time": 16.476,
+      "source": "lrc"
+    },
+    {
+      "key": "2_3",
+      "lineIndex": 2,
+      "wordIndex": 3,
+      "word": "et",
+      "time": 17.154,
+      "source": "lrc"
+    },
+    {
+      "key": "2_4",
+      "lineIndex": 2,
+      "wordIndex": 4,
+      "word": "du",
+      "time": 17.832,
+      "source": "lrc"
+    },
+    {
+      "key": "2_5",
+      "lineIndex": 2,
+      "wordIndex": 5,
+      "word": "périph",
+      "time": 18.51,
+      "source": "lrc"
+    },
+    {
+      "key": "3_0",
+      "lineIndex": 3,
+      "wordIndex": 0,
+      "word": "Une",
+      "time": 19.64,
+      "source": "lrc"
+    },
+    {
+      "key": "3_1",
+      "lineIndex": 3,
+      "wordIndex": 1,
+      "word": "joue",
+      "time": 20.1908,
+      "source": "lrc"
+    },
+    {
+      "key": "3_2",
+      "lineIndex": 3,
+      "wordIndex": 2,
+      "word": "contre",
+      "time": 20.741600000000002,
+      "source": "lrc"
+    },
+    {
+      "key": "3_3",
+      "lineIndex": 3,
+      "wordIndex": 3,
+      "word": "la",
+      "time": 21.2924,
+      "source": "lrc"
+    },
+    {
+      "key": "3_4",
+      "lineIndex": 3,
+      "wordIndex": 4,
+      "word": "terre",
+      "time": 21.8432,
+      "source": "lrc"
+    },
+    {
+      "key": "4_0",
+      "lineIndex": 4,
+      "wordIndex": 0,
+      "word": "Une",
+      "time": 22.7,
+      "source": "lrc"
+    },
+    {
+      "key": "4_1",
+      "lineIndex": 4,
+      "wordIndex": 1,
+      "word": "main",
+      "time": 23.419999999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "4_2",
+      "lineIndex": 4,
+      "wordIndex": 2,
+      "word": "sur",
+      "time": 24.14,
+      "source": "lrc"
+    },
+    {
+      "key": "4_3",
+      "lineIndex": 4,
+      "wordIndex": 3,
+      "word": "son",
+      "time": 24.86,
+      "source": "lrc"
+    },
+    {
+      "key": "4_4",
+      "lineIndex": 4,
+      "wordIndex": 4,
+      "word": "canif",
+      "time": 25.58,
+      "source": "lrc"
+    },
+    {
+      "key": "5_0",
+      "lineIndex": 5,
+      "wordIndex": 0,
+      "word": "Qu'un",
+      "time": 26.7,
+      "source": "lrc"
+    },
+    {
+      "key": "5_1",
+      "lineIndex": 5,
+      "wordIndex": 1,
+      "word": "homme",
+      "time": 27.099857142857143,
+      "source": "lrc"
+    },
+    {
+      "key": "5_2",
+      "lineIndex": 5,
+      "wordIndex": 2,
+      "word": "dorme",
+      "time": 27.499714285714283,
+      "source": "lrc"
+    },
+    {
+      "key": "5_3",
+      "lineIndex": 5,
+      "wordIndex": 3,
+      "word": "sur",
+      "time": 27.899571428571427,
+      "source": "lrc"
+    },
+    {
+      "key": "5_4",
+      "lineIndex": 5,
+      "wordIndex": 4,
+      "word": "le",
+      "time": 28.29942857142857,
+      "source": "lrc"
+    },
+    {
+      "key": "5_5",
+      "lineIndex": 5,
+      "wordIndex": 5,
+      "word": "bit",
+      "time": 28.699285714285715,
+      "source": "lrc"
+    },
+    {
+      "key": "5_5",
+      "lineIndex": 5,
+      "wordIndex": 5,
+      "word": "ume",
+      "time": 29.099142857142855,
+      "source": "lrc"
+    },
+    {
+      "key": "6_0",
+      "lineIndex": 6,
+      "wordIndex": 0,
+      "word": "ça",
+      "time": 29.81,
+      "source": "lrc"
+    },
+    {
+      "key": "6_1",
+      "lineIndex": 6,
+      "wordIndex": 1,
+      "word": "n'a",
+      "time": 30.351285714285712,
+      "source": "lrc"
+    },
+    {
+      "key": "6_2",
+      "lineIndex": 6,
+      "wordIndex": 2,
+      "word": "pas",
+      "time": 30.89257142857143,
+      "source": "lrc"
+    },
+    {
+      "key": "6_3",
+      "lineIndex": 6,
+      "wordIndex": 3,
+      "word": "l'air",
+      "time": 31.433857142857143,
+      "source": "lrc"
+    },
+    {
+      "key": "6_4",
+      "lineIndex": 6,
+      "wordIndex": 4,
+      "word": "d'in",
+      "time": 31.975142857142856,
+      "source": "lrc"
+    },
+    {
+      "key": "6_4",
+      "lineIndex": 6,
+      "wordIndex": 4,
+      "word": "quie",
+      "time": 32.51642857142857,
+      "source": "lrc"
+    },
+    {
+      "key": "6_4",
+      "lineIndex": 6,
+      "wordIndex": 4,
+      "word": "ter",
+      "time": 33.05771428571429,
+      "source": "lrc"
+    },
+    {
+      "key": "7_0",
+      "lineIndex": 7,
+      "wordIndex": 0,
+      "word": "les",
+      "time": 34.02,
+      "source": "lrc"
+    },
+    {
+      "key": "7_1",
+      "lineIndex": 7,
+      "wordIndex": 1,
+      "word": "cardinaux",
+      "time": 34.52760000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "7_2",
+      "lineIndex": 7,
+      "wordIndex": 2,
+      "word": "en",
+      "time": 35.0352,
+      "source": "lrc"
+    },
+    {
+      "key": "7_3",
+      "lineIndex": 7,
+      "wordIndex": 3,
+      "word": "cos",
+      "time": 35.5428,
+      "source": "lrc"
+    },
+    {
+      "key": "7_3",
+      "lineIndex": 7,
+      "wordIndex": 3,
+      "word": "tumes",
+      "time": 36.0504,
+      "source": "lrc"
+    },
+    {
+      "key": "8_0",
+      "lineIndex": 8,
+      "wordIndex": 0,
+      "word": "Derrière",
+      "time": 36.84,
+      "source": "lrc"
+    },
+    {
+      "key": "8_1",
+      "lineIndex": 8,
+      "wordIndex": 1,
+      "word": "les",
+      "time": 38.127,
+      "source": "lrc"
+    },
+    {
+      "key": "8_2",
+      "lineIndex": 8,
+      "wordIndex": 2,
+      "word": "vitres",
+      "time": 39.414,
+      "source": "lrc"
+    },
+    {
+      "key": "8_3",
+      "lineIndex": 8,
+      "wordIndex": 3,
+      "word": "tein",
+      "time": 40.701,
+      "source": "lrc"
+    },
+    {
+      "key": "8_3",
+      "lineIndex": 8,
+      "wordIndex": 3,
+      "word": "tées",
+      "time": 41.988,
+      "source": "lrc"
+    },
+    {
+      "key": "11_0",
+      "lineIndex": 11,
+      "wordIndex": 0,
+      "word": "Et",
+      "time": 43.99,
+      "source": "lrc"
+    },
+    {
+      "key": "11_1",
+      "lineIndex": 11,
+      "wordIndex": 1,
+      "word": "Sabrina",
+      "time": 44.3842,
+      "source": "lrc"
+    },
+    {
+      "key": "11_2",
+      "lineIndex": 11,
+      "wordIndex": 2,
+      "word": "qui",
+      "time": 44.7784,
+      "source": "lrc"
+    },
+    {
+      "key": "11_3",
+      "lineIndex": 11,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 45.1726,
+      "source": "lrc"
+    },
+    {
+      "key": "11_4",
+      "lineIndex": 11,
+      "wordIndex": 4,
+      "word": "cache",
+      "time": 45.5668,
+      "source": "lrc"
+    },
+    {
+      "key": "12_0",
+      "lineIndex": 12,
+      "wordIndex": 0,
+      "word": "Et",
+      "time": 46.18,
+      "source": "lrc"
+    },
+    {
+      "key": "12_1",
+      "lineIndex": 12,
+      "wordIndex": 1,
+      "word": "qui",
+      "time": 46.775125,
+      "source": "lrc"
+    },
+    {
+      "key": "12_2",
+      "lineIndex": 12,
+      "wordIndex": 2,
+      "word": "espère",
+      "time": 47.37025,
+      "source": "lrc"
+    },
+    {
+      "key": "12_3",
+      "lineIndex": 12,
+      "wordIndex": 3,
+      "word": "autre",
+      "time": 47.965375,
+      "source": "lrc"
+    },
+    {
+      "key": "12_4",
+      "lineIndex": 12,
+      "wordIndex": 4,
+      "word": "chose",
+      "time": 48.5605,
+      "source": "lrc"
+    },
+    {
+      "key": "12_5",
+      "lineIndex": 12,
+      "wordIndex": 5,
+      "word": "pour",
+      "time": 49.155625,
+      "source": "lrc"
+    },
+    {
+      "key": "12_6",
+      "lineIndex": 12,
+      "wordIndex": 6,
+      "word": "sa",
+      "time": 49.75075,
+      "source": "lrc"
+    },
+    {
+      "key": "12_7",
+      "lineIndex": 12,
+      "wordIndex": 7,
+      "word": "fille",
+      "time": 50.345875,
+      "source": "lrc"
+    },
+    {
+      "key": "13_0",
+      "lineIndex": 13,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 51.47,
+      "source": "lrc"
+    },
+    {
+      "key": "13_1",
+      "lineIndex": 13,
+      "wordIndex": 1,
+      "word": "cet",
+      "time": 51.7904,
+      "source": "lrc"
+    },
+    {
+      "key": "13_2",
+      "lineIndex": 13,
+      "wordIndex": 2,
+      "word": "argent",
+      "time": 52.1108,
+      "source": "lrc"
+    },
+    {
+      "key": "13_3",
+      "lineIndex": 13,
+      "wordIndex": 3,
+      "word": "qu'elle",
+      "time": 52.4312,
+      "source": "lrc"
+    },
+    {
+      "key": "13_4",
+      "lineIndex": 13,
+      "wordIndex": 4,
+      "word": "arrache",
+      "time": 52.751599999999996,
+      "source": "lrc"
+    },
+    {
+      "key": "14_0",
+      "lineIndex": 14,
+      "wordIndex": 0,
+      "word": "Des",
+      "time": 53.25,
+      "source": "lrc"
+    },
+    {
+      "key": "14_1",
+      "lineIndex": 14,
+      "wordIndex": 1,
+      "word": "mains",
+      "time": 53.96357142857143,
+      "source": "lrc"
+    },
+    {
+      "key": "14_2",
+      "lineIndex": 14,
+      "wordIndex": 2,
+      "word": "de",
+      "time": 54.677142857142854,
+      "source": "lrc"
+    },
+    {
+      "key": "14_3",
+      "lineIndex": 14,
+      "wordIndex": 3,
+      "word": "ceux",
+      "time": 55.39071428571428,
+      "source": "lrc"
+    },
+    {
+      "key": "14_4",
+      "lineIndex": 14,
+      "wordIndex": 4,
+      "word": "qui",
+      "time": 56.104285714285716,
+      "source": "lrc"
+    },
+    {
+      "key": "14_5",
+      "lineIndex": 14,
+      "wordIndex": 5,
+      "word": "la",
+      "time": 56.81785714285714,
+      "source": "lrc"
+    },
+    {
+      "key": "14_6",
+      "lineIndex": 14,
+      "wordIndex": 6,
+      "word": "déshabille",
+      "time": 57.53142857142857,
+      "source": "lrc"
+    },
+    {
+      "key": "15_0",
+      "lineIndex": 15,
+      "wordIndex": 0,
+      "word": "Elle",
+      "time": 58.8,
+      "source": "lrc"
+    },
+    {
+      "key": "15_1",
+      "lineIndex": 15,
+      "wordIndex": 1,
+      "word": "augmente",
+      "time": 59.27925,
+      "source": "lrc"
+    },
+    {
+      "key": "15_2",
+      "lineIndex": 15,
+      "wordIndex": 2,
+      "word": "le",
+      "time": 59.7585,
+      "source": "lrc"
+    },
+    {
+      "key": "15_3",
+      "lineIndex": 15,
+      "wordIndex": 3,
+      "word": "volume",
+      "time": 60.23775,
+      "source": "lrc"
+    },
+    {
+      "key": "16_0",
+      "lineIndex": 16,
+      "wordIndex": 0,
+      "word": "Pour",
+      "time": 60.93,
+      "source": "lrc"
+    },
+    {
+      "key": "16_1",
+      "lineIndex": 16,
+      "wordIndex": 1,
+      "word": "ne",
+      "time": 61.56128571428572,
+      "source": "lrc"
+    },
+    {
+      "key": "16_2",
+      "lineIndex": 16,
+      "wordIndex": 2,
+      "word": "pas",
+      "time": 62.192571428571426,
+      "source": "lrc"
+    },
+    {
+      "key": "16_3",
+      "lineIndex": 16,
+      "wordIndex": 3,
+      "word": "savoir",
+      "time": 62.82385714285714,
+      "source": "lrc"
+    },
+    {
+      "key": "16_4",
+      "lineIndex": 16,
+      "wordIndex": 4,
+      "word": "qui",
+      "time": 63.45514285714286,
+      "source": "lrc"
+    },
+    {
+      "key": "16_5",
+      "lineIndex": 16,
+      "wordIndex": 5,
+      "word": "ils",
+      "time": 64.08642857142857,
+      "source": "lrc"
+    },
+    {
+      "key": "16_6",
+      "lineIndex": 16,
+      "wordIndex": 6,
+      "word": "sont",
+      "time": 64.7177142857143,
+      "source": "lrc"
+    },
+    {
+      "key": "17_0",
+      "lineIndex": 17,
+      "wordIndex": 0,
+      "word": "Des",
+      "time": 65.84,
+      "source": "lrc"
+    },
+    {
+      "key": "17_1",
+      "lineIndex": 17,
+      "wordIndex": 1,
+      "word": "cardinaux",
+      "time": 66.51950000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "17_2",
+      "lineIndex": 17,
+      "wordIndex": 2,
+      "word": "en",
+      "time": 67.199,
+      "source": "lrc"
+    },
+    {
+      "key": "17_3",
+      "lineIndex": 17,
+      "wordIndex": 3,
+      "word": "costume",
+      "time": 67.8785,
+      "source": "lrc"
+    },
+    {
+      "key": "18_0",
+      "lineIndex": 18,
+      "wordIndex": 0,
+      "word": "et",
+      "time": 68.86,
+      "source": "lrc"
+    },
+    {
+      "key": "18_1",
+      "lineIndex": 18,
+      "wordIndex": 1,
+      "word": "des",
+      "time": 70.1434,
+      "source": "lrc"
+    },
+    {
+      "key": "18_2",
+      "lineIndex": 18,
+      "wordIndex": 2,
+      "word": "donneurs",
+      "time": 71.4268,
+      "source": "lrc"
+    },
+    {
+      "key": "18_3",
+      "lineIndex": 18,
+      "wordIndex": 3,
+      "word": "de",
+      "time": 72.7102,
+      "source": "lrc"
+    },
+    {
+      "key": "18_4",
+      "lineIndex": 18,
+      "wordIndex": 4,
+      "word": "leçons",
+      "time": 73.9936,
+      "source": "lrc"
+    },
+    {
+      "key": "21_0",
+      "lineIndex": 21,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 75.99,
+      "source": "lrc"
+    },
+    {
+      "key": "21_1",
+      "lineIndex": 21,
+      "wordIndex": 1,
+      "word": "vida",
+      "time": 76.8,
+      "source": "lrc"
+    },
+    {
+      "key": "21_2",
+      "lineIndex": 21,
+      "wordIndex": 2,
+      "word": "Que",
+      "time": 77.61,
+      "source": "lrc"
+    },
+    {
+      "key": "21_3",
+      "lineIndex": 21,
+      "wordIndex": 3,
+      "word": "triste !",
+      "time": 78.42,
+      "source": "lrc"
+    },
+    {
+      "key": "22_0",
+      "lineIndex": 22,
+      "wordIndex": 0,
+      "word": "De",
+      "time": 79.59,
+      "source": "lrc"
+    },
+    {
+      "key": "22_1",
+      "lineIndex": 22,
+      "wordIndex": 1,
+      "word": "que",
+      "time": 79.9518,
+      "source": "lrc"
+    },
+    {
+      "key": "22_2",
+      "lineIndex": 22,
+      "wordIndex": 2,
+      "word": "pais",
+      "time": 80.3136,
+      "source": "lrc"
+    },
+    {
+      "key": "22_3",
+      "lineIndex": 22,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 80.6754,
+      "source": "lrc"
+    },
+    {
+      "key": "22_4",
+      "lineIndex": 22,
+      "wordIndex": 4,
+      "word": "trata",
+      "time": 81.0372,
+      "source": "lrc"
+    },
+    {
+      "key": "23_0",
+      "lineIndex": 23,
+      "wordIndex": 0,
+      "word": "Del",
+      "time": 81.6,
+      "source": "lrc"
+    },
+    {
+      "key": "23_1",
+      "lineIndex": 23,
+      "wordIndex": 1,
+      "word": "mio,",
+      "time": 83.097,
+      "source": "lrc"
+    },
+    {
+      "key": "23_2",
+      "lineIndex": 23,
+      "wordIndex": 2,
+      "word": "no...",
+      "time": 84.594,
+      "source": "lrc"
+    },
+    {
+      "key": "24_0",
+      "lineIndex": 24,
+      "wordIndex": 0,
+      "word": "Del",
+      "time": 86.59,
+      "source": "lrc"
+    },
+    {
+      "key": "24_1",
+      "lineIndex": 24,
+      "wordIndex": 1,
+      "word": "mio",
+      "time": 87.01660000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "24_2",
+      "lineIndex": 24,
+      "wordIndex": 2,
+      "word": "no",
+      "time": 87.4432,
+      "source": "lrc"
+    },
+    {
+      "key": "24_3",
+      "lineIndex": 24,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 87.86980000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "24_4",
+      "lineIndex": 24,
+      "wordIndex": 4,
+      "word": "puede",
+      "time": 88.2964,
+      "source": "lrc"
+    },
+    {
+      "key": "25_0",
+      "lineIndex": 25,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 88.96000000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "25_1",
+      "lineIndex": 25,
+      "wordIndex": 1,
+      "word": "vida,",
+      "time": 90.95800000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "25_2",
+      "lineIndex": 25,
+      "wordIndex": 2,
+      "word": "que",
+      "time": 92.956,
+      "source": "lrc"
+    },
+    {
+      "key": "25_3",
+      "lineIndex": 25,
+      "wordIndex": 3,
+      "word": "triste !...",
+      "time": 94.95400000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "28_0",
+      "lineIndex": 28,
+      "wordIndex": 0,
+      "word": "Et",
+      "time": 97.84,
+      "source": "lrc"
+    },
+    {
+      "key": "28_1",
+      "lineIndex": 28,
+      "wordIndex": 1,
+      "word": "Mamadou",
+      "time": 98.48125,
+      "source": "lrc"
+    },
+    {
+      "key": "28_2",
+      "lineIndex": 28,
+      "wordIndex": 2,
+      "word": "qu'on",
+      "time": 99.1225,
+      "source": "lrc"
+    },
+    {
+      "key": "28_3",
+      "lineIndex": 28,
+      "wordIndex": 3,
+      "word": "transfère",
+      "time": 99.76375,
+      "source": "lrc"
+    },
+    {
+      "key": "29_0",
+      "lineIndex": 29,
+      "wordIndex": 0,
+      "word": "A",
+      "time": 100.69,
+      "source": "lrc"
+    },
+    {
+      "key": "29_1",
+      "lineIndex": 29,
+      "wordIndex": 1,
+      "word": "l'arrière",
+      "time": 101.6575,
+      "source": "lrc"
+    },
+    {
+      "key": "29_2",
+      "lineIndex": 29,
+      "wordIndex": 2,
+      "word": "de",
+      "time": 102.625,
+      "source": "lrc"
+    },
+    {
+      "key": "29_3",
+      "lineIndex": 29,
+      "wordIndex": 3,
+      "word": "l'avion",
+      "time": 103.5925,
+      "source": "lrc"
+    },
+    {
+      "key": "30_0",
+      "lineIndex": 30,
+      "wordIndex": 0,
+      "word": "Vers",
+      "time": 104.99000000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "30_1",
+      "lineIndex": 30,
+      "wordIndex": 1,
+      "word": "un",
+      "time": 105.41600000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "30_2",
+      "lineIndex": 30,
+      "wordIndex": 2,
+      "word": "endroit",
+      "time": 105.84200000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "30_3",
+      "lineIndex": 30,
+      "wordIndex": 3,
+      "word": "de",
+      "time": 106.268,
+      "source": "lrc"
+    },
+    {
+      "key": "30_4",
+      "lineIndex": 30,
+      "wordIndex": 4,
+      "word": "la",
+      "time": 106.694,
+      "source": "lrc"
+    },
+    {
+      "key": "30_5",
+      "lineIndex": 30,
+      "wordIndex": 5,
+      "word": "terre",
+      "time": 107.12,
+      "source": "lrc"
+    },
+    {
+      "key": "31_0",
+      "lineIndex": 31,
+      "wordIndex": 0,
+      "word": "Qu'il",
+      "time": 107.83,
+      "source": "lrc"
+    },
+    {
+      "key": "31_1",
+      "lineIndex": 31,
+      "wordIndex": 1,
+      "word": "ne",
+      "time": 108.4555,
+      "source": "lrc"
+    },
+    {
+      "key": "31_2",
+      "lineIndex": 31,
+      "wordIndex": 2,
+      "word": "connait",
+      "time": 109.081,
+      "source": "lrc"
+    },
+    {
+      "key": "31_3",
+      "lineIndex": 31,
+      "wordIndex": 3,
+      "word": "que",
+      "time": 109.7065,
+      "source": "lrc"
+    },
+    {
+      "key": "31_4",
+      "lineIndex": 31,
+      "wordIndex": 4,
+      "word": "de",
+      "time": 110.332,
+      "source": "lrc"
+    },
+    {
+      "key": "31_5",
+      "lineIndex": 31,
+      "wordIndex": 5,
+      "word": "nom",
+      "time": 110.9575,
+      "source": "lrc"
+    },
+    {
+      "key": "32_0",
+      "lineIndex": 32,
+      "wordIndex": 0,
+      "word": "Lui",
+      "time": 112,
+      "source": "lrc"
+    },
+    {
+      "key": "32_1",
+      "lineIndex": 32,
+      "wordIndex": 1,
+      "word": "léger",
+      "time": 112.5688,
+      "source": "lrc"
+    },
+    {
+      "key": "32_2",
+      "lineIndex": 32,
+      "wordIndex": 2,
+      "word": "comme",
+      "time": 113.13759999999999,
+      "source": "lrc"
+    },
+    {
+      "key": "32_3",
+      "lineIndex": 32,
+      "wordIndex": 3,
+      "word": "une",
+      "time": 113.7064,
+      "source": "lrc"
+    },
+    {
+      "key": "32_4",
+      "lineIndex": 32,
+      "wordIndex": 4,
+      "word": "plume",
+      "time": 114.2752,
+      "source": "lrc"
+    },
+    {
+      "key": "33_0",
+      "lineIndex": 33,
+      "wordIndex": 0,
+      "word": "Malheureux",
+      "time": 115.16,
+      "source": "lrc"
+    },
+    {
+      "key": "33_1",
+      "lineIndex": 33,
+      "wordIndex": 1,
+      "word": "comme",
+      "time": 116.13425,
+      "source": "lrc"
+    },
+    {
+      "key": "33_2",
+      "lineIndex": 33,
+      "wordIndex": 2,
+      "word": "un",
+      "time": 117.1085,
+      "source": "lrc"
+    },
+    {
+      "key": "33_3",
+      "lineIndex": 33,
+      "wordIndex": 3,
+      "word": "enfant",
+      "time": 118.08275,
+      "source": "lrc"
+    },
+    {
+      "key": "34_0",
+      "lineIndex": 34,
+      "wordIndex": 0,
+      "word": "Des",
+      "time": 119.49000000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "34_1",
+      "lineIndex": 34,
+      "wordIndex": 1,
+      "word": "cardinaux",
+      "time": 120.11550000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "34_2",
+      "lineIndex": 34,
+      "wordIndex": 2,
+      "word": "en",
+      "time": 120.741,
+      "source": "lrc"
+    },
+    {
+      "key": "34_3",
+      "lineIndex": 34,
+      "wordIndex": 3,
+      "word": "costume",
+      "time": 121.3665,
+      "source": "lrc"
+    },
+    {
+      "key": "35_0",
+      "lineIndex": 35,
+      "wordIndex": 0,
+      "word": "Sur",
+      "time": 122.27,
+      "source": "lrc"
+    },
+    {
+      "key": "35_1",
+      "lineIndex": 35,
+      "wordIndex": 1,
+      "word": "les",
+      "time": 123.5876,
+      "source": "lrc"
+    },
+    {
+      "key": "35_2",
+      "lineIndex": 35,
+      "wordIndex": 2,
+      "word": "sièges",
+      "time": 124.9052,
+      "source": "lrc"
+    },
+    {
+      "key": "35_3",
+      "lineIndex": 35,
+      "wordIndex": 3,
+      "word": "de",
+      "time": 126.2228,
+      "source": "lrc"
+    },
+    {
+      "key": "35_4",
+      "lineIndex": 35,
+      "wordIndex": 4,
+      "word": "devant",
+      "time": 127.5404,
+      "source": "lrc"
+    },
+    {
+      "key": "38_0",
+      "lineIndex": 38,
+      "wordIndex": 0,
+      "word": "N'Guyen",
+      "time": 129.59,
+      "source": "lrc"
+    },
+    {
+      "key": "38_1",
+      "lineIndex": 38,
+      "wordIndex": 1,
+      "word": "la",
+      "time": 130.358,
+      "source": "lrc"
+    },
+    {
+      "key": "38_2",
+      "lineIndex": 38,
+      "wordIndex": 2,
+      "word": "clandestine",
+      "time": 131.126,
+      "source": "lrc"
+    },
+    {
+      "key": "39_0",
+      "lineIndex": 39,
+      "wordIndex": 0,
+      "word": "D'elle,",
+      "time": 132.15,
+      "source": "lrc"
+    },
+    {
+      "key": "39_1",
+      "lineIndex": 39,
+      "wordIndex": 1,
+      "word": "on",
+      "time": 132.969,
+      "source": "lrc"
+    },
+    {
+      "key": "39_2",
+      "lineIndex": 39,
+      "wordIndex": 2,
+      "word": "n'a",
+      "time": 133.788,
+      "source": "lrc"
+    },
+    {
+      "key": "39_3",
+      "lineIndex": 39,
+      "wordIndex": 3,
+      "word": "aucune",
+      "time": 134.607,
+      "source": "lrc"
+    },
+    {
+      "key": "39_4",
+      "lineIndex": 39,
+      "wordIndex": 4,
+      "word": "trace",
+      "time": 135.426,
+      "source": "lrc"
+    },
+    {
+      "key": "40_0",
+      "lineIndex": 40,
+      "wordIndex": 0,
+      "word": "Venue",
+      "time": 136.7,
+      "source": "lrc"
+    },
+    {
+      "key": "40_1",
+      "lineIndex": 40,
+      "wordIndex": 1,
+      "word": "coudre",
+      "time": 137.16979999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "40_2",
+      "lineIndex": 40,
+      "wordIndex": 2,
+      "word": "à",
+      "time": 137.6396,
+      "source": "lrc"
+    },
+    {
+      "key": "40_3",
+      "lineIndex": 40,
+      "wordIndex": 3,
+      "word": "la",
+      "time": 138.1094,
+      "source": "lrc"
+    },
+    {
+      "key": "40_4",
+      "lineIndex": 40,
+      "wordIndex": 4,
+      "word": "machine",
+      "time": 138.5792,
+      "source": "lrc"
+    },
+    {
+      "key": "41_0",
+      "lineIndex": 41,
+      "wordIndex": 0,
+      "word": "Celle",
+      "time": 139.31,
+      "source": "lrc"
+    },
+    {
+      "key": "41_1",
+      "lineIndex": 41,
+      "wordIndex": 1,
+      "word": "qui",
+      "time": 139.997,
+      "source": "lrc"
+    },
+    {
+      "key": "41_2",
+      "lineIndex": 41,
+      "wordIndex": 2,
+      "word": "tombe,",
+      "time": 140.684,
+      "source": "lrc"
+    },
+    {
+      "key": "41_3",
+      "lineIndex": 41,
+      "wordIndex": 3,
+      "word": "on",
+      "time": 141.37099999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "41_4",
+      "lineIndex": 41,
+      "wordIndex": 4,
+      "word": "la",
+      "time": 142.058,
+      "source": "lrc"
+    },
+    {
+      "key": "41_5",
+      "lineIndex": 41,
+      "wordIndex": 5,
+      "word": "remplace",
+      "time": 142.745,
+      "source": "lrc"
+    },
+    {
+      "key": "42_0",
+      "lineIndex": 42,
+      "wordIndex": 0,
+      "word": "C'est",
+      "time": 143.89,
+      "source": "lrc"
+    },
+    {
+      "key": "42_1",
+      "lineIndex": 42,
+      "wordIndex": 1,
+      "word": "pour",
+      "time": 144.283,
+      "source": "lrc"
+    },
+    {
+      "key": "42_2",
+      "lineIndex": 42,
+      "wordIndex": 2,
+      "word": "du",
+      "time": 144.676,
+      "source": "lrc"
+    },
+    {
+      "key": "42_3",
+      "lineIndex": 42,
+      "wordIndex": 3,
+      "word": "potage",
+      "time": 145.069,
+      "source": "lrc"
+    },
+    {
+      "key": "42_4",
+      "lineIndex": 42,
+      "wordIndex": 4,
+      "word": "qui",
+      "time": 145.462,
+      "source": "lrc"
+    },
+    {
+      "key": "42_5",
+      "lineIndex": 42,
+      "wordIndex": 5,
+      "word": "fume",
+      "time": 145.855,
+      "source": "lrc"
+    },
+    {
+      "key": "43_0",
+      "lineIndex": 43,
+      "wordIndex": 0,
+      "word": "C'est",
+      "time": 146.51,
+      "source": "lrc"
+    },
+    {
+      "key": "43_1",
+      "lineIndex": 43,
+      "wordIndex": 1,
+      "word": "payé",
+      "time": 147.52474999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "43_2",
+      "lineIndex": 43,
+      "wordIndex": 2,
+      "word": "au",
+      "time": 148.5395,
+      "source": "lrc"
+    },
+    {
+      "key": "43_3",
+      "lineIndex": 43,
+      "wordIndex": 3,
+      "word": "rendement",
+      "time": 149.55425,
+      "source": "lrc"
+    },
+    {
+      "key": "44_0",
+      "lineIndex": 44,
+      "wordIndex": 0,
+      "word": "Pour",
+      "time": 151.02,
+      "source": "lrc"
+    },
+    {
+      "key": "44_1",
+      "lineIndex": 44,
+      "wordIndex": 1,
+      "word": "les",
+      "time": 151.437,
+      "source": "lrc"
+    },
+    {
+      "key": "44_2",
+      "lineIndex": 44,
+      "wordIndex": 2,
+      "word": "robes",
+      "time": 151.854,
+      "source": "lrc"
+    },
+    {
+      "key": "44_3",
+      "lineIndex": 44,
+      "wordIndex": 3,
+      "word": "et",
+      "time": 152.27100000000002,
+      "source": "lrc"
+    },
+    {
+      "key": "44_4",
+      "lineIndex": 44,
+      "wordIndex": 4,
+      "word": "les",
+      "time": 152.68800000000002,
+      "source": "lrc"
+    },
+    {
+      "key": "44_5",
+      "lineIndex": 44,
+      "wordIndex": 5,
+      "word": "costumes",
+      "time": 153.10500000000002,
+      "source": "lrc"
+    },
+    {
+      "key": "45_0",
+      "lineIndex": 45,
+      "wordIndex": 0,
+      "word": "des",
+      "time": 153.8,
+      "source": "lrc"
+    },
+    {
+      "key": "45_1",
+      "lineIndex": 45,
+      "wordIndex": 1,
+      "word": "cardinaux",
+      "time": 155.969,
+      "source": "lrc"
+    },
+    {
+      "key": "45_2",
+      "lineIndex": 45,
+      "wordIndex": 2,
+      "word": "impatients",
+      "time": 158.138,
+      "source": "lrc"
+    },
+    {
+      "key": "48_0",
+      "lineIndex": 48,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 161.03,
+      "source": "lrc"
+    },
+    {
+      "key": "48_1",
+      "lineIndex": 48,
+      "wordIndex": 1,
+      "word": "vida",
+      "time": 161.867,
+      "source": "lrc"
+    },
+    {
+      "key": "48_2",
+      "lineIndex": 48,
+      "wordIndex": 2,
+      "word": "Que",
+      "time": 162.704,
+      "source": "lrc"
+    },
+    {
+      "key": "48_3",
+      "lineIndex": 48,
+      "wordIndex": 3,
+      "word": "triste !",
+      "time": 163.541,
+      "source": "lrc"
+    },
+    {
+      "key": "49_0",
+      "lineIndex": 49,
+      "wordIndex": 0,
+      "word": "De",
+      "time": 164.75,
+      "source": "lrc"
+    },
+    {
+      "key": "49_1",
+      "lineIndex": 49,
+      "wordIndex": 1,
+      "word": "que",
+      "time": 165.137,
+      "source": "lrc"
+    },
+    {
+      "key": "49_2",
+      "lineIndex": 49,
+      "wordIndex": 2,
+      "word": "pais",
+      "time": 165.524,
+      "source": "lrc"
+    },
+    {
+      "key": "49_3",
+      "lineIndex": 49,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 165.911,
+      "source": "lrc"
+    },
+    {
+      "key": "49_4",
+      "lineIndex": 49,
+      "wordIndex": 4,
+      "word": "trata",
+      "time": 166.298,
+      "source": "lrc"
+    },
+    {
+      "key": "50_0",
+      "lineIndex": 50,
+      "wordIndex": 0,
+      "word": "Del",
+      "time": 166.9,
+      "source": "lrc"
+    },
+    {
+      "key": "50_1",
+      "lineIndex": 50,
+      "wordIndex": 1,
+      "word": "mio,",
+      "time": 168.346,
+      "source": "lrc"
+    },
+    {
+      "key": "50_2",
+      "lineIndex": 50,
+      "wordIndex": 2,
+      "word": "no...",
+      "time": 169.792,
+      "source": "lrc"
+    },
+    {
+      "key": "51_0",
+      "lineIndex": 51,
+      "wordIndex": 0,
+      "word": "Del",
+      "time": 171.72,
+      "source": "lrc"
+    },
+    {
+      "key": "51_1",
+      "lineIndex": 51,
+      "wordIndex": 1,
+      "word": "mio",
+      "time": 172.13400000000001,
+      "source": "lrc"
+    },
+    {
+      "key": "51_2",
+      "lineIndex": 51,
+      "wordIndex": 2,
+      "word": "no",
+      "time": 172.548,
+      "source": "lrc"
+    },
+    {
+      "key": "51_3",
+      "lineIndex": 51,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 172.96200000000002,
+      "source": "lrc"
+    },
+    {
+      "key": "51_4",
+      "lineIndex": 51,
+      "wordIndex": 4,
+      "word": "puede",
+      "time": 173.376,
+      "source": "lrc"
+    },
+    {
+      "key": "52_0",
+      "lineIndex": 52,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 174.02,
+      "source": "lrc"
+    },
+    {
+      "key": "52_1",
+      "lineIndex": 52,
+      "wordIndex": 1,
+      "word": "vida,",
+      "time": 176.00675,
+      "source": "lrc"
+    },
+    {
+      "key": "52_2",
+      "lineIndex": 52,
+      "wordIndex": 2,
+      "word": "que",
+      "time": 177.9935,
+      "source": "lrc"
+    },
+    {
+      "key": "52_3",
+      "lineIndex": 52,
+      "wordIndex": 3,
+      "word": "triste !...",
+      "time": 179.98025,
+      "source": "lrc"
+    },
+    {
+      "key": "55_0",
+      "lineIndex": 55,
+      "wordIndex": 0,
+      "word": "N'Guyen",
+      "time": 182.85,
+      "source": "lrc"
+    },
+    {
+      "key": "55_1",
+      "lineIndex": 55,
+      "wordIndex": 1,
+      "word": "la",
+      "time": 183.74099999999999,
+      "source": "lrc"
+    },
+    {
+      "key": "55_2",
+      "lineIndex": 55,
+      "wordIndex": 2,
+      "word": "clandestine",
+      "time": 184.632,
+      "source": "lrc"
+    },
+    {
+      "key": "56_0",
+      "lineIndex": 56,
+      "wordIndex": 0,
+      "word": "Et",
+      "time": 185.82,
+      "source": "lrc"
+    },
+    {
+      "key": "56_1",
+      "lineIndex": 56,
+      "wordIndex": 1,
+      "word": "Mamadou",
+      "time": 186.8415,
+      "source": "lrc"
+    },
+    {
+      "key": "56_2",
+      "lineIndex": 56,
+      "wordIndex": 2,
+      "word": "qu'on",
+      "time": 187.863,
+      "source": "lrc"
+    },
+    {
+      "key": "56_3",
+      "lineIndex": 56,
+      "wordIndex": 3,
+      "word": "transfère",
+      "time": 188.8845,
+      "source": "lrc"
+    },
+    {
+      "key": "57_0",
+      "lineIndex": 57,
+      "wordIndex": 0,
+      "word": "Et",
+      "time": 190.36,
+      "source": "lrc"
+    },
+    {
+      "key": "57_1",
+      "lineIndex": 57,
+      "wordIndex": 1,
+      "word": "Sabrina",
+      "time": 190.90900000000002,
+      "source": "lrc"
+    },
+    {
+      "key": "57_2",
+      "lineIndex": 57,
+      "wordIndex": 2,
+      "word": "qui",
+      "time": 191.45800000000003,
+      "source": "lrc"
+    },
+    {
+      "key": "57_3",
+      "lineIndex": 57,
+      "wordIndex": 3,
+      "word": "tapine",
+      "time": 192.007,
+      "source": "lrc"
+    },
+    {
+      "key": "58_0",
+      "lineIndex": 58,
+      "wordIndex": 0,
+      "word": "Et",
+      "time": 192.8,
+      "source": "lrc"
+    },
+    {
+      "key": "58_1",
+      "lineIndex": 58,
+      "wordIndex": 1,
+      "word": "ce",
+      "time": 193.39014285714288,
+      "source": "lrc"
+    },
+    {
+      "key": "58_2",
+      "lineIndex": 58,
+      "wordIndex": 2,
+      "word": "Magyd",
+      "time": 193.9802857142857,
+      "source": "lrc"
+    },
+    {
+      "key": "58_3",
+      "lineIndex": 58,
+      "wordIndex": 3,
+      "word": "qui",
+      "time": 194.57042857142858,
+      "source": "lrc"
+    },
+    {
+      "key": "58_4",
+      "lineIndex": 58,
+      "wordIndex": 4,
+      "word": "dort",
+      "time": 195.16057142857142,
+      "source": "lrc"
+    },
+    {
+      "key": "58_5",
+      "lineIndex": 58,
+      "wordIndex": 5,
+      "word": "par",
+      "time": 195.75071428571428,
+      "source": "lrc"
+    },
+    {
+      "key": "58_6",
+      "lineIndex": 58,
+      "wordIndex": 6,
+      "word": "terre",
+      "time": 196.34085714285715,
+      "source": "lrc"
+    },
+    {
+      "key": "59_0",
+      "lineIndex": 59,
+      "wordIndex": 0,
+      "word": "Quand",
+      "time": 197.39,
+      "source": "lrc"
+    },
+    {
+      "key": "59_1",
+      "lineIndex": 59,
+      "wordIndex": 1,
+      "word": "la",
+      "time": 197.9408,
+      "source": "lrc"
+    },
+    {
+      "key": "59_2",
+      "lineIndex": 59,
+      "wordIndex": 2,
+      "word": "salle",
+      "time": 198.49159999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "59_3",
+      "lineIndex": 59,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 199.0424,
+      "source": "lrc"
+    },
+    {
+      "key": "59_4",
+      "lineIndex": 59,
+      "wordIndex": 4,
+      "word": "rallume",
+      "time": 199.5932,
+      "source": "lrc"
+    },
+    {
+      "key": "60_0",
+      "lineIndex": 60,
+      "wordIndex": 0,
+      "word": "Le",
+      "time": 200.45,
+      "source": "lrc"
+    },
+    {
+      "key": "60_1",
+      "lineIndex": 60,
+      "wordIndex": 1,
+      "word": "monde",
+      "time": 201.1754,
+      "source": "lrc"
+    },
+    {
+      "key": "60_2",
+      "lineIndex": 60,
+      "wordIndex": 2,
+      "word": "sort",
+      "time": 201.90079999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "60_3",
+      "lineIndex": 60,
+      "wordIndex": 3,
+      "word": "en",
+      "time": 202.62619999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "60_4",
+      "lineIndex": 60,
+      "wordIndex": 4,
+      "word": "silence",
+      "time": 203.3516,
+      "source": "lrc"
+    },
+    {
+      "key": "61_0",
+      "lineIndex": 61,
+      "wordIndex": 0,
+      "word": "Les",
+      "time": 204.48,
+      "source": "lrc"
+    },
+    {
+      "key": "61_1",
+      "lineIndex": 61,
+      "wordIndex": 1,
+      "word": "cardinaux",
+      "time": 205.22475,
+      "source": "lrc"
+    },
+    {
+      "key": "61_2",
+      "lineIndex": 61,
+      "wordIndex": 2,
+      "word": "en",
+      "time": 205.96949999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "61_3",
+      "lineIndex": 61,
+      "wordIndex": 3,
+      "word": "costume",
+      "time": 206.71425,
+      "source": "lrc"
+    },
+    {
+      "key": "62_0",
+      "lineIndex": 62,
+      "wordIndex": 0,
+      "word": "N'étaient",
+      "time": 207.79,
+      "source": "lrc"
+    },
+    {
+      "key": "62_1",
+      "lineIndex": 62,
+      "wordIndex": 1,
+      "word": "pas",
+      "time": 209.0788,
+      "source": "lrc"
+    },
+    {
+      "key": "62_2",
+      "lineIndex": 62,
+      "wordIndex": 2,
+      "word": "à",
+      "time": 210.36759999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "62_3",
+      "lineIndex": 62,
+      "wordIndex": 3,
+      "word": "la",
+      "time": 211.6564,
+      "source": "lrc"
+    },
+    {
+      "key": "62_4",
+      "lineIndex": 62,
+      "wordIndex": 4,
+      "word": "séance",
+      "time": 212.9452,
+      "source": "lrc"
+    },
+    {
+      "key": "65_0",
+      "lineIndex": 65,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 214.95,
+      "source": "lrc"
+    },
+    {
+      "key": "65_1",
+      "lineIndex": 65,
+      "wordIndex": 1,
+      "word": "vida",
+      "time": 215.71275,
+      "source": "lrc"
+    },
+    {
+      "key": "65_2",
+      "lineIndex": 65,
+      "wordIndex": 2,
+      "word": "Que",
+      "time": 216.47549999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "65_3",
+      "lineIndex": 65,
+      "wordIndex": 3,
+      "word": "triste !",
+      "time": 217.23825,
+      "source": "lrc"
+    },
+    {
+      "key": "66_0",
+      "lineIndex": 66,
+      "wordIndex": 0,
+      "word": "De",
+      "time": 218.34,
+      "source": "lrc"
+    },
+    {
+      "key": "66_1",
+      "lineIndex": 66,
+      "wordIndex": 1,
+      "word": "que",
+      "time": 218.736,
+      "source": "lrc"
+    },
+    {
+      "key": "66_2",
+      "lineIndex": 66,
+      "wordIndex": 2,
+      "word": "pais",
+      "time": 219.132,
+      "source": "lrc"
+    },
+    {
+      "key": "66_3",
+      "lineIndex": 66,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 219.528,
+      "source": "lrc"
+    },
+    {
+      "key": "66_4",
+      "lineIndex": 66,
+      "wordIndex": 4,
+      "word": "trata",
+      "time": 219.924,
+      "source": "lrc"
+    },
+    {
+      "key": "67_0",
+      "lineIndex": 67,
+      "wordIndex": 0,
+      "word": "Del",
+      "time": 220.54,
+      "source": "lrc"
+    },
+    {
+      "key": "67_1",
+      "lineIndex": 67,
+      "wordIndex": 1,
+      "word": "mio,",
+      "time": 221.98,
+      "source": "lrc"
+    },
+    {
+      "key": "67_2",
+      "lineIndex": 67,
+      "wordIndex": 2,
+      "word": "no...",
+      "time": 223.42,
+      "source": "lrc"
+    },
+    {
+      "key": "68_0",
+      "lineIndex": 68,
+      "wordIndex": 0,
+      "word": "Del",
+      "time": 225.34,
+      "source": "lrc"
+    },
+    {
+      "key": "68_1",
+      "lineIndex": 68,
+      "wordIndex": 1,
+      "word": "mio",
+      "time": 225.808,
+      "source": "lrc"
+    },
+    {
+      "key": "68_2",
+      "lineIndex": 68,
+      "wordIndex": 2,
+      "word": "no",
+      "time": 226.276,
+      "source": "lrc"
+    },
+    {
+      "key": "68_3",
+      "lineIndex": 68,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 226.744,
+      "source": "lrc"
+    },
+    {
+      "key": "68_4",
+      "lineIndex": 68,
+      "wordIndex": 4,
+      "word": "puede",
+      "time": 227.212,
+      "source": "lrc"
+    },
+    {
+      "key": "69_0",
+      "lineIndex": 69,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 227.94,
+      "source": "lrc"
+    },
+    {
+      "key": "69_1",
+      "lineIndex": 69,
+      "wordIndex": 1,
+      "word": "vida,",
+      "time": 229.884,
+      "source": "lrc"
+    },
+    {
+      "key": "69_2",
+      "lineIndex": 69,
+      "wordIndex": 2,
+      "word": "que",
+      "time": 231.828,
+      "source": "lrc"
+    },
+    {
+      "key": "69_3",
+      "lineIndex": 69,
+      "wordIndex": 3,
+      "word": "triste !...",
+      "time": 233.772,
+      "source": "lrc"
+    },
+    {
+      "key": "72_0",
+      "lineIndex": 72,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 236.57999999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "72_1",
+      "lineIndex": 72,
+      "wordIndex": 1,
+      "word": "vida",
+      "time": 237.33599999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "72_2",
+      "lineIndex": 72,
+      "wordIndex": 2,
+      "word": "Que",
+      "time": 238.09199999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "72_3",
+      "lineIndex": 72,
+      "wordIndex": 3,
+      "word": "triste !",
+      "time": 238.84799999999998,
+      "source": "lrc"
+    },
+    {
+      "key": "73_0",
+      "lineIndex": 73,
+      "wordIndex": 0,
+      "word": "De",
+      "time": 239.94,
+      "source": "lrc"
+    },
+    {
+      "key": "73_1",
+      "lineIndex": 73,
+      "wordIndex": 1,
+      "word": "que",
+      "time": 240.3846,
+      "source": "lrc"
+    },
+    {
+      "key": "73_2",
+      "lineIndex": 73,
+      "wordIndex": 2,
+      "word": "pais",
+      "time": 240.8292,
+      "source": "lrc"
+    },
+    {
+      "key": "73_3",
+      "lineIndex": 73,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 241.2738,
+      "source": "lrc"
+    },
+    {
+      "key": "73_4",
+      "lineIndex": 73,
+      "wordIndex": 4,
+      "word": "trata",
+      "time": 241.7184,
+      "source": "lrc"
+    },
+    {
+      "key": "74_0",
+      "lineIndex": 74,
+      "wordIndex": 0,
+      "word": "Del",
+      "time": 242.41,
+      "source": "lrc"
+    },
+    {
+      "key": "74_1",
+      "lineIndex": 74,
+      "wordIndex": 1,
+      "word": "mio,",
+      "time": 243.748,
+      "source": "lrc"
+    },
+    {
+      "key": "74_2",
+      "lineIndex": 74,
+      "wordIndex": 2,
+      "word": "no...",
+      "time": 245.086,
+      "source": "lrc"
+    },
+    {
+      "key": "75_0",
+      "lineIndex": 75,
+      "wordIndex": 0,
+      "word": "Del",
+      "time": 246.87,
+      "source": "lrc"
+    },
+    {
+      "key": "75_1",
+      "lineIndex": 75,
+      "wordIndex": 1,
+      "word": "mio",
+      "time": 247.347,
+      "source": "lrc"
+    },
+    {
+      "key": "75_2",
+      "lineIndex": 75,
+      "wordIndex": 2,
+      "word": "no",
+      "time": 247.824,
+      "source": "lrc"
+    },
+    {
+      "key": "75_3",
+      "lineIndex": 75,
+      "wordIndex": 3,
+      "word": "se",
+      "time": 248.30100000000002,
+      "source": "lrc"
+    },
+    {
+      "key": "75_4",
+      "lineIndex": 75,
+      "wordIndex": 4,
+      "word": "puede",
+      "time": 248.77800000000002,
+      "source": "lrc"
+    },
+    {
+      "key": "76_0",
+      "lineIndex": 76,
+      "wordIndex": 0,
+      "word": "Que",
+      "time": 249.52,
+      "source": "lrc"
+    },
+    {
+      "key": "76_1",
+      "lineIndex": 76,
+      "wordIndex": 1,
+      "word": "vida,",
+      "time": 250.555,
+      "source": "lrc"
+    },
+    {
+      "key": "76_2",
+      "lineIndex": 76,
+      "wordIndex": 2,
+      "word": "que",
+      "time": 251.59,
+      "source": "lrc"
+    },
+    {
+      "key": "76_3",
+      "lineIndex": 76,
+      "wordIndex": 3,
+      "word": "triste !...",
+      "time": 252.625,
+      "source": "lrc"
+    },
+    {
+      "key": "78_0",
+      "lineIndex": 78,
+      "wordIndex": 0,
+      "word": "[04:14.12]",
+      "time": 254.12,
+      "source": "lrc"
+    }
+  ]
+}
