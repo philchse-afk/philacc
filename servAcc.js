@@ -4,14 +4,19 @@
 // exactement comme avant, ET expose une API (/api/...) pour les comptes
 // utilisateurs, l'approbation admin, et les répertoires personnels.
 //
+// Stockage : fichiers locaux par défaut, ou Upstash Redis automatiquement
+// si UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN sont définies (voir
+// lib/storage.js) — utile pour un déploiement en ligne (Render, etc.) où le
+// disque local n'est pas garanti persistant.
+//
 // Ne touche pas à server.js (port 3001, /check-files pour les jauges +
 // ouverture Guitar Pro) : les deux serveurs restent séparés, sur des
 // ports différents, comme dans votre projet actuel.
 //
 // Lancement : node servAcc.js
-// Variable d'env optionnelle : PORT (défaut 5500), COOKIE_SECURE=1 quand
-// servi en HTTPS (recommandé dès que l'appli est exposée sur Internet —
-// voir README-AUTH.md).
+// Variables d'env optionnelles : PORT (défaut 5500), COOKIE_SECURE=1 quand
+// servi en HTTPS (recommandé dès que l'appli est exposée sur Internet),
+// UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN (persistance en ligne).
 // -----------------------------------------------------------------------
 
 const http = require('http');
@@ -22,6 +27,7 @@ const { URL } = require('url');
 const users = require('./lib/users-store');
 const sessions = require('./lib/sessions');
 const repertoire = require('./lib/repertoire');
+const storage = require('./lib/storage');
 
 const PORT = process.env.PORT || 5500;
 const COOKIE_SECURE = process.env.COOKIE_SECURE === '1';
@@ -90,24 +96,24 @@ function readBody(req) {
 }
 
 /** Récupère l'utilisateur courant à partir du cookie de session, ou null. */
-function getCurrentUser(req) {
+async function getCurrentUser(req) {
     const token = sessions.getTokenFromRequest(req);
     const session = sessions.getSession(token);
     if (!session) return null;
-    const user = users.findById(session.userId);
+    const user = await users.findById(session.userId);
     if (!user) return null;
     return user;
 }
 
-function requireApproved(req, res) {
-    const user = getCurrentUser(req);
+async function requireApproved(req, res) {
+    const user = await getCurrentUser(req);
     if (!user) { sendJson(res, 401, { error: 'Non connecté.' }); return null; }
     if (user.status !== 'approved') { sendJson(res, 403, { error: 'Compte en attente d\'approbation.' }); return null; }
     return user;
 }
 
-function requireAdmin(req, res) {
-    const user = requireApproved(req, res);
+async function requireAdmin(req, res) {
+    const user = await requireApproved(req, res);
     if (!user) return null;
     if (user.role !== 'admin') { sendJson(res, 403, { error: 'Réservé à l\'administrateur.' }); return null; }
     return user;
@@ -124,7 +130,7 @@ async function handleApi(req, res, url) {
     if (pathname === '/api/auth/register' && method === 'POST') {
         try {
             const { username, password } = await readBody(req);
-            const user = users.createUser(username, password);
+            const user = await users.createUser(username, password);
             return sendJson(res, 201, {
                 user,
                 message: user.status === 'approved'
@@ -143,7 +149,7 @@ async function handleApi(req, res, url) {
             if (isBlocked(key)) {
                 return sendJson(res, 429, { error: 'Trop de tentatives. Réessayez dans quelques minutes.' });
             }
-            const user = users.verifyLogin(username, password);
+            const user = await users.verifyLogin(username, password);
             if (!user) {
                 registerFailedAttempt(key);
                 return sendJson(res, 401, { error: 'Identifiants incorrects.' });
@@ -171,87 +177,87 @@ async function handleApi(req, res, url) {
     }
 
     if (pathname === '/api/auth/change-password' && method === 'POST') {
-        const user = getCurrentUser(req);
+        const user = await getCurrentUser(req);
         if (!user) return sendJson(res, 401, { error: 'Non connecté.' });
         try {
             const { oldPassword, newPassword } = await readBody(req);
-            const updated = users.changeOwnPassword(user.id, oldPassword, newPassword);
+            const updated = await users.changeOwnPassword(user.id, oldPassword, newPassword);
             return sendJson(res, 200, { user: updated });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if (pathname === '/api/auth/me' && method === 'GET') {
-        const user = getCurrentUser(req);
+        const user = await getCurrentUser(req);
         if (!user) return sendJson(res, 200, { user: null });
         return sendJson(res, 200, { user: users._publicView(user) });
     }
 
     // ---- Admin ------------------------------------------------------
     if (pathname === '/api/admin/users' && method === 'GET') {
-        const admin = requireAdmin(req, res); if (!admin) return;
-        return sendJson(res, 200, { users: users.listUsers() });
+        const admin = await requireAdmin(req, res); if (!admin) return;
+        return sendJson(res, 200, { users: await users.listUsers() });
     }
 
     let m;
     if ((m = pathname.match(/^\/api\/admin\/users\/([^/]+)\/approve$/)) && method === 'POST') {
-        const admin = requireAdmin(req, res); if (!admin) return;
+        const admin = await requireAdmin(req, res); if (!admin) return;
         try {
-            const updated = users.setStatus(m[1], 'approved');
-            repertoire.ensureUserRepertoire(updated.username);
+            const updated = await users.setStatus(m[1], 'approved');
+            await repertoire.ensureUserRepertoire(updated.username);
             return sendJson(res, 200, { user: updated });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if ((m = pathname.match(/^\/api\/admin\/users\/([^/]+)\/reject$/)) && method === 'POST') {
-        const admin = requireAdmin(req, res); if (!admin) return;
-        try { return sendJson(res, 200, { user: users.setStatus(m[1], 'rejected') }); }
+        const admin = await requireAdmin(req, res); if (!admin) return;
+        try { return sendJson(res, 200, { user: await users.setStatus(m[1], 'rejected') }); }
         catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if ((m = pathname.match(/^\/api\/admin\/users\/([^/]+)\/role$/)) && method === 'POST') {
-        const admin = requireAdmin(req, res); if (!admin) return;
+        const admin = await requireAdmin(req, res); if (!admin) return;
         try {
             const { role } = await readBody(req);
-            return sendJson(res, 200, { user: users.setRole(m[1], role) });
+            return sendJson(res, 200, { user: await users.setRole(m[1], role) });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if ((m = pathname.match(/^\/api\/admin\/users\/([^/]+)\/reset-password$/)) && method === 'POST') {
-        const admin = requireAdmin(req, res); if (!admin) return;
+        const admin = await requireAdmin(req, res); if (!admin) return;
         try {
-            const tempPassword = users.resetPassword(m[1]);
+            const tempPassword = await users.resetPassword(m[1]);
             return sendJson(res, 200, { tempPassword });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if ((m = pathname.match(/^\/api\/admin\/users\/([^/]+)$/)) && method === 'DELETE') {
-        const admin = requireAdmin(req, res); if (!admin) return;
+        const admin = await requireAdmin(req, res); if (!admin) return;
         if (m[1] === admin.id) return sendJson(res, 400, { error: 'Impossible de supprimer votre propre compte admin.' });
-        try { users.deleteUser(m[1]); return sendJson(res, 200, { ok: true }); }
+        try { await users.deleteUser(m[1]); return sendJson(res, 200, { ok: true }); }
         catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     // ---- Répertoire maître (lecture seule) ---------------------------
     if (pathname === '/api/repertoire/master/index' && method === 'GET') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
-            return sendJson(res, 200, repertoire.getMasterIndex());
+            return sendJson(res, 200, await repertoire.getMasterIndex());
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if (pathname === '/api/repertoire/master/song' && method === 'GET') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
-            const song = repertoire.getMasterSong(url.searchParams.get('file'));
+            const song = await repertoire.getMasterSong(url.searchParams.get('file'));
             if (!song) return sendJson(res, 404, { error: 'Chanson introuvable.' });
             return sendJson(res, 200, song);
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if (pathname === '/api/repertoire/master/song' && method === 'DELETE') {
-        const admin = requireAdmin(req, res); if (!admin) return;
+        const admin = await requireAdmin(req, res); if (!admin) return;
         try {
-            repertoire.deleteMasterSong(url.searchParams.get('file'));
+            await repertoire.deleteMasterSong(url.searchParams.get('file'));
             return sendJson(res, 200, { ok: true });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
@@ -260,11 +266,11 @@ async function handleApi(req, res, url) {
     // répertoire personnel pour tout le monde d'autre — même mécanisme des
     // deux côtés (voir repertoire.saveSongAndIndexEntry).
     if (pathname === '/api/repertoire/song' && method === 'PUT') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
             const file = url.searchParams.get('file');
             const { songData, indexEntry } = await readBody(req);
-            repertoire.saveSongAndIndexEntry({
+            await repertoire.saveSongAndIndexEntry({
                 isAdmin: user.role === 'admin',
                 username: user.username,
                 filename: file,
@@ -279,9 +285,9 @@ async function handleApi(req, res, url) {
     // répertoire personnel pour tout le monde d'autre — pendant de
     // /api/repertoire/song (PUT).
     if (pathname === '/api/repertoire/song' && method === 'DELETE') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
-            repertoire.deleteSongEntry({
+            await repertoire.deleteSongEntry({
                 isAdmin: user.role === 'admin',
                 username: user.username,
                 filename: url.searchParams.get('file'),
@@ -292,49 +298,49 @@ async function handleApi(req, res, url) {
 
     // ---- Répertoire personnel -----------------------------------------
     if (pathname === '/api/repertoire/mine/index' && method === 'GET') {
-        const user = requireApproved(req, res); if (!user) return;
-        return sendJson(res, 200, repertoire.getUserIndex(user.username));
+        const user = await requireApproved(req, res); if (!user) return;
+        return sendJson(res, 200, await repertoire.getUserIndex(user.username));
     }
 
     if (pathname === '/api/repertoire/mine/index' && method === 'PUT') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
             const body = await readBody(req);
-            repertoire.saveUserIndex(user.username, body);
+            await repertoire.saveUserIndex(user.username, body);
             return sendJson(res, 200, { ok: true });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if (pathname === '/api/repertoire/mine/song' && method === 'GET') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
-            const song = repertoire.getUserSong(user.username, url.searchParams.get('file'));
+            const song = await repertoire.getUserSong(user.username, url.searchParams.get('file'));
             if (!song) return sendJson(res, 404, { error: 'Chanson introuvable.' });
             return sendJson(res, 200, song);
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if (pathname === '/api/repertoire/mine/song' && method === 'DELETE') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
-            repertoire.deleteUserSong(user.username, url.searchParams.get('file'));
+            await repertoire.deleteUserSong(user.username, url.searchParams.get('file'));
             return sendJson(res, 200, { ok: true });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if (pathname === '/api/repertoire/mine/clone' && method === 'POST') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
             const { file } = await readBody(req);
-            const entry = repertoire.cloneFromMaster(user.username, file);
+            const entry = await repertoire.cloneFromMaster(user.username, file);
             return sendJson(res, 200, { entry });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
 
     if (pathname === '/api/repertoire/mine/clone-all' && method === 'POST') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         try {
-            const index = repertoire.cloneAllFromMaster(user.username);
+            const index = await repertoire.cloneAllFromMaster(user.username);
             return sendJson(res, 200, { index });
         } catch (err) { return sendJson(res, 400, { error: err.message }); }
     }
@@ -350,28 +356,26 @@ async function handleApi(req, res, url) {
 // qu'avant ("data/songs-index.json", "songs/xxx.json"), AUCUNE
 // modification n'est nécessaire dans app.js pour la lecture.
 //
-//  - Si l'utilisateur connecté est l'ADMIN : comportement inchangé, on
-//    sert le vrai fichier du disque (le répertoire maître).
-//  - Si c'est un utilisateur normal (approuvé) : on sert SON répertoire
-//    personnel à la place (data/users/<username>/...), transparence
-//    totale pour app.js.
+//  - Si l'utilisateur connecté est l'ADMIN : répertoire maître.
+//  - Si c'est un utilisateur normal (approuvé) : son répertoire personnel,
+//    transparence totale pour app.js.
 //  - Si personne n'est connecté / pas encore approuvé : 401/403, comme
 //    pour le reste de l'API (empêche l'accès direct aux données sans
 //    passer par la connexion).
 // -------------------------------------------------------------------
 const SONG_FILE_RE = /^\/songs\/([^/]+\.json)$/;
 
-function handleStatic(req, res, url) {
+async function handleStatic(req, res, url) {
     const urlPath = decodeURIComponent(url.pathname);
 
     // ---- Détournement : index des chansons ----
     if (urlPath === '/data/songs-index.json') {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         if (user.role === 'admin') {
             try {
-                const index = repertoire.getMasterIndex();
+                const index = await repertoire.getMasterIndex();
                 if (!index.length) {
-                    console.warn(`[songs-index] Fichier maître vide ou introuvable : ${path.join(PROJECT_ROOT, 'data', 'songs-index.json')}`);
+                    console.warn('[songs-index] Répertoire maître vide ou introuvable.');
                 }
                 return sendJson(res, 200, index);
             } catch (err) {
@@ -379,22 +383,22 @@ function handleStatic(req, res, url) {
                 return sendJson(res, 500, { error: err.message });
             }
         }
-        return sendJson(res, 200, repertoire.getUserIndex(user.username));
+        return sendJson(res, 200, await repertoire.getUserIndex(user.username));
     }
 
     // ---- Détournement : fichier chanson individuel ----
     const songMatch = urlPath.match(SONG_FILE_RE);
     if (songMatch) {
-        const user = requireApproved(req, res); if (!user) return;
+        const user = await requireApproved(req, res); if (!user) return;
         if (user.role === 'admin') {
-            const song = repertoire.getMasterSong(songMatch[1]);
+            const song = await repertoire.getMasterSong(songMatch[1]);
             if (!song) {
-                console.warn(`[song] Introuvable pour l'admin : ${songMatch[1]} (attendu dans ${path.join(PROJECT_ROOT, 'songs')})`);
+                console.warn(`[song] Introuvable pour l'admin : ${songMatch[1]}`);
                 return sendJson(res, 404, { error: 'Chanson introuvable.' });
             }
             return sendJson(res, 200, song);
         }
-        const song = repertoire.getUserSong(user.username, songMatch[1]);
+        const song = await repertoire.getUserSong(user.username, songMatch[1]);
         if (!song) { return sendJson(res, 404, { error: 'Chanson introuvable.' }); }
         return sendJson(res, 200, song);
     }
@@ -433,7 +437,11 @@ http.createServer((req, res) => {
             return;
         }
 
-        handleStatic(req, res, url);
+        handleStatic(req, res, url).catch(err => {
+            console.error('[static] Erreur non gérée :', err);
+            try { sendJson(res, 500, { error: 'Erreur serveur : ' + err.message }); }
+            catch (_) { /* réponse déjà envoyée */ }
+        });
     } catch (err) {
         // Filet de sécurité : une exception ici ne doit JAMAIS faire planter
         // tout le processus (ce qui laisserait un ancien process bloqué sur
@@ -455,4 +463,5 @@ http.createServer((req, res) => {
 }).listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Serveur Accords (avec auth) lancé sur http://localhost:${PORT}`);
     console.log(`   COOKIE_SECURE=${COOKIE_SECURE ? 'oui (HTTPS requis)' : 'non (OK en local/LAN)'}`);
+    console.log(`   Stockage : ${storage.USE_REDIS ? 'Upstash Redis (persistant en ligne)' : 'fichiers locaux'}`);
 });
