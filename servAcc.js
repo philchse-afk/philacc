@@ -28,6 +28,7 @@ const users = require('./lib/users-store');
 const sessions = require('./lib/sessions');
 const repertoire = require('./lib/repertoire');
 const storage = require('./lib/storage');
+const media = require('./lib/media');
 
 const PORT = process.env.PORT || 5500;
 const COOKIE_SECURE = process.env.COOKIE_SECURE === '1';
@@ -403,6 +404,19 @@ async function handleStatic(req, res, url) {
         return sendJson(res, 200, song);
     }
 
+    // ---- Jauges : présence des fichiers multimédia d'une chanson ----
+    // Même réponse que /check-files de server.js (port 3001), mais sur la même
+    // origine que la page : fonctionne aussi en ligne (voir lib/media.js).
+    // Pas d'authentification : on ne révèle que "ce fichier existe ou non".
+    if (urlPath === '/check-files') {
+        const song = url.searchParams.get('song');
+        if (!song) return sendJson(res, 400, { error: 'Paramètre "song" manquant.' });
+        return sendJson(res, 200, await media.checkFiles(song));
+    }
+
+    // ---- Fichiers multimédia hébergés dans un dépôt GitHub (mode web) ----
+    if (await media.serveMedia(req, res, urlPath)) return;
+
     // ---- Tout le reste : fichiers statiques classiques, inchangé ----
     const filePath = path.join(PROJECT_ROOT, urlPath === '/' ? 'index.html' : urlPath);
     if (!filePath.startsWith(PROJECT_ROOT)) {
@@ -464,4 +478,5 @@ http.createServer((req, res) => {
     console.log(`✅ Serveur Accords (avec auth) lancé sur http://localhost:${PORT}`);
     console.log(`   COOKIE_SECURE=${COOKIE_SECURE ? 'oui (HTTPS requis)' : 'non (OK en local/LAN)'}`);
     console.log(`   Stockage : ${storage.USE_REDIS ? 'Upstash Redis (persistant en ligne)' : 'fichiers locaux'}`);
+    console.log(`   Multimédia : ${media.IS_REMOTE ? `dépôt GitHub ${media.MEDIA_REPO}@${media.MEDIA_BRANCH} (dossier "${media.MEDIA_PATH || '/'}")` : 'dossier local songs/multimedia'}`);
 });

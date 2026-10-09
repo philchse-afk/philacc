@@ -643,9 +643,10 @@ const App = {
             }
         } catch (_) {}
         // MP3 / PDF / GP → via le serveur Node check-files
+        let mp4Checked = false;
         try {
             const res = await fetch(
-                `http://${window.location.hostname}:3001/check-files?song=${encodeURIComponent(file)}`
+                `/check-files?song=${encodeURIComponent(file)}`
             );
             if (res.ok) {
                 const f = await res.json();
@@ -654,7 +655,9 @@ const App = {
                 status.mp3Full = !!(f.mp3 && f.mp3bch && f.mp3bcg && f.mp3bgu);
                 // Jauge MP3 "partielle" : seules l'originale (N) et Bch existent (pas bcg/bgu)
                 status.mp3Partial = !status.mp3Full && !!(f.mp3 && f.mp3bch && !f.mp3bcg && !f.mp3bgu);
-                status.mp4 = !!f.mp4;
+                status.mp4 = !!(f.mp4 || f.mp4Any);
+                // Le serveur a déjà vérifié mp4K/mp4 et .mp4/.m4v : inutile de sonder
+                mp4Checked = (f.mp4Any !== undefined);
                 status.pdf = !!f.pdf;
                 status.gp  = !!f.gp;
             }
@@ -675,7 +678,7 @@ const App = {
         // fichier basefilename.mp4 OU basefilename.m4v existe dans
         // songs/multimedia/mp4K OU songs/multimedia/mp4 (le serveur check-files
         // peut ne pas couvrir tous ces cas).
-        if (!status.mp4) {
+        if (!status.mp4 && !mp4Checked) {
             const base = file.replace('.json', '');
             status.mp4 = await this._probeMp4Exists(base);
         }
@@ -1249,7 +1252,7 @@ const App = {
 
         try {
             const res = await fetch(
-                `http://${window.location.hostname}:3001/check-files?song=${encodeURIComponent(this.currentSong.filename)}`
+                `/check-files?song=${encodeURIComponent(this.currentSong.filename)}`
             );
             if (!res.ok) return;
             const files = await res.json();
@@ -4047,7 +4050,7 @@ const App = {
         // Vérifier si le fichier existe avant d'ouvrir
         try {
             const check = await fetch(
-                `http://${window.location.hostname}:3001/check-files?song=${encodeURIComponent(this.currentSong.filename)}`
+                `/check-files?song=${encodeURIComponent(this.currentSong.filename)}`
             );
             if (check.ok) {
                 const files = await check.json();
