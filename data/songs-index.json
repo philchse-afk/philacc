@@ -326,5 +326,29 @@
     "bpm": "82",
     "recommendedCapo": "",
     "file": "californication - -acoustic cover.json"
+  },
+  {
+    "title": "House of the Rising Sun",
+    "artist": "The animals",
+    "capo": "1",
+    "bpm": "",
+    "recommendedCapo": "3",
+    "file": "house of the rising sun.json"
+  },
+  {
+    "title": "in the air tonight",
+    "artist": "phil collins (cover River Crombie)",
+    "capo": "",
+    "bpm": "",
+    "recommendedCapo": "",
+    "file": "in the air tonight.json"
+  },
+  {
+    "title": "goo goo muck",
+    "artist": "the cramps",
+    "capo": "0",
+    "bpm": "142",
+    "recommendedCapo": "",
+    "file": "goo goo muck.json"
   }
 ]
