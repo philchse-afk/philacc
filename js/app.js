@@ -1,4 +1,4 @@
-// app.js — v49
+// app.js — v50
 // FEAT : bouton "[|] Syllabe" dans l'éditeur, à côté de "🎤 Marquer" — insère
 //        le séparateur de syllabe [|] à la position exacte du curseur (dans
 //        un mot, contrairement aux boutons vvvv[]/pppp[] qui forcent un
@@ -4156,7 +4156,7 @@ const App = {
             overlay = document.createElement('div');
             overlay.id = 'countdown-overlay';
             overlay.style.cssText = `
-                position:fixed; inset:0; z-index:9998;
+                position:fixed; inset:0; z-index:10002;
                 display:flex; flex-direction:column;
                 align-items:center; justify-content:center;
                 background:rgba(0,0,0,0.55);
@@ -4164,6 +4164,14 @@ const App = {
                 font-family:Arial,sans-serif;
             `;
             document.body.appendChild(overlay);
+        }
+        // Le décompte doit rester visible quand le scroll est lancé depuis un plein écran
+        // (frame accords ou paroles) : z-index au-dessus d'eux (10000/10001) et, en plein écran
+        // NATIF, rattachement à l'élément plein écran — seul son contenu est affiché alors.
+        {
+            const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+            const host = fsEl || document.body;
+            if (overlay.parentNode !== host) host.appendChild(overlay);
         }
 
         // Contexte audio Web Audio API
@@ -4256,12 +4264,16 @@ const App = {
     _setScrollBtnsActive: function(active) {
         const btn1 = document.getElementById('scrollWithMP3Btn');
         const btn2 = document.getElementById('toggleAutoScroll');
+        // Boutons ♪ Scroll des plein écrans (accords, paroles) : même état que btn1
+        const fsBtns = document.querySelectorAll('.fs-scroll-btn');
         if (active) {
             if (btn1) { btn1.innerHTML = '⏸ ♪'; btn1.classList.add('scroll-btn--active'); }
             if (btn2) { btn2.innerHTML = '⏸ ▶'; btn2.classList.add('scroll-btn--active'); }
+            fsBtns.forEach(b => { b.innerHTML = '⏸ ♪'; b.classList.add('scroll-btn--active'); });
         } else {
             if (btn1) { btn1.innerHTML = '♪ Scroll'; btn1.classList.remove('scroll-btn--active'); }
             if (btn2) { btn2.innerHTML = '▶ Scroll'; btn2.classList.remove('scroll-btn--active'); }
+            fsBtns.forEach(b => { b.innerHTML = '♪ Scroll'; b.classList.remove('scroll-btn--active'); });
         }
     },
 
@@ -4301,10 +4313,15 @@ const App = {
         // Surligner la ligne entière
         chordsLine.classList.add('chord-active-scroll');
 
-        // Surligner le span de l'accord actif (chordIndex dans la ligne)
-        const spans = Array.from(chordsLine.querySelectorAll('span'))
-            .filter(s => s.textContent.trim() && !s.querySelector('span'));
-        const activeSpan = spans[marker.chordIndex];
+        // Surligner l'accord actif (chordIndex dans la ligne). En mode "mesures" les accords
+        // sont des .measure-chord-name (des <div>, pas des <span>) : sans ce cas, seule la
+        // ligne entière était surlignée et jamais l'accord précis.
+        const measureNames = chordsLine.querySelectorAll('.measure-chord-name');
+        const chordEls = measureNames.length
+            ? Array.from(measureNames)
+            : Array.from(chordsLine.querySelectorAll('span'))
+                .filter(s => s.textContent.trim() && !s.querySelector('span'));
+        const activeSpan = chordEls[marker.chordIndex];
         if (activeSpan) activeSpan.classList.add('chord-active-scroll');
 
         // Scroller le panneau accords
@@ -7271,6 +7288,8 @@ const App = {
         this._bodyScrollUnlock();
         const closeBtn = document.getElementById('lyrics-fs-close');
         if (closeBtn) closeBtn.remove();
+        const fsScrollBtn = document.getElementById('lyrics-fs-scroll');
+        if (fsScrollBtn) fsScrollBtn.remove();
         const btn = document.getElementById('btn-fullscreen-lyrics');
         if (btn) { btn.textContent = '⛶'; btn.title = 'Plein écran paroles'; btn.style.opacity = '0.6'; }
         this._renderPostits(); // re-parente le tooltip post-it vers document.body
@@ -7305,7 +7324,25 @@ const App = {
         this._scrollLockScrollY = 0;
     },
 
+    // Bouton ♪ Scroll (lance le MP3 depuis le début + défilement) dans le plein écran paroles.
+    // Placé DANS #song-content-display (et non dans body comme le bouton Fermer) : en plein
+    // écran natif seul le contenu de l'élément est affiché.
+    _injectFullscreenScrollBtn() {
+        const el = document.getElementById('song-content-display');
+        if (!el || document.getElementById('lyrics-fs-scroll')) return;
+        const b = document.createElement('button');
+        b.id = 'lyrics-fs-scroll';
+        b.type = 'button';
+        b.className = 'fs-scroll-btn';
+        b.title = 'Lancer le MP3 depuis le début et démarrer le scroll';
+        b.innerHTML = this.isAutoScrolling ? '⏸ ♪' : '♪ Scroll';
+        if (this.isAutoScrolling) b.classList.add('scroll-btn--active');
+        b.addEventListener('click', () => this.toggleScrollWithMP3());
+        el.appendChild(b);
+    },
+
     _injectFullscreenCloseBtn() {
+        this._injectFullscreenScrollBtn();
         if (document.getElementById('lyrics-fs-close')) return;
         const el = document.getElementById('song-content-display');
         if (!el) return;
@@ -7363,6 +7400,7 @@ const App = {
         const titleEl = document.getElementById('chords-fs-title');
         const mainTitle = document.getElementById('song-title-display');
         if (titleEl && mainTitle) titleEl.textContent = mainTitle.textContent;
+        this._setScrollBtnsActive(!!this.isAutoScrolling); // bouton ♪ Scroll de l'en-tête : état courant
 
         // Plein écran natif en complément (l'overlay CSS couvre déjà la fenêtre : s'il est
         // refusé — iframe, politique du navigateur — on n'a rien de plus à faire).

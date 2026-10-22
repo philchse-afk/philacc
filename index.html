@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Mes Accords</title>
-    <link rel="stylesheet" href="css/style.css?v=27">
+    <link rel="stylesheet" href="css/style.css?v=28">
     <link rel="stylesheet" href="css/song-gauge.css?v=3">
     <link rel="stylesheet" href="css/auth-gate.css?v=1">
+    <link rel="stylesheet" href="env.css">
     <style>
         #karaoke-overlay {
             position: fixed; inset: 0; z-index: 5000;
@@ -282,8 +283,8 @@
             position: relative;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>    
+    <script data-master-only src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script data-master-only src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>    
 </head>
 <body>
     <!-- Barre latérale -->
@@ -847,6 +848,11 @@
                             <span>⛶ Plein écran</span>
                         </label>
                         <span id="chords-fs-title" class="chords-fs-title"></span>
+                        <!-- Visible uniquement en plein écran : même action que le bouton ♪ Scroll
+                             de la colonne de gauche (MP3 depuis le début + scroll/surlignage). -->
+                        <button type="button" id="chords-fs-scroll" class="fs-scroll-btn"
+                                title="Lancer le MP3 depuis le début et démarrer le scroll"
+                                onclick="App.toggleScrollWithMP3()">♪ Scroll</button>
                     </div>
                     <div id="display-chords"></div>
                 </div>
@@ -971,10 +977,14 @@
         </div>
     </div>
 
-    <script src="js/auth-gate.js?v=1"></script>
-    <script src="js/chords.js?v=3"></script>
-    <script src="js/app.js?v=49"></script>
-    <script>
+    <!-- Synchro multi-appareils : voir js/sync.js et servAcc.js.
+         Les scripts marqués data-master-only ne sont envoyés qu'au PC maître ;
+         les autres appareils reçoivent seulement l'affichage du maître. -->
+    <script src="js/sync.js?v=1"></script>
+    <script data-master-only src="js/auth-gate.js?v=1"></script>
+    <script data-master-only src="js/chords.js?v=3"></script>
+    <script data-master-only src="js/app.js?v=50"></script>
+    <script data-master-only>
         window.app = App;
     </script>
 </body>

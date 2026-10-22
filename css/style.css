@@ -1,4 +1,4 @@
-/* style.css — v27 */
+/* style.css — v28 */
 /* =============================================
    CHARTE GRAPHIQUE — variables CSS globales
    Palette pastel bleu-ardoise × sauge × menthe
@@ -1387,3 +1387,37 @@ mark.lyric-highlight-libre  { background: #e8d8f4; }
 }
 #display-chords.cfs-flow .measure-chord-name { font-size: calc(17px * var(--cfs-scale)); }
 #display-chords.cfs-flow .measure-chord-dur  { font-size: calc(10px * var(--cfs-scale)); }
+
+/* Bouton ♪ Scroll des plein écrans (accords : dans l'en-tête ; paroles : flottant, voir
+   App._injectFullscreenScrollBtn). Même apparence que #scrollWithMP3Btn, et même état actif
+   (vert, ⏸) piloté par App._setScrollBtnsActive. */
+.fs-scroll-btn {
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--c-text-secondary);
+    background: var(--c-surface-2, #f4f6f9);
+    border: 1px solid var(--c-border);
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.fs-scroll-btn:hover { background: var(--c-primary-light); border-color: var(--c-primary-border); color: var(--c-primary); }
+.fs-scroll-btn.scroll-btn--active,
+.fs-scroll-btn.scroll-btn--active:hover {
+    background: var(--c-accent) !important;
+    border-color: var(--c-accent-hover) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(93,145,98,0.3);
+}
+#chords-fs-scroll { display: none; }
+#song-chords-panel.cfs-active #chords-fs-scroll { display: inline-block; }
+#lyrics-fs-scroll {
+    position: fixed;
+    top: 12px;
+    right: 136px;
+    z-index: 10001;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+}

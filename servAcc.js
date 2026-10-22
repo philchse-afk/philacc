@@ -13,6 +13,12 @@
 // ouverture Guitar Pro) : les deux serveurs restent séparés, sur des
 // ports différents, comme dans votre projet actuel.
 //
+// SYNCHRONISATION MULTI-APPAREILS (WebSocket /sync) : l'écran du PC qui héberge
+// le serveur (le « maître ») est diffusé en direct sur les autres appareils du
+// réseau (voir js/sync.js). Nécessite : npm install ws
+// Variable optionnelle SYNC_MASTER_IPS="192.168.1.50,..." pour désigner un autre
+// appareil comme maître (par défaut : le navigateur ouvert sur le PC serveur).
+//
 // Lancement : node servAcc.js
 // Variables d'env optionnelles : PORT (défaut 5500), COOKIE_SECURE=1 quand
 // servi en HTTPS (recommandé dès que l'appli est exposée sur Internet),
@@ -29,10 +35,34 @@ const sessions = require('./lib/sessions');
 const repertoire = require('./lib/repertoire');
 const storage = require('./lib/storage');
 const media = require('./lib/media');
+const os = require('os');
+
+// Module "ws" facultatif : s'il manque, tout fonctionne comme avant, sans synchro.
+let WebSocketServer = null, WebSocket = null;
+try { ({ WebSocketServer, WebSocket } = require('ws')); }
+catch (_) { console.warn('⚠ Module "ws" absent : synchronisation désactivée (lancez : npm install ws)'); }
+const SYNC_ENABLED = !!WebSocketServer;
 
 const PORT = process.env.PORT || 5500;
 const COOKIE_SECURE = process.env.COOKIE_SECURE === '1';
 const PROJECT_ROOT = path.join(__dirname); // adapter si index.html/app.js sont ailleurs
+
+// -------------------------------------------------------------------
+// Repère visuel de la source de l'application (couleur de fond)
+//  - lancée depuis un dossier "philacc" en local  -> vert pâle
+//  - hébergée sur Render (variable RENDER définie)   -> orange pâle
+//  - autre (ex. un ancien dossier wwwroot)           -> couleur d'origine
+// Forçage possible : variable d'environnement APP_BG_COLOR (toute couleur
+// CSS, ex. "#e3f0ff"), ou APP_BG_COLOR=none pour désactiver.
+// -------------------------------------------------------------------
+function detectEnvColor() {
+    const forced = (process.env.APP_BG_COLOR || '').trim();
+    if (forced) return /^none$/i.test(forced) ? '' : forced.replace(/[^#a-zA-Z0-9(),.%\s-]/g, '');
+    if (process.env.RENDER) return '#ffe8cc';                                   // orange pâle : site en ligne
+    if (path.basename(PROJECT_ROOT).toLowerCase() === 'philacc') return '#dff3df'; // vert pâle : local philacc
+    return '';
+}
+const ENV_COLOR = detectEnvColor();
 
 const MIME = {
     '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css',
@@ -366,8 +396,62 @@ async function handleApi(req, res, url) {
 // -------------------------------------------------------------------
 const SONG_FILE_RE = /^\/songs\/([^/]+\.json)$/;
 
+// -------------------------------------------------------------------
+// Synchronisation : qui est le « maître » ?
+//  - le navigateur ouvert sur le PC serveur (localhost OU l'IP LAN du PC),
+//  - ou les IP listées dans SYNC_MASTER_IPS.
+// Derrière un proxy (déploiement en ligne), personne n'est maître.
+// -------------------------------------------------------------------
+const normIp = ip => String(ip || '').replace(/^::ffff:/, '');
+const EXTRA_MASTER_IPS = new Set((process.env.SYNC_MASTER_IPS || '').split(',').map(s => normIp(s.trim())).filter(Boolean));
+
+function localAddresses() {
+    const set = new Set(['127.0.0.1', '::1']);
+    for (const list of Object.values(os.networkInterfaces())) {
+        for (const i of list || []) set.add(normIp(i.address));
+    }
+    return set;
+}
+function isMasterRequest(req) {
+    if (req.headers['x-forwarded-for']) return false;
+    const ip = normIp(req.socket.remoteAddress);
+    return EXTRA_MASTER_IPS.has(ip) || localAddresses().has(ip);
+}
+
+// Les balises <script ... data-master-only> d'index.html ne sont envoyées qu'au
+// maître : les autres appareils n'exécutent pas l'appli (pas de connexion requise),
+// ils reçoivent seulement l'affichage du maître.
+const MASTER_ONLY_RE = /<script\b[^>]*\bdata-master-only\b[^>]*>[\s\S]*?<\/script>/gi;
+
+function serveIndex(req, res) {
+    fs.readFile(path.join(PROJECT_ROOT, 'index.html'), 'utf8', (err, html) => {
+        if (err) {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            return res.end('Fichier non trouvé : index.html');
+        }
+        if (SYNC_ENABLED) {
+            const master = isMasterRequest(req);
+            if (!master) html = html.replace(MASTER_ONLY_RE, '');
+            const inject = `<script>window.SYNC_ROLE=${JSON.stringify(master ? 'master' : 'viewer')};</script>`;
+            html = /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, m => m + inject) : inject + html;
+        }
+        // no-store : le contenu diffère selon l'appareil (maître / affichage)
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+        res.end(html);
+    });
+}
+
 async function handleStatic(req, res, url) {
     const urlPath = decodeURIComponent(url.pathname);
+
+    // ---- Feuille de style dynamique : couleur de fond selon la source ----
+    if (urlPath === '/env.css') {
+        const css = ENV_COLOR
+            ? `body { background-color: ${ENV_COLOR} !important; }\n#auth-overlay { background: ${ENV_COLOR} !important; }\n`
+            : '/* aucune couleur d\'environnement */\n';
+        res.writeHead(200, { 'Content-Type': 'text/css; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end(css);
+    }
 
     // ---- Détournement : index des chansons ----
     if (urlPath === '/data/songs-index.json') {
@@ -417,6 +501,9 @@ async function handleStatic(req, res, url) {
     // ---- Fichiers multimédia hébergés dans un dépôt GitHub (mode web) ----
     if (await media.serveMedia(req, res, urlPath)) return;
 
+    // ---- Page d'accueil : version « maître » ou « affichage » selon l'appareil ----
+    if (urlPath === '/' || urlPath === '/index.html') return serveIndex(req, res);
+
     // ---- Tout le reste : fichiers statiques classiques, inchangé ----
     const filePath = path.join(PROJECT_ROOT, urlPath === '/' ? 'index.html' : urlPath);
     if (!filePath.startsWith(PROJECT_ROOT)) {
@@ -439,7 +526,7 @@ function serveFromDisk(res, filePath, urlPath) {
 }
 
 // -------------------------------------------------------------------
-http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
     try {
         const url = new URL(req.url, `http://${req.headers.host}`);
 
@@ -465,7 +552,61 @@ http.createServer((req, res) => {
         try { res.writeHead(500, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ error: 'Erreur serveur : ' + err.message })); }
         catch (_) { /* réponse déjà envoyée */ }
     }
-}).on('error', err => {
+});
+
+// -------------------------------------------------------------------
+// WebSocket /sync : le maître envoie des instantanés, relayés aux affichages
+// -------------------------------------------------------------------
+if (SYNC_ENABLED) {
+    const wss = new WebSocketServer({
+        server, path: '/sync',
+        maxPayload: 32 * 1024 * 1024,
+        perMessageDeflate: { threshold: 1024 },   // le HTML se compresse très bien
+    });
+    let lastSnapshot = null; // rejoué aux appareils qui se connectent en cours de route
+
+    const isOpen = c => c.readyState === WebSocket.OPEN;
+    const count = role => [...wss.clients].filter(c => isOpen(c) && c.syncRole === role).length;
+    function broadcastStatus() {
+        const msg = JSON.stringify({ t: 'status', masters: count('master'), viewers: count('viewer') });
+        wss.clients.forEach(c => { if (isOpen(c)) c.send(msg); });
+    }
+
+    wss.on('connection', (ws, req) => {
+        ws.syncRole = isMasterRequest(req) ? 'master' : 'viewer';
+        ws.isAlive = true;
+        ws.on('pong', () => { ws.isAlive = true; });
+        ws.on('error', () => {});
+        ws.on('close', broadcastStatus);
+
+        if (ws.syncRole === 'viewer' && lastSnapshot) ws.send(lastSnapshot);
+
+        ws.on('message', data => {
+            if (ws.syncRole !== 'master') return;     // seuls les ordres du maître comptent
+            lastSnapshot = data.toString();
+            wss.clients.forEach(c => {
+                if (c === ws || c.syncRole !== 'viewer' || !isOpen(c)) return;
+                if (c.bufferedAmount > 4 * 1024 * 1024) { c.stale = true; return; } // appareil lent : on réessaiera
+                c.send(lastSnapshot);
+            });
+        });
+        broadcastStatus();
+    });
+
+    setInterval(() => {   // rattrape les appareils lents + coupe les connexions mortes
+        wss.clients.forEach(c => {
+            if (c.stale && lastSnapshot && isOpen(c) && c.bufferedAmount < 256 * 1024) { c.stale = false; c.send(lastSnapshot); }
+        });
+    }, 1000);
+    setInterval(() => {
+        wss.clients.forEach(c => {
+            if (!c.isAlive) return c.terminate();
+            c.isAlive = false; c.ping();
+        });
+    }, 30000);
+}
+
+server.on('error', err => {
     // EADDRINUSE notamment : le port est déjà occupé par un autre process
     // (ancien servAcc.js resté ouvert). On le dit clairement au lieu de
     // planter en silence dans la fenêtre "Accords".
@@ -474,9 +615,17 @@ http.createServer((req, res) => {
         console.error(`   Un autre process écoute déjà sur ce port. Utilisez stopstart5500.js pour le libérer avant de relancer.`);
     }
     process.exit(1);
-}).listen(PORT, '0.0.0.0', () => {
+});
+
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Serveur Accords (avec auth) lancé sur http://localhost:${PORT}`);
     console.log(`   COOKIE_SECURE=${COOKIE_SECURE ? 'oui (HTTPS requis)' : 'non (OK en local/LAN)'}`);
+    if (SYNC_ENABLED) {
+        const lan = [].concat(...Object.values(os.networkInterfaces())).filter(i => i && i.family === 'IPv4' && !i.internal).map(i => i.address);
+        console.log(`   Synchro écrans : maître = navigateur ouvert sur ce PC (http://localhost:${PORT})`);
+        lan.forEach(ip => console.log(`   Autres appareils -> http://${ip}:${PORT}`));
+    }
     console.log(`   Stockage : ${storage.USE_REDIS ? 'Upstash Redis (persistant en ligne)' : 'fichiers locaux'}`);
+    console.log(`   Couleur de fond : ${ENV_COLOR || 'par défaut'}`);
     console.log(`   Multimédia : ${media.IS_REMOTE ? `dépôt GitHub ${media.MEDIA_REPO}@${media.MEDIA_BRANCH} (dossier "${media.MEDIA_PATH || '/'}")` : 'dossier local songs/multimedia'}`);
 });
