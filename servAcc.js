@@ -37,10 +37,21 @@ const storage = require('./lib/storage');
 const media = require('./lib/media');
 const os = require('os');
 
+// La synchro d'écrans n'a de sens qu'en local (réseau local, PC « maître »).
+// Elle est donc DÉSACTIVÉE en mode web (Render : variable RENDER définie) :
+// derrière le proxy de l'hébergeur, aucun navigateur ne serait reconnu comme
+// maître, et tous les visiteurs recevraient une page sans l'appli. On peut aussi
+// la couper en local avec la variable d'environnement SYNC=off.
+const SYNC_OFF_REASON = process.env.RENDER ? 'mode web (Render)'
+    : /^(0|false|off|no)$/i.test((process.env.SYNC || '').trim()) ? 'variable SYNC=off'
+    : '';
+
 // Module "ws" facultatif : s'il manque, tout fonctionne comme avant, sans synchro.
 let WebSocketServer = null, WebSocket = null;
-try { ({ WebSocketServer, WebSocket } = require('ws')); }
-catch (_) { console.warn('⚠ Module "ws" absent : synchronisation désactivée (lancez : npm install ws)'); }
+if (!SYNC_OFF_REASON) {
+    try { ({ WebSocketServer, WebSocket } = require('ws')); }
+    catch (_) { console.warn('⚠ Module "ws" absent : synchronisation désactivée (lancez : npm install ws)'); }
+}
 const SYNC_ENABLED = !!WebSocketServer;
 
 const PORT = process.env.PORT || 5500;
@@ -620,6 +631,7 @@ server.on('error', err => {
 server.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Serveur Accords (avec auth) lancé sur http://localhost:${PORT}`);
     console.log(`   COOKIE_SECURE=${COOKIE_SECURE ? 'oui (HTTPS requis)' : 'non (OK en local/LAN)'}`);
+    if (SYNC_OFF_REASON) console.log(`   Synchro écrans : désactivée (${SYNC_OFF_REASON})`);
     if (SYNC_ENABLED) {
         const lan = [].concat(...Object.values(os.networkInterfaces())).filter(i => i && i.family === 'IPv4' && !i.internal).map(i => i.address);
         console.log(`   Synchro écrans : maître = navigateur ouvert sur ce PC (http://localhost:${PORT})`);
