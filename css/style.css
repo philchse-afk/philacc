@@ -1,4 +1,4 @@
-/* style.css — v26 */
+/* style.css — v27 */
 /* =============================================
    CHARTE GRAPHIQUE — variables CSS globales
    Palette pastel bleu-ardoise × sauge × menthe
@@ -1263,3 +1263,127 @@ mark.lyric-highlight-libre  { background: #e8d8f4; }
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     cursor: pointer;
 }
+
+/* =============================================
+   PLEIN ÉCRAN ACCORDS (case "Plein écran" de la frame accords)
+   Voir App.toggleChordsFullscreen : la frame couvre la fenêtre, la chanson est
+   découpée en cartes par section (couplet/refrain/pont/solo) qui s'écoulent en
+   colonnes, et --cfs-scale (calculée en JS par _fitChordsFullscreen) adapte la
+   taille de tout le contenu pour que l'ensemble tienne sans défilement.
+   ============================================= */
+.chords-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.chords-fs-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--c-text-secondary);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+.chords-fs-toggle input { margin: 0; cursor: pointer; }
+.chords-fs-title { display: none; }
+
+#song-chords-panel.cfs-active {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 10000 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 14px 22px 16px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: var(--c-surface, #fff) !important;
+}
+#song-chords-panel.cfs-active .chords-panel-header {
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--c-border);
+}
+#song-chords-panel.cfs-active .chords-fs-title {
+    display: block;
+    order: -1;
+    flex: 1;
+    min-width: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--c-primary, #6c8ebf);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#song-chords-panel.cfs-active .chords-fs-toggle { font-size: 15px; }
+
+#song-chords-panel.cfs-active #display-chords {
+    margin-top: 0;
+    max-height: none;
+    overflow: hidden;
+}
+
+/* Colonnes de cartes : flex en colonne qui passe à la colonne suivante (hauteur fixée en JS) */
+#display-chords.cfs-flow {
+    --cfs-scale: 1;
+    --cfs-cardw: 290px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: calc(12px * var(--cfs-scale));
+}
+.cfs-section {
+    box-sizing: border-box;
+    flex: none;
+    width: var(--cfs-cardw);
+    border: 1px solid var(--c-border);
+    border-radius: calc(8px * var(--cfs-scale));
+    padding: calc(8px * var(--cfs-scale)) calc(10px * var(--cfs-scale)) calc(3px * var(--cfs-scale));
+}
+.cfs-empty { color: var(--c-text-muted); font-size: 16px; }
+
+/* Contenu des cartes : toutes les tailles suivent l'échelle */
+#display-chords.cfs-flow .chord-section-badge {
+    font-size: calc(15px * var(--cfs-scale));
+    padding: calc(3px * var(--cfs-scale)) calc(10px * var(--cfs-scale));
+    margin-bottom: calc(6px * var(--cfs-scale));
+}
+#display-chords.cfs-flow .chord-line {
+    min-height: 0;
+    gap: calc(8px * var(--cfs-scale));
+    margin-bottom: calc(6px * var(--cfs-scale));
+}
+#display-chords.cfs-flow .chord-line:not(.measure-line) > span {
+    font-size: calc(18px * var(--cfs-scale));
+    padding: calc(5px * var(--cfs-scale)) calc(10px * var(--cfs-scale));
+}
+/* Les lignes de mesures peuvent passer à la ligne dans une carte étroite : sans cela une
+   ligne de 8 mesures (ex. intro) écrasait chaque bloc jusqu'à tronquer les noms d'accords.
+   Chaque bloc garde sa largeur proportionnelle à sa durée tant qu'elle dépasse le minimum. */
+#display-chords.cfs-flow .chord-line.measure-line {
+    flex-wrap: wrap;
+    min-height: calc(46px * var(--cfs-scale));
+    gap: calc(5px * var(--cfs-scale));
+}
+#display-chords.cfs-flow .measure-block {
+    min-width: calc(54px * var(--cfs-scale));
+    padding: calc(3px * var(--cfs-scale));
+    gap: calc(3px * var(--cfs-scale));
+}
+#display-chords.cfs-flow .measure-chord {
+    padding: calc(4px * var(--cfs-scale)) calc(4px * var(--cfs-scale)) calc(8px * var(--cfs-scale));
+}
+#display-chords.cfs-flow .measure-chord-name { font-size: calc(17px * var(--cfs-scale)); }
+#display-chords.cfs-flow .measure-chord-dur  { font-size: calc(10px * var(--cfs-scale)); }

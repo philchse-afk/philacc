@@ -1,4 +1,4 @@
-// app.js — v48
+// app.js — v49
 // FEAT : bouton "[|] Syllabe" dans l'éditeur, à côté de "🎤 Marquer" — insère
 //        le séparateur de syllabe [|] à la position exacte du curseur (dans
 //        un mot, contrairement aux boutons vvvv[]/pppp[] qui forcent un
@@ -426,6 +426,12 @@ const App = {
         const chordsPanelToggle = document.getElementById("showChordsPanelToggle");
         if (chordsPanelToggle) {
             chordsPanelToggle.addEventListener("change", () => this.toggleChordsPanel());
+        }
+
+        // Case "Plein écran" de la frame accords (voir toggleChordsFullscreen)
+        const chordsFsToggle = document.getElementById("chords-fullscreen-toggle");
+        if (chordsFsToggle) {
+            chordsFsToggle.addEventListener("change", () => this.toggleChordsFullscreen(chordsFsToggle.checked));
         }
 
         // Repositionner les post-it image si la fenêtre est redimensionnée (le texte
@@ -1190,6 +1196,10 @@ const App = {
             chordsHtml += rendered.replace(/^<div /, `<div data-line-index="${lineIndex}" `);
         });
 
+        // Changement de chanson / re-rendu (transposition…) : on referme d'abord un
+        // éventuel plein écran accords, dont le réagencement par sections déplace les
+        // lignes de la frame et serait périmé après le remplacement du contenu.
+        if (this._chordsFsActive) this._exitChordsFullscreen();
         displayChords.innerHTML = chordsHtml;
     //--------Fin chords panel-----------------------
 
@@ -7318,6 +7328,200 @@ const App = {
         document.body.appendChild(close);
     },
     // ===== FIN PLEIN ÉCRAN PAROLES =====
+
+    // ===== PLEIN ÉCRAN ACCORDS =====
+    // Case à cocher dans l'en-tête de la frame accords (#song-chords-panel). Cochée :
+    //   1. la frame passe en plein écran (overlay CSS fixe, + API native requestFullscreen
+    //      en complément quand elle est disponible pour masquer aussi la barre du navigateur) ;
+    //   2. son contenu est réagencé : la chanson est découpée en sections (couplet, refrain,
+    //      pont, solo… repérées par les marqueurs vvvv/pppp/rrrr/ssss) présentées sous forme de
+    //      cartes qui se répartissent en colonnes ;
+    //   3. la taille des accords est ajustée automatiquement (_fitChordsFullscreen) pour que
+    //      TOUTE la chanson tienne dans la fenêtre sans défilement.
+    // Les lignes d'accords sont DÉPLACÉES (pas clonées) dans les cartes : elles gardent leur
+    // data-line-index et leurs classes, donc le surlignage de l'accord en cours pendant la
+    // lecture MP3 (voir _applyChordHighlight) continue de fonctionner dans cette vue.
+    toggleChordsFullscreen(enable) {
+        const panel = document.getElementById('song-chords-panel');
+        if (!panel) return;
+        const isActive = !!this._chordsFsActive;
+        if (enable === undefined) enable = !isActive;
+        if (enable === isActive) return;
+        if (enable) this._enterChordsFullscreen(panel);
+        else this._exitChordsFullscreen();
+    },
+
+    _enterChordsFullscreen(panel) {
+        const display = document.getElementById('display-chords');
+        if (!display || !this.currentSong) return;
+
+        this._buildChordsFullscreenLayout(display);
+        panel.classList.add('cfs-active');
+        this._chordsFsActive = true;
+        this._bodyScrollLock();
+
+        const titleEl = document.getElementById('chords-fs-title');
+        const mainTitle = document.getElementById('song-title-display');
+        if (titleEl && mainTitle) titleEl.textContent = mainTitle.textContent;
+
+        // Plein écran natif en complément (l'overlay CSS couvre déjà la fenêtre : s'il est
+        // refusé — iframe, politique du navigateur — on n'a rien de plus à faire).
+        const requestFS = panel.requestFullscreen || panel.webkitRequestFullscreen
+            || panel.mozRequestFullScreen || panel.msRequestFullscreen;
+        this._chordsFsNative = false;
+        if (requestFS) {
+            try {
+                const res = requestFS.call(panel);
+                if (res && res.then) {
+                    res.then(() => { this._chordsFsNative = true; this._fitChordsFullscreen(); })
+                       .catch(() => {});
+                } else {
+                    this._chordsFsNative = true;
+                }
+            } catch (_) { /* refusé : overlay CSS seul */ }
+        }
+
+        // Ajustement initial (après application des classes) puis à chaque changement de
+        // taille de la fenêtre (passage en plein écran natif, rotation de la tablette…).
+        this._fitChordsFullscreen();
+        requestAnimationFrame(() => this._fitChordsFullscreen());
+
+        let resizeTimer = null;
+        this._chordsFsOnResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => this._fitChordsFullscreen(), 80);
+        };
+        this._chordsFsOnKey = (e) => { if (e.key === 'Escape') this._exitChordsFullscreen(); };
+        this._chordsFsOnFsChange = () => {
+            const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+            if (!fsEl && this._chordsFsNative) this._exitChordsFullscreen();
+        };
+        window.addEventListener('resize', this._chordsFsOnResize);
+        document.addEventListener('keydown', this._chordsFsOnKey);
+        document.addEventListener('fullscreenchange', this._chordsFsOnFsChange);
+        document.addEventListener('webkitfullscreenchange', this._chordsFsOnFsChange);
+    },
+
+    _exitChordsFullscreen() {
+        const panel = document.getElementById('song-chords-panel');
+        const display = document.getElementById('display-chords');
+        const wasActive = !!this._chordsFsActive;
+        this._chordsFsActive = false;
+
+        window.removeEventListener('resize', this._chordsFsOnResize);
+        document.removeEventListener('keydown', this._chordsFsOnKey);
+        document.removeEventListener('fullscreenchange', this._chordsFsOnFsChange);
+        document.removeEventListener('webkitfullscreenchange', this._chordsFsOnFsChange);
+
+        const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+        if (fsEl && fsEl === panel) {
+            const exitFS = document.exitFullscreen || document.webkitExitFullscreen;
+            if (exitFS) { try { const r = exitFS.call(document); if (r && r.catch) r.catch(() => {}); } catch (_) {} }
+        }
+        this._chordsFsNative = false;
+
+        if (panel) panel.classList.remove('cfs-active');
+        if (display) this._restoreChordsLayout(display);
+        if (wasActive) this._bodyScrollUnlock();
+
+        const cb = document.getElementById('chords-fullscreen-toggle');
+        if (cb) cb.checked = false;
+    },
+
+    // Découpe la frame en sections et les range dans des cartes (cf. commentaire du module).
+    _buildChordsFullscreenLayout(display) {
+        if (this._cfsOriginalNodes) return; // déjà réagencé
+        const nodes = Array.from(display.children);
+        this._cfsOriginalNodes = nodes;
+
+        const sections = [];
+        let cur = null;
+        nodes.forEach(node => {
+            if (node.classList.contains('chord-section-badge')) {
+                cur = { badge: node, lines: [] };
+                sections.push(cur);
+                return;
+            }
+            // Lignes sans accord (paroles seules, tablature, balises <link>…) : sans objet ici
+            if (node.classList.contains('empty')) return;
+            if (!cur) { cur = { badge: null, lines: [] }; sections.push(cur); }
+            cur.lines.push(node);
+        });
+
+        const frag = document.createDocumentFragment();
+        sections.forEach(sec => {
+            if (!sec.lines.length) return; // section sans accord : pas de carte vide
+            const card = document.createElement('div');
+            card.className = 'cfs-section';
+            if (sec.badge) {
+                // La carte reprend la teinte de la section (même code couleur que l'étiquette :
+                // couplet orange, refrain vert, pont turquoise, solo bleu).
+                if (sec.badge.style.borderColor) card.style.borderColor = sec.badge.style.borderColor;
+                if (sec.badge.style.background)  card.style.background  = sec.badge.style.background;
+                card.appendChild(sec.badge);
+            }
+            sec.lines.forEach(l => card.appendChild(l));
+            frag.appendChild(card);
+        });
+
+        display.textContent = '';
+        if (!frag.childNodes.length) {
+            const msg = document.createElement('div');
+            msg.className = 'cfs-empty';
+            msg.textContent = 'Aucun accord dans cette chanson.';
+            frag.appendChild(msg);
+        }
+        display.appendChild(frag);
+        display.classList.add('cfs-flow');
+    },
+
+    // Remet les lignes dans leur ordre d'origine (déplacement inverse, rien n'est recréé).
+    _restoreChordsLayout(display) {
+        if (!this._cfsOriginalNodes) return;
+        display.textContent = '';
+        this._cfsOriginalNodes.forEach(n => display.appendChild(n));
+        this._cfsOriginalNodes = null;
+        display.classList.remove('cfs-flow');
+        ['height', 'overflow-x', '--cfs-scale', '--cfs-cardw'].forEach(p => display.style.removeProperty(p));
+    },
+
+    // Cherche la plus grande échelle (taille des accords + nombre de colonnes) pour laquelle
+    // toutes les cartes tiennent dans la zone disponible, sans défilement : dichotomie sur
+    // l'échelle, chaque essai recalculant le nombre de colonnes et la largeur des cartes.
+    _fitChordsFullscreen() {
+        const panel = document.getElementById('song-chords-panel');
+        const display = document.getElementById('display-chords');
+        if (!panel || !display || !this._chordsFsActive || !display.classList.contains('cfs-flow')) return;
+
+        const header = panel.querySelector('.chords-panel-header');
+        const cs = getComputedStyle(panel);
+        const availH = panel.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom)
+            - (header ? header.offsetHeight + parseFloat(getComputedStyle(header).marginBottom || 0) : 0);
+        display.style.height = Math.max(120, availH) + 'px';
+        display.style.overflowX = 'hidden';
+
+        const W = display.clientWidth;
+        const BASE_CARD_W = 290; // largeur d'une carte à l'échelle 1 (px)
+        const apply = (scale) => {
+            const gap = 12 * scale;
+            const cols = Math.max(1, Math.floor((W + gap) / (BASE_CARD_W * scale + gap)));
+            const cardW = (W - (cols - 1) * gap) / cols;
+            display.style.setProperty('--cfs-scale', scale.toFixed(3));
+            display.style.setProperty('--cfs-cardw', cardW.toFixed(1) + 'px');
+            return display.scrollWidth <= display.clientWidth + 1
+                && display.scrollHeight <= display.clientHeight + 1;
+        };
+
+        let lo = 0.4, hi = 2.6, best = lo;
+        for (let i = 0; i < 14; i++) {
+            const mid = (lo + hi) / 2;
+            if (apply(mid)) { best = mid; lo = mid; } else { hi = mid; }
+        }
+        // Même la plus petite échelle ne suffit pas (chanson très longue) : on la garde et on
+        // autorise le défilement horizontal plutôt que de couper du contenu.
+        if (!apply(best)) display.style.overflowX = 'auto';
+    },
+    // ===== FIN PLEIN ÉCRAN ACCORDS =====
 
     // ===== PLEIN ÉCRAN ÉDITEUR =====
     // Même principe que le plein écran paroles (API native + repli CSS), appliqué
