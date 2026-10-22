@@ -10,5 +10,22 @@
     "node": ">=18"
   },
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philchse-afk/philacc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/philchse-afk/philacc/issues"
+  },
+  "homepage": "https://github.com/philchse-afk/philacc#readme",
+  "dependencies": {
+    "ws": "^8.22.0"
+  }
 }
