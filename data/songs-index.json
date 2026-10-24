@@ -350,5 +350,13 @@
     "bpm": "142",
     "recommendedCapo": "",
     "file": "goo goo muck.json"
+  },
+  {
+    "title": "A Hard Day's Night",
+    "artist": "The beatles",
+    "capo": "0",
+    "bpm": "",
+    "recommendedCapo": "",
+    "file": "a hard day-s night.json"
   }
 ]

@@ -574,7 +574,15 @@ if (SYNC_ENABLED) {
         maxPayload: 32 * 1024 * 1024,
         perMessageDeflate: { threshold: 1024 },   // le HTML se compresse très bien
     });
-    let lastSnapshot = null; // rejoué aux appareils qui se connectent en cours de route
+    // Le serveur garde le dernier instantané COMPLET (lastSnapshot) et le dernier message de
+    // défilement seul (lastView) pour les appareils qui arrivent en cours de route.
+    // Les messages sont relayés tels quels (Buffer, sans conversion en texte ni nouvel encodage).
+    let lastSnapshot = null, lastView = null;
+    // Tant qu'aucun affichage n'est connecté, le maître ne calcule rien (voir sync.js) :
+    // lastSnapshot devient alors périmé et n'est PAS rejoué au prochain arrivant — on attend
+    // l'instantané frais que le maître envoie dès qu'il voit arriver un appareil.
+    let snapshotValid = false;
+    const WAIT_FRESH_MS = 1500;   // si le maître ne répond pas (absent, onglet en veille) : dernier état connu
 
     const isOpen = c => c.readyState === WebSocket.OPEN;
     const count = role => [...wss.clients].filter(c => isOpen(c) && c.syncRole === role).length;
@@ -582,23 +590,41 @@ if (SYNC_ENABLED) {
         const msg = JSON.stringify({ t: 'status', masters: count('master'), viewers: count('viewer') });
         wss.clients.forEach(c => { if (isOpen(c)) c.send(msg); });
     }
+    function sendLast(c) {
+        c.gotSnap = true;
+        c.send(lastSnapshot, { binary: false });
+        if (lastView) c.send(lastView, { binary: false });
+    }
 
     wss.on('connection', (ws, req) => {
         ws.syncRole = isMasterRequest(req) ? 'master' : 'viewer';
         ws.isAlive = true;
         ws.on('pong', () => { ws.isAlive = true; });
         ws.on('error', () => {});
-        ws.on('close', broadcastStatus);
+        ws.on('close', () => {
+            clearTimeout(ws.waitTimer);
+            broadcastStatus();
+            if (ws.syncRole === 'viewer' && count('viewer') === 0) snapshotValid = false;
+        });
 
-        if (ws.syncRole === 'viewer' && lastSnapshot) ws.send(lastSnapshot);
+        if (ws.syncRole === 'viewer' && lastSnapshot) {
+            if (snapshotValid) sendLast(ws);                       // instantané à jour : affichage immédiat
+            else ws.waitTimer = setTimeout(() => {                 // sinon on laisse au maître le temps de répondre
+                if (!ws.gotSnap && isOpen(ws) && lastSnapshot) sendLast(ws);
+            }, WAIT_FRESH_MS);
+        }
 
         ws.on('message', data => {
             if (ws.syncRole !== 'master') return;     // seuls les ordres du maître comptent
-            lastSnapshot = data.toString();
+            const buf = Buffer.isBuffer(data) ? data : Buffer.from(data);
+            const isView = buf.toString('utf8', 0, 12) === '{"t":"view",';   // reconnu à son préfixe, quelle que soit sa taille
+            if (isView) lastView = buf;
+            else { lastSnapshot = buf; lastView = null; snapshotValid = true; }
             wss.clients.forEach(c => {
                 if (c === ws || c.syncRole !== 'viewer' || !isOpen(c)) return;
-                if (c.bufferedAmount > 4 * 1024 * 1024) { c.stale = true; return; } // appareil lent : on réessaiera
-                c.send(lastSnapshot);
+                if (c.bufferedAmount > 4 * 1024 * 1024) { if (!isView) c.stale = true; return; } // appareil lent : on réessaiera
+                if (!isView) c.gotSnap = true;
+                c.send(buf, { binary: false });
             });
         });
         broadcastStatus();
@@ -606,7 +632,7 @@ if (SYNC_ENABLED) {
 
     setInterval(() => {   // rattrape les appareils lents + coupe les connexions mortes
         wss.clients.forEach(c => {
-            if (c.stale && lastSnapshot && isOpen(c) && c.bufferedAmount < 256 * 1024) { c.stale = false; c.send(lastSnapshot); }
+            if (c.stale && lastSnapshot && isOpen(c) && c.bufferedAmount < 256 * 1024) { c.stale = false; sendLast(c); }
         });
     }, 1000);
     setInterval(() => {

@@ -9,6 +9,19 @@
 //              page à jour avec un diff DOM (pas de clignotement, les animations
 //              CSS et les vidéos ne redémarrent pas à chaque mise à jour).
 // Si window.SYNC_ROLE est absent (ex. Live Server), ce script ne fait rien.
+//
+// Optimisations de latence / charge (v2) :
+//  - le maître ne calcule ni n'envoie RIEN tant qu'aucun appareil ne regarde, et
+//    envoie un instantané frais dès qu'un appareil arrive ;
+//  - un simple défilement part dans un message minuscule ('view') au lieu de
+//    renvoyer toute la page ; le viewer ne reconstruit pas le DOM si le contenu
+//    n'a pas changé ;
+//  - plus de re-clonage de la page toutes les secondes : un test léger des champs
+//    de formulaire (toutes les 400 ms) remplace le filet de sécurité d'avant ;
+//  - la cadence des instantanés complets s'adapte au coût réel de la page ;
+//  - le viewer ré-applique la position de défilement quand la mise en page
+//    change (images, polices, redimensionnement) ;
+//  - reconnexion plus rapide (plafond 2 s, immédiate au retour sur l'onglet).
 // -----------------------------------------------------------------------------
 (function () {
     'use strict';
@@ -17,8 +30,11 @@
     if (ROLE !== 'master' && ROLE !== 'viewer') return;
 
     const WS_URL = (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/sync';
-    const MIN_INTERVAL_MS = 80;     // cadence max d'envoi (maître)
-    const RESEND_CHECK_MS = 1000;   // filet de sécurité : détecte les changements non observables (canvas…)
+    const MIN_INTERVAL_MS = 80;     // cadence max des instantanés complets (s'allonge si la page est lourde)
+    const MAX_INTERVAL_MS = 400;    // ... sans jamais dépasser ceci
+    const VIEW_INTERVAL_MS = 30;    // cadence max des messages "défilement seul" (très légers)
+    const RESEND_CHECK_MS = 400;    // filet de sécurité : champs modifiés par script, canvas… (test léger)
+    const RETRY_MAX_MS = 2000;      // plafond du délai de reconnexion
 
     // ---------------------------------------------------------------
     // Pastille d'état (Shadow DOM : n'interfère ni avec la page ni avec le CSS)
@@ -55,7 +71,12 @@
         const initialHeadNodes = new Set(document.head.querySelectorAll('style, link[rel="stylesheet"]'));
         const touched = new Set();              // éléments défilés par l'utilisateur
         const inertDoc = document.implementation.createHTMLDocument(''); // clone sans chargement de ressources
-        let ws = null, lastSent = '', timer = null, lastRun = 0, retry = 1000, viewers = 0;
+        let ws = null, lastSent = '', lastView = '', timer = null, lastRun = 0, retry = 500, retryTimer = null, viewers = 0;
+        let domDirty = true;     // le DOM (ou un champ) a changé : instantané complet nécessaire
+        let viewDirty = false;   // seul le défilement a changé : message léger suffisant
+        let forceFull = false;   // un appareil vient d'arriver : instantané complet même s'il est identique au précédent
+        let fullInterval = MIN_INTERVAL_MS;   // s'adapte au temps de construction d'un instantané
+        let lastFp = '', tick = 0;
 
         const attrMap = el => {
             const m = {};
@@ -127,21 +148,63 @@
             };
         }
 
-        function send() {
-            if (!ws || ws.readyState !== 1 || ws.bufferedAmount > 2 * 1024 * 1024) return;
-            let msg;
-            try { msg = JSON.stringify(buildSnapshot()); }
-            catch (err) { console.warn('[sync] instantané impossible :', err); return; }
-            if (msg === lastSent) return;
-            lastSent = msg;
-            ws.send(msg);
+        // Défilement seul : même indexation que buildSnapshot, mais sans cloner la page
+        function buildView() {
+            const body = document.body;
+            const live = body.querySelectorAll('*');
+            const els = [];
+            let idx = 0;
+            for (let i = 0; i < live.length; i++) {
+                const a = live[i];
+                if (a.tagName === 'SCRIPT') continue;
+                if (touched.has(a)) {
+                    els.push([idx,
+                        ratio(a.scrollLeft, a.scrollWidth - a.clientWidth),
+                        ratio(a.scrollTop, a.scrollHeight - a.clientHeight)]);
+                }
+                idx++;
+            }
+            touched.forEach(el => { if (!body.contains(el)) touched.delete(el); });
+            const se = document.scrollingElement || document.documentElement;
+            return {
+                t: 'view',
+                win: [ratio(se.scrollLeft, se.scrollWidth - se.clientWidth),
+                      ratio(se.scrollTop, se.scrollHeight - se.clientHeight)],
+                els,
+            };
+        }
+
+        function flush() {
+            if (!ws || ws.readyState !== 1) return;
+            if (ws.bufferedAmount > 2 * 1024 * 1024) { setTimeout(schedule, 250); return; } // appareil/réseau lent : on réessaie
+            if (!viewers && !forceFull) return;      // personne ne regarde : on ne calcule rien (état conservé)
+
+            if (domDirty || forceFull) {
+                const forced = forceFull;
+                domDirty = false; viewDirty = false; forceFull = false;
+                const t0 = performance.now();
+                let msg;
+                try { msg = JSON.stringify(buildSnapshot()); }
+                catch (err) { console.warn('[sync] instantané impossible :', err); domDirty = true; return; }
+                // cadence adaptative : la synchro ne mobilise jamais plus d'~1/4 du temps de la page
+                const cost = performance.now() - t0;
+                fullInterval = Math.round(Math.min(MAX_INTERVAL_MS, Math.max(MIN_INTERVAL_MS, (fullInterval + cost * 3) / 2)));
+                if (forced || msg !== lastSent) { lastSent = msg; lastView = ''; ws.send(msg); }
+            } else if (viewDirty) {
+                viewDirty = false;
+                const msg = JSON.stringify(buildView());
+                if (msg !== lastView) { lastView = msg; ws.send(msg); }
+            }
         }
 
         function schedule() {
             if (timer) return;
-            timer = setTimeout(() => { timer = null; lastRun = Date.now(); send(); },
-                Math.max(0, MIN_INTERVAL_MS - (Date.now() - lastRun)));
+            const gap = domDirty || forceFull ? fullInterval : VIEW_INTERVAL_MS;
+            timer = setTimeout(() => { timer = null; lastRun = Date.now(); flush(); },
+                Math.max(0, gap - (Date.now() - lastRun)));
         }
+        const markDom = () => { domDirty = true; if (viewers) schedule(); };
+        const markView = () => { viewDirty = true; if (viewers) schedule(); };
 
         function updateBadge() {
             if (ws && ws.readyState === 1) badge.set('● Maître — ' + viewers + ' appareil' + (viewers > 1 ? 's' : ''), 'corner');
@@ -149,29 +212,61 @@
         }
 
         function connect() {
+            if (ws && ws.readyState <= 1) return;
+            clearTimeout(retryTimer);
             ws = new WebSocket(WS_URL);
-            ws.onopen = () => { retry = 1000; lastSent = ''; updateBadge(); send(); };
+            ws.onopen = () => { retry = 500; lastSent = ''; lastView = ''; domDirty = true; updateBadge(); };
             ws.onmessage = e => {
                 try {
                     const m = JSON.parse(e.data);
-                    if (m.t === 'status') { viewers = m.viewers; updateBadge(); }
+                    if (m.t === 'status') {
+                        const more = m.viewers > viewers;
+                        viewers = m.viewers; updateBadge();
+                        // un appareil arrive (ou le maître vient de se (re)connecter avec des appareils déjà là) :
+                        // on lui envoie tout de suite un instantané frais
+                        if (more) { forceFull = true; domDirty = true; schedule(); }
+                    }
                 } catch (_) {}
             };
-            ws.onclose = () => { updateBadge(); setTimeout(connect, retry); retry = Math.min(retry * 2, 5000); };
+            ws.onclose = () => {
+                viewers = 0; updateBadge();
+                retryTimer = setTimeout(connect, retry); retry = Math.min(retry * 2, RETRY_MAX_MS);
+            };
             ws.onerror = () => { try { ws.close(); } catch (_) {} };
         }
 
-        new MutationObserver(schedule).observe(document.documentElement,
+        // Valeurs des champs : elles changent sans événement ni mutation quand l'appli les remplit par script
+        function formFingerprint() {
+            let f = '';
+            document.querySelectorAll('input,textarea,select').forEach(e => {
+                const type = (e.type || '').toLowerCase();
+                f += (type === 'checkbox' || type === 'radio' ? (e.checked ? '1' : '0')
+                    : type === 'password' || type === 'file' ? '' : e.value) + '\u0001';
+            });
+            return f;
+        }
+
+        new MutationObserver(markDom).observe(document.documentElement,
             { subtree: true, childList: true, attributes: true, characterData: true });
         ['input', 'change', 'click', 'keyup', 'transitionend', 'animationend', 'load'].forEach(ev =>
-            document.addEventListener(ev, schedule, true));
+            document.addEventListener(ev, markDom, true));
         window.addEventListener('scroll', e => {
             const t = e.target;
             if (t && t.nodeType === 1) touched.add(t);
-            schedule();
+            markView();
         }, true);
-        window.addEventListener('resize', schedule);
-        setInterval(send, RESEND_CHECK_MS);
+        window.addEventListener('resize', markDom);
+        setInterval(() => {
+            if (!viewers) return;
+            tick++;
+            const fp = formFingerprint();
+            if (fp !== lastFp) { lastFp = fp; markDom(); }
+            else if (tick % 3 === 0 && document.querySelector('canvas')) markDom();   // canvas : pas observable
+        }, RESEND_CHECK_MS);
+
+        const reconnectNow = () => { if (!ws || ws.readyState > 1) { clearTimeout(retryTimer); retry = 500; connect(); } };
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) reconnectNow(); });
+        window.addEventListener('online', reconnectNow);
 
         connect();
     }
@@ -190,7 +285,8 @@
         const dynStyle = document.createElement('style');
         document.head.appendChild(dynStyle);
         const addedLinks = new Set();
-        let ws = null, retry = 1000, pending = null, raf = 0, gotFirst = false, mastersOnline = true;
+        let ws = null, retry = 500, retryTimer = null, pendingSnap = null, pendingView = null, raf = 0,
+            gotFirst = false, mastersOnline = true, lastBody = null;
 
         // ---- Diff DOM --------------------------------------------------
         function syncAttrs(el, src) {
@@ -262,6 +358,39 @@
             while (live.childNodes.length > nk.length) live.removeChild(live.lastChild);
         }
 
+        // ---- Défilement : mémorisé et ré-appliqué quand la mise en page change ----
+        // (images, polices, redimensionnement : sans cela, la position en proportion
+        // dérive jusqu'au prochain défilement du maître)
+        let scrollState = null, reapplyRaf = 0;
+        function applyScroll() {
+            if (!scrollState) return;
+            const { els, win } = scrollState;
+            if (els && els.length) {
+                const list = document.body.querySelectorAll('*');
+                els.forEach(([i, rx, ry]) => {
+                    const el = list[i];
+                    if (!el) return;
+                    const mx = el.scrollWidth - el.clientWidth, my = el.scrollHeight - el.clientHeight;
+                    if (mx > 0) el.scrollLeft = rx * mx;
+                    if (my > 0) el.scrollTop = ry * my;
+                });
+            }
+            const se = document.scrollingElement || document.documentElement;
+            const mx = se.scrollWidth - se.clientWidth, my = se.scrollHeight - se.clientHeight;
+            if (win) {
+                if (mx > 0) se.scrollLeft = win[0] * mx;
+                if (my > 0) se.scrollTop = win[1] * my;
+            }
+        }
+        function reapplyScrollSoon() {
+            if (reapplyRaf || !scrollState) return;
+            reapplyRaf = requestAnimationFrame(() => { reapplyRaf = 0; applyScroll(); });
+        }
+        window.addEventListener('load', reapplyScrollSoon);
+        window.addEventListener('resize', reapplyScrollSoon);
+        document.addEventListener('load', reapplyScrollSoon, true);   // images, iframes…
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(reapplyScrollSoon);
+
         // ---- Application d'un instantané ----------------------------------
         function apply(m) {
             document.title = m.title || document.title;
@@ -278,8 +407,12 @@
                 document.head.appendChild(l);
             });
 
-            const doc = new DOMParser().parseFromString('<!DOCTYPE html><html><body>' + m.body + '</body></html>', 'text/html');
-            morphChildren(document.body, doc.body);
+            // contenu inchangé (ex. seul le défilement a bougé) : inutile de reconstruire le DOM
+            if (m.body !== lastBody) {
+                lastBody = m.body;
+                const doc = new DOMParser().parseFromString('<!DOCTYPE html><html><body>' + m.body + '</body></html>', 'text/html');
+                morphChildren(document.body, doc.body);
+            }
 
             document.querySelectorAll('video,audio').forEach(v => {
                 v.muted = true; // le son vient uniquement du PC maître
@@ -287,44 +420,37 @@
             });
 
             // défilement (en proportion : les écrans n'ont pas la même taille)
-            if (m.els && m.els.length) {
-                const list = document.body.querySelectorAll('*');
-                m.els.forEach(([i, rx, ry]) => {
-                    const el = list[i];
-                    if (!el) return;
-                    const mx = el.scrollWidth - el.clientWidth, my = el.scrollHeight - el.clientHeight;
-                    if (mx > 0) el.scrollLeft = rx * mx;
-                    if (my > 0) el.scrollTop = ry * my;
-                });
-            }
-            const se = document.scrollingElement || document.documentElement;
-            const mx = se.scrollWidth - se.clientWidth, my = se.scrollHeight - se.clientHeight;
-            if (m.win) {
-                if (mx > 0) se.scrollLeft = m.win[0] * mx;
-                if (my > 0) se.scrollTop = m.win[1] * my;
-            }
+            scrollState = { els: m.els, win: m.win };
+            applyScroll();
 
             document.documentElement.setAttribute('data-sync-ready', '1');
             if (!gotFirst) { gotFirst = true; badge.set('● Synchronisé', 'corner', 2500); }
         }
 
         function enqueue(m) {
-            pending = m;
+            if (m.t === 'snap') { pendingSnap = m; pendingView = null; }   // un instantané complet contient déjà le défilement
+            else pendingView = m;
             if (raf) return;
             raf = requestAnimationFrame(() => {
                 raf = 0;
-                const p = pending; pending = null;
-                try { apply(p); } catch (err) { console.error('[sync] application impossible :', err); }
+                const snap = pendingSnap, view = pendingView;
+                pendingSnap = pendingView = null;
+                try {
+                    if (snap) apply(snap);
+                    if (view) { scrollState = { els: view.els, win: view.win }; applyScroll(); }
+                } catch (err) { console.error('[sync] application impossible :', err); }
             });
         }
 
         function connect() {
+            if (ws && ws.readyState <= 1) return;
+            clearTimeout(retryTimer);
             ws = new WebSocket(WS_URL);
-            ws.onopen = () => { retry = 1000; if (!gotFirst) badge.set('En attente du PC maître…', 'center'); };
+            ws.onopen = () => { retry = 500; if (!gotFirst) badge.set('En attente du PC maître…', 'center'); };
             ws.onmessage = e => {
                 let m;
                 try { m = JSON.parse(e.data); } catch (_) { return; }
-                if (m.t === 'snap') enqueue(m);
+                if (m.t === 'snap' || m.t === 'view') enqueue(m);
                 else if (m.t === 'status') {
                     mastersOnline = m.masters > 0;
                     if (!mastersOnline && gotFirst) badge.set('⚠ PC maître hors ligne', 'corner');
@@ -333,10 +459,13 @@
             };
             ws.onclose = () => {
                 badge.set(gotFirst ? '⚠ Connexion perdue — reconnexion…' : 'Connexion au serveur…', gotFirst ? 'corner' : 'center');
-                setTimeout(connect, retry); retry = Math.min(retry * 2, 5000);
+                retryTimer = setTimeout(connect, retry); retry = Math.min(retry * 2, RETRY_MAX_MS);
             };
             ws.onerror = () => { try { ws.close(); } catch (_) {} };
         }
+        const reconnectNow = () => { if (!ws || ws.readyState > 1) { clearTimeout(retryTimer); retry = 500; connect(); } };
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) reconnectNow(); });
+        window.addEventListener('online', reconnectNow);
         connect();
     }
 
