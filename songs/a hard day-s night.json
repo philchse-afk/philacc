@@ -2,1286 +2,1097 @@
   "title": "A Hard Day's Night",
   "artist": "The beatles",
   "capo": "0",
-  "content": "{{Fadd9}}[1/1]{{Fadd9}}[1/1]\n\nvvvv[Couplet1]\n\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight,\n and I've been w{{Fadd9}}[1/1]orking like a {{G}}[1/1]dog\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight,\n I should be s{{Fadd9}}[1/1]leeping like a l{{G}}[1/1]og\n But when I g{{C}}[1/1]et home to you,\n I find the thin{{D}}[1/1]gs that you do\n Will made me fe{{G}}[1/2]el a{{C7}}[3/8]lrigh{{G}}[9/8]t.\n \nvvvv[Couplet2] \n\n You know I wo{{G}}[1/2]rk a{{C}}[3/8]ll d{{G}}[9/8]ay,\n to get your mo{{Fadd9}}[1/1]ney to buy you thi{{G}}[1/1]ngs\n And it's w{{G}}[1/2]orth it just to he{{C}}[3/8]ar you s{{G}}[9/8]ay\n You're gonna g{{Fadd9}}[1/1]ive me everyth{{G}}[1/1]ing\n So why I l{{C}}[1/1]ove to come home,\n cause when I get you al{{D}}[1/1]one\n You know I'll {{G}}[1/2]be o{{C}}[3/8]kay.{{G}}[9/8]\n \nrrrr[Refrain1] \n\n When I'm {{Bm}}[1/1]home,\n e{{Em}}[1/1]verything seems to be r{{Bm}}[2/2]ight\n When I'm {{G}}[1/1]home,\n fe{{Em}}[1/1]eling you holding me ti{{C}}[1/1]ght,\n ti{{D}}[1/1]ght yeah.\n \nvvvv[Couplet3] \n\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight,\n and I've been w{{Fadd9}}[1/1]orking like a {{G}}[1/1]dog\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight, \n I should be s{{Fadd9}}[1/1]leeping like a l{{G}}[1/1]og\n But when I {{C}}[1/1]get home to you,\n I find the thi{{D}}[1/1]ngs that you do\n Will made me fe{{G}}[1/2]el a{{C7}}[3/8]lrigh{{G}}[5/8]t.\n\npppp[pont]\n\n {{G}}[1/2] {{C}}[3/8] {{G}}[9/8]\n {{Fadd9}}[1/1] {{G}}[1/1]\n {{G}}[1/2] {{C}}[3/8] {{G}}[9/8]\n {{Fadd9}}[1/1] {{G}}[1/1]\n So why I l{{C}}[1/1]ove to come home,\n cause when I get you al{{D}}[1/1]one\n You know I'll {{G}}[1/2]be o{{C}}[3/8]kay.{{G}}[9/8]\n \n\nrrrr[Refrain2] \n\n When I'm {{Bm}}[1/1]home,\n e{{Em}}[1/1]verything seems to be r{{Bm}}[2/2]ight\n When I'm {{G}}[1/1]home,\n fe{{Em}}[1/1]eling you holding me t{{C}}[1/1]ight,\n ti{{D}}[1/1]ght yeah.\n\nvvvv[Couplet4] \n\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight,\n and I've been w{{Fadd9}}[1/1]orking like a {{G}}[1/1]dog\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight, \n I should be s{{Fadd9}}[1/1]leeping like a l{{G}}[1/1]og\n But when I {{C}}[1/1]get home to you,\n I find the thi{{D}}[1/1]ngs that you do\n Will made me fe{{G}}[1/2]el a{{C7}}[3/8]lrigh{{G}}[5/8]t.\n\npppp[outro]\n {{C}}[1/2]You know I feel {{G}}[1/2]alri{{C}}[3/8]ght{{G}}[5/8]\n {{C}}[1/2]You know I feel {{G}}[1/2]alri{{C}}[1/2]ght{{Fadd9}}[2/1]",
+  "content": "{{Fadd9}}[1/1]{{Fadd9}}[1/1]\n\nvvvv[Couplet1]\n\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight,\n and I've been w{{Fadd9}}[1/1]orking like a {{G}}[1/1]dog\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight,\n I should be s{{Fadd9}}[1/1]leeping like a l{{G}}[1/1]og\n But when I g{{C}}[1/1]et home to you,\n I find the thin{{D}}[1/1]gs that you do\n Will made me fe{{G}}[1/2]el a{{C7}}[3/8]lrigh{{G}}[9/8]t.\n \nvvvv[Couplet2] \n\n You know I wo{{G}}[1/2]rk a{{C}}[3/8]ll d{{G}}[9/8]ay,\n to get your mo{{Fadd9}}[1/1]ney to buy you thi{{G}}[1/1]ngs\n And it's w{{G}}[1/2]orth it just to he{{C}}[3/8]ar you s{{G}}[9/8]ay\n You're gonna g{{Fadd9}}[1/1]ive me everyth{{G}}[1/1]ing\n So why I l{{C}}[1/1]ove to come home,\n cause when I get you al{{D}}[1/1]one\n You know I'll {{G}}[1/2]be o{{C}}[3/8]kay.{{G}}[9/8]\n \nrrrr[Refrain1] \n\n When I'm {{Bm}}[1/1]home,\n e{{Em}}[1/1]verything seems to be r{{Bm}}[2/1]ight\n When I'm {{G}}[1/1]home,\n fe{{Em}}[1/1]eling you holding me ti{{C}}[1/1]ght,\n ti{{D}}[1/1]ght yeah.\n \nvvvv[Couplet3] \n\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight,\n and I've been w{{Fadd9}}[1/1]orking like a {{G}}[1/1]dog\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight, \n I should be s{{Fadd9}}[1/1]leeping like a l{{G}}[1/1]og\n But when I {{C}}[1/1]get home to you,\n I find the thi{{D}}[1/1]ngs that you do\n Will made me fe{{G}}[1/2]el a{{C7}}[3/8]lrigh{{G}}[9/8]t.\n\npppp[pont]\n\n {{G}}[1/2] {{C}}[3/8] {{G}}[9/8]\n {{Fadd9}}[1/1] {{G}}[1/1]\n {{G}}[1/2] {{C}}[3/8] {{G}}[9/8]\n {{Fadd9}}[1/1] {{G}}[1/1]\n So why I l{{C}}[1/1]ove to come home,\n cause when I get you al{{D}}[1/1]one\n You know I'll {{G}}[1/2]be o{{C}}[3/8]kay.{{G}}[9/8]\n \n\nrrrr[Refrain2] \n\n When I'm {{Bm}}[1/1]home,\n e{{Em}}[1/1]verything seems to be r{{Bm}}[2/1]ight\n When I'm {{G}}[1/1]home,\n fe{{Em}}[1/1]eling you holding me t{{C}}[1/1]ight,\n ti{{D}}[1/1]ght yeah.\n\nvvvv[Couplet4] \n\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight,\n and I've been w{{Fadd9}}[1/1]orking like a {{G}}[1/1]dog\n It's been a h{{G}}[1/2]ard d{{C}}[3/8]ay's n{{G}}[9/8]ight, \n I should be s{{Fadd9}}[1/1]leeping like a l{{G}}[1/1]og\n But when I {{C}}[1/1]get home to you,\n I find the thi{{D}}[1/1]ngs that you do\n Will made me fe{{G}}[1/2]el a{{C7}}[3/8]lrigh{{G}}[5/8]t.\n\npppp[outro]\n {{C}}[1/2]You know I feel {{G}}[1/2]alri{{C}}[3/8]ght{{G}}[5/8]\n {{C}}[1/2]You know I feel {{G}}[1/2]alri{{C}}[1/2]ght{{Fadd9}}[2/1]",
   "recommendedCapo": "",
-  "bpm": "",
+  "bpm": "139",
+  "key": "G",
   "liste": "riri propal",
   "tuto": "https://youtu.be/AMSiHdrHl0g",
   "tuto_embed": true,
   "kfn": "https://youtu.be/ZFuAhtH7Fj0",
   "kfn_embed": true,
+  "karaokeTimestamps": [
+    {
+      "key": "0_0",
+      "lineIndex": 0,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 0.611231
+    },
+    {
+      "key": "0_1",
+      "lineIndex": 0,
+      "chordIndex": 1,
+      "chord": "Fadd9",
+      "time": 1.692593
+    },
+    {
+      "key": "4_0",
+      "lineIndex": 4,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 3.250222
+    },
+    {
+      "key": "4_1",
+      "lineIndex": 4,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 4.110703
+    },
+    {
+      "key": "4_2",
+      "lineIndex": 4,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 4.81674
+    },
+    {
+      "key": "5_0",
+      "lineIndex": 5,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 6.628481
+    },
+    {
+      "key": "5_1",
+      "lineIndex": 5,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 8.259402
+    },
+    {
+      "key": "6_0",
+      "lineIndex": 6,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 10.051338
+    },
+    {
+      "key": "6_1",
+      "lineIndex": 6,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 10.808251
+    },
+    {
+      "key": "6_2",
+      "lineIndex": 6,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 11.575918
+    },
+    {
+      "key": "7_0",
+      "lineIndex": 7,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 13.446114
+    },
+    {
+      "key": "7_1",
+      "lineIndex": 7,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 14.970402
+    },
+    {
+      "key": "8_0",
+      "lineIndex": 8,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 16.875857
+    },
+    {
+      "key": "9_0",
+      "lineIndex": 9,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 18.579481
+    },
+    {
+      "key": "10_0",
+      "lineIndex": 10,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 20.280678
+    },
+    {
+      "key": "10_1",
+      "lineIndex": 10,
+      "chordIndex": 1,
+      "chord": "C7",
+      "time": 21.137984
+    },
+    {
+      "key": "10_2",
+      "lineIndex": 10,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 21.926912
+    },
+    {
+      "key": "14_0",
+      "lineIndex": 14,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 23.725208
+    },
+    {
+      "key": "14_1",
+      "lineIndex": 14,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 24.594062
+    },
+    {
+      "key": "14_2",
+      "lineIndex": 14,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 25.382658
+    },
+    {
+      "key": "15_0",
+      "lineIndex": 15,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 27.127788
+    },
+    {
+      "key": "15_1",
+      "lineIndex": 15,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 28.878522
+    },
+    {
+      "key": "16_0",
+      "lineIndex": 16,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 30.594394
+    },
+    {
+      "key": "16_1",
+      "lineIndex": 16,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 31.468942
+    },
+    {
+      "key": "16_2",
+      "lineIndex": 16,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 32.266387
+    },
+    {
+      "key": "17_0",
+      "lineIndex": 17,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 33.985659
+    },
+    {
+      "key": "17_1",
+      "lineIndex": 17,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 35.617477
+    },
+    {
+      "key": "18_0",
+      "lineIndex": 18,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 37.469401
+    },
+    {
+      "key": "19_0",
+      "lineIndex": 19,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 39.19352
+    },
+    {
+      "key": "20_0",
+      "lineIndex": 20,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 40.951268
+    },
+    {
+      "key": "20_1",
+      "lineIndex": 20,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 41.774942
+    },
+    {
+      "key": "20_2",
+      "lineIndex": 20,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 42.530871
+    },
+    {
+      "key": "24_0",
+      "lineIndex": 24,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 44.381604
+    },
+    {
+      "key": "25_0",
+      "lineIndex": 25,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 46.10934
+    },
+    {
+      "key": "25_1",
+      "lineIndex": 25,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 47.85658
+    },
+    {
+      "key": "26_0",
+      "lineIndex": 26,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 51.252322
+    },
+    {
+      "key": "27_0",
+      "lineIndex": 27,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 53.056246
+    },
+    {
+      "key": "27_1",
+      "lineIndex": 27,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 54.732396
+    },
+    {
+      "key": "28_0",
+      "lineIndex": 28,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 56.435725
+    },
+    {
+      "key": "32_0",
+      "lineIndex": 32,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 58.198486
+    },
+    {
+      "key": "32_1",
+      "lineIndex": 32,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 59.063617
+    },
+    {
+      "key": "32_2",
+      "lineIndex": 32,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 59.850217
+    },
+    {
+      "key": "33_0",
+      "lineIndex": 33,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 61.70408
+    },
+    {
+      "key": "33_1",
+      "lineIndex": 33,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 63.300669
+    },
+    {
+      "key": "34_0",
+      "lineIndex": 34,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 65.159913
+    },
+    {
+      "key": "34_1",
+      "lineIndex": 34,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 65.995022
+    },
+    {
+      "key": "34_2",
+      "lineIndex": 34,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 66.782197
+    },
+    {
+      "key": "35_0",
+      "lineIndex": 35,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 68.633214
+    },
+    {
+      "key": "35_1",
+      "lineIndex": 35,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 70.226033
+    },
+    {
+      "key": "36_0",
+      "lineIndex": 36,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 72.166019
+    },
+    {
+      "key": "37_0",
+      "lineIndex": 37,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 73.909092
+    },
+    {
+      "key": "38_0",
+      "lineIndex": 38,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 75.63298
+    },
+    {
+      "key": "38_1",
+      "lineIndex": 38,
+      "chordIndex": 1,
+      "chord": "C7",
+      "time": 76.428307
+    },
+    {
+      "key": "38_2",
+      "lineIndex": 38,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 77.211331
+    },
+    {
+      "key": "42_0",
+      "lineIndex": 42,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 79.150854
+    },
+    {
+      "key": "42_1",
+      "lineIndex": 42,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 79.989969
+    },
+    {
+      "key": "42_2",
+      "lineIndex": 42,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 80.765231
+    },
+    {
+      "key": "43_0",
+      "lineIndex": 43,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 82.614268
+    },
+    {
+      "key": "43_1",
+      "lineIndex": 43,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 84.306193
+    },
+    {
+      "key": "44_0",
+      "lineIndex": 44,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 86.074871
+    },
+    {
+      "key": "44_1",
+      "lineIndex": 44,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 86.939025
+    },
+    {
+      "key": "44_2",
+      "lineIndex": 44,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 87.57366
+    },
+    {
+      "key": "45_0",
+      "lineIndex": 45,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 89.559965
+    },
+    {
+      "key": "45_1",
+      "lineIndex": 45,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 90.40438
+    },
+    {
+      "key": "46_0",
+      "lineIndex": 46,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 93.029287
+    },
+    {
+      "key": "47_0",
+      "lineIndex": 47,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 94.752889
+    },
+    {
+      "key": "48_0",
+      "lineIndex": 48,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 96.487882
+    },
+    {
+      "key": "48_1",
+      "lineIndex": 48,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 97.323405
+    },
+    {
+      "key": "48_2",
+      "lineIndex": 48,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 98.053621
+    },
+    {
+      "key": "53_0",
+      "lineIndex": 53,
+      "chordIndex": 0,
+      "chord": "Bm",
+      "time": 99.908448
+    },
+    {
+      "key": "54_0",
+      "lineIndex": 54,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 101.690443
+    },
+    {
+      "key": "54_1",
+      "lineIndex": 54,
+      "chordIndex": 1,
+      "chord": "Bm",
+      "time": 103.427107
+    },
+    {
+      "key": "55_0",
+      "lineIndex": 55,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 106.835159
+    },
+    {
+      "key": "56_0",
+      "lineIndex": 56,
+      "chordIndex": 0,
+      "chord": "Em",
+      "time": 108.637901
+    },
+    {
+      "key": "56_1",
+      "lineIndex": 56,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 110.333844
+    },
+    {
+      "key": "57_0",
+      "lineIndex": 57,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 112.036028
+    },
+    {
+      "key": "61_0",
+      "lineIndex": 61,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 113.829553
+    },
+    {
+      "key": "61_1",
+      "lineIndex": 61,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 114.670568
+    },
+    {
+      "key": "61_2",
+      "lineIndex": 61,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 115.422229
+    },
+    {
+      "key": "62_0",
+      "lineIndex": 62,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 117.3357
+    },
+    {
+      "key": "62_1",
+      "lineIndex": 62,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 118.950611
+    },
+    {
+      "key": "63_0",
+      "lineIndex": 63,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 120.787825
+    },
+    {
+      "key": "63_1",
+      "lineIndex": 63,
+      "chordIndex": 1,
+      "chord": "C",
+      "time": 121.616339
+    },
+    {
+      "key": "63_2",
+      "lineIndex": 63,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 122.393712
+    },
+    {
+      "key": "64_0",
+      "lineIndex": 64,
+      "chordIndex": 0,
+      "chord": "Fadd9",
+      "time": 124.266263
+    },
+    {
+      "key": "64_1",
+      "lineIndex": 64,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 125.894079
+    },
+    {
+      "key": "65_0",
+      "lineIndex": 65,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 127.743619
+    },
+    {
+      "key": "66_0",
+      "lineIndex": 66,
+      "chordIndex": 0,
+      "chord": "D",
+      "time": 129.445653
+    },
+    {
+      "key": "67_0",
+      "lineIndex": 67,
+      "chordIndex": 0,
+      "chord": "G",
+      "time": 131.211895
+    },
+    {
+      "key": "67_1",
+      "lineIndex": 67,
+      "chordIndex": 1,
+      "chord": "C7",
+      "time": 132.002918
+    },
+    {
+      "key": "67_2",
+      "lineIndex": 67,
+      "chordIndex": 2,
+      "chord": "G",
+      "time": 132.718238
+    },
+    {
+      "key": "70_0",
+      "lineIndex": 70,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 133.446259
+    },
+    {
+      "key": "70_1",
+      "lineIndex": 70,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 134.758321
+    },
+    {
+      "key": "70_2",
+      "lineIndex": 70,
+      "chordIndex": 2,
+      "chord": "C",
+      "time": 135.555619
+    },
+    {
+      "key": "70_3",
+      "lineIndex": 70,
+      "chordIndex": 3,
+      "chord": "G",
+      "time": 136.276721
+    },
+    {
+      "key": "71_0",
+      "lineIndex": 71,
+      "chordIndex": 0,
+      "chord": "C",
+      "time": 136.958408
+    },
+    {
+      "key": "71_1",
+      "lineIndex": 71,
+      "chordIndex": 1,
+      "chord": "G",
+      "time": 138.291664
+    },
+    {
+      "key": "71_2",
+      "lineIndex": 71,
+      "chordIndex": 2,
+      "chord": "C",
+      "time": 139.118717
+    },
+    {
+      "key": "71_3",
+      "lineIndex": 71,
+      "chordIndex": 3,
+      "chord": "Fadd9",
+      "time": 139.967633
+    }
+  ],
   "wordTimestamps": [
     {
       "key": "4_0",
       "lineIndex": 4,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "It's",
-      "time": 2.16,
-      "source": "lrc"
-    },
-    {
-      "key": "4_1",
-      "lineIndex": 4,
-      "wordIndex": 1,
-      "word": "been",
-      "time": 2.9265,
-      "source": "lrc"
-    },
-    {
-      "key": "4_2",
-      "lineIndex": 4,
-      "wordIndex": 2,
-      "word": "a",
-      "time": 3.693,
-      "source": "lrc"
-    },
-    {
-      "key": "4_3",
-      "lineIndex": 4,
-      "wordIndex": 3,
-      "word": "hard",
-      "time": 4.4595,
-      "source": "lrc"
-    },
-    {
-      "key": "4_4",
-      "lineIndex": 4,
-      "wordIndex": 4,
-      "word": "day's",
-      "time": 5.226,
-      "source": "lrc"
-    },
-    {
-      "key": "4_5",
-      "lineIndex": 4,
-      "wordIndex": 5,
-      "word": "night,",
-      "time": 5.9925,
-      "source": "lrc"
+      "time": 3.250222,
+      "source": "line"
     },
     {
       "key": "5_0",
       "lineIndex": 5,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "and",
-      "time": 7.27,
-      "source": "lrc"
-    },
-    {
-      "key": "5_1",
-      "lineIndex": 5,
-      "wordIndex": 1,
-      "word": "I've",
-      "time": 7.691714285714285,
-      "source": "lrc"
-    },
-    {
-      "key": "5_2",
-      "lineIndex": 5,
-      "wordIndex": 2,
-      "word": "been",
-      "time": 8.113428571428571,
-      "source": "lrc"
-    },
-    {
-      "key": "5_3",
-      "lineIndex": 5,
-      "wordIndex": 3,
-      "word": "working",
-      "time": 8.535142857142857,
-      "source": "lrc"
-    },
-    {
-      "key": "5_4",
-      "lineIndex": 5,
-      "wordIndex": 4,
-      "word": "like",
-      "time": 8.956857142857142,
-      "source": "lrc"
-    },
-    {
-      "key": "5_5",
-      "lineIndex": 5,
-      "wordIndex": 5,
-      "word": "a",
-      "time": 9.37857142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "5_6",
-      "lineIndex": 5,
-      "wordIndex": 6,
-      "word": "dog",
-      "time": 9.800285714285714,
-      "source": "lrc"
+      "time": 6.628481,
+      "source": "line"
     },
     {
       "key": "6_0",
       "lineIndex": 6,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "It's",
-      "time": 10.55,
-      "source": "lrc"
-    },
-    {
-      "key": "6_1",
-      "lineIndex": 6,
-      "wordIndex": 1,
-      "word": "been",
-      "time": 11.0915,
-      "source": "lrc"
-    },
-    {
-      "key": "6_2",
-      "lineIndex": 6,
-      "wordIndex": 2,
-      "word": "a",
-      "time": 11.633000000000001,
-      "source": "lrc"
-    },
-    {
-      "key": "6_3",
-      "lineIndex": 6,
-      "wordIndex": 3,
-      "word": "hard",
-      "time": 12.1745,
-      "source": "lrc"
-    },
-    {
-      "key": "6_4",
-      "lineIndex": 6,
-      "wordIndex": 4,
-      "word": "day's",
-      "time": 12.716000000000001,
-      "source": "lrc"
-    },
-    {
-      "key": "6_5",
-      "lineIndex": 6,
-      "wordIndex": 5,
-      "word": "night,",
-      "time": 13.2575,
-      "source": "lrc"
+      "time": 10.051338,
+      "source": "line"
     },
     {
       "key": "7_0",
       "lineIndex": 7,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "I",
-      "time": 14.16,
-      "source": "lrc"
-    },
-    {
-      "key": "7_1",
-      "lineIndex": 7,
-      "wordIndex": 1,
-      "word": "should",
-      "time": 14.566285714285714,
-      "source": "lrc"
-    },
-    {
-      "key": "7_2",
-      "lineIndex": 7,
-      "wordIndex": 2,
-      "word": "be",
-      "time": 14.97257142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "7_3",
-      "lineIndex": 7,
-      "wordIndex": 3,
-      "word": "sleeping",
-      "time": 15.378857142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "7_4",
-      "lineIndex": 7,
-      "wordIndex": 4,
-      "word": "like",
-      "time": 15.785142857142857,
-      "source": "lrc"
-    },
-    {
-      "key": "7_5",
-      "lineIndex": 7,
-      "wordIndex": 5,
-      "word": "a",
-      "time": 16.19142857142857,
-      "source": "lrc"
-    },
-    {
-      "key": "7_6",
-      "lineIndex": 7,
-      "wordIndex": 6,
-      "word": "log",
-      "time": 16.597714285714286,
-      "source": "lrc"
+      "time": 13.446114,
+      "source": "line"
     },
     {
       "key": "8_0",
       "lineIndex": 8,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "But",
-      "time": 17.32,
-      "source": "lrc"
-    },
-    {
-      "key": "8_1",
-      "lineIndex": 8,
-      "wordIndex": 1,
-      "word": "when",
-      "time": 17.496142857142857,
-      "source": "lrc"
-    },
-    {
-      "key": "8_2",
-      "lineIndex": 8,
-      "wordIndex": 2,
-      "word": "I",
-      "time": 17.672285714285714,
-      "source": "lrc"
-    },
-    {
-      "key": "8_3",
-      "lineIndex": 8,
-      "wordIndex": 3,
-      "word": "get",
-      "time": 17.84842857142857,
-      "source": "lrc"
-    },
-    {
-      "key": "8_4",
-      "lineIndex": 8,
-      "wordIndex": 4,
-      "word": "home",
-      "time": 18.02457142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "8_5",
-      "lineIndex": 8,
-      "wordIndex": 5,
-      "word": "to",
-      "time": 18.200714285714287,
-      "source": "lrc"
-    },
-    {
-      "key": "8_6",
-      "lineIndex": 8,
-      "wordIndex": 6,
-      "word": "you,",
-      "time": 18.376857142857144,
-      "source": "lrc"
+      "time": 16.875857,
+      "source": "line"
     },
     {
       "key": "9_0",
       "lineIndex": 9,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "I",
-      "time": 18.69,
-      "source": "lrc"
-    },
-    {
-      "key": "9_1",
-      "lineIndex": 9,
-      "wordIndex": 1,
-      "word": "find",
-      "time": 18.90214285714286,
-      "source": "lrc"
-    },
-    {
-      "key": "9_2",
-      "lineIndex": 9,
-      "wordIndex": 2,
-      "word": "the",
-      "time": 19.114285714285714,
-      "source": "lrc"
-    },
-    {
-      "key": "9_3",
-      "lineIndex": 9,
-      "wordIndex": 3,
-      "word": "things",
-      "time": 19.326428571428572,
-      "source": "lrc"
-    },
-    {
-      "key": "9_4",
-      "lineIndex": 9,
-      "wordIndex": 4,
-      "word": "that",
-      "time": 19.53857142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "9_5",
-      "lineIndex": 9,
-      "wordIndex": 5,
-      "word": "you",
-      "time": 19.750714285714285,
-      "source": "lrc"
-    },
-    {
-      "key": "9_6",
-      "lineIndex": 9,
-      "wordIndex": 6,
-      "word": "do",
-      "time": 19.962857142857143,
-      "source": "lrc"
+      "time": 18.579481,
+      "source": "line"
     },
     {
       "key": "10_0",
       "lineIndex": 10,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "Will",
-      "time": 20.34,
-      "source": "lrc"
-    },
-    {
-      "key": "10_1",
-      "lineIndex": 10,
-      "wordIndex": 1,
-      "word": "made",
-      "time": 21.0078,
-      "source": "lrc"
-    },
-    {
-      "key": "10_2",
-      "lineIndex": 10,
-      "wordIndex": 2,
-      "word": "me",
-      "time": 21.6756,
-      "source": "lrc"
-    },
-    {
-      "key": "10_3",
-      "lineIndex": 10,
-      "wordIndex": 3,
-      "word": "feel",
-      "time": 22.3434,
-      "source": "lrc"
-    },
-    {
-      "key": "10_4",
-      "lineIndex": 10,
-      "wordIndex": 4,
-      "word": "alright.",
-      "time": 23.011200000000002,
-      "source": "lrc"
+      "time": 20.280678,
+      "source": "line"
     },
     {
       "key": "14_0",
       "lineIndex": 14,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "You",
-      "time": 24.05,
-      "source": "lrc"
-    },
-    {
-      "key": "14_1",
-      "lineIndex": 14,
-      "wordIndex": 1,
-      "word": "know",
-      "time": 24.560000000000002,
-      "source": "lrc"
-    },
-    {
-      "key": "14_2",
-      "lineIndex": 14,
-      "wordIndex": 2,
-      "word": "I",
-      "time": 25.07,
-      "source": "lrc"
-    },
-    {
-      "key": "14_3",
-      "lineIndex": 14,
-      "wordIndex": 3,
-      "word": "work",
-      "time": 25.58,
-      "source": "lrc"
-    },
-    {
-      "key": "14_4",
-      "lineIndex": 14,
-      "wordIndex": 4,
-      "word": "all",
-      "time": 26.09,
-      "source": "lrc"
-    },
-    {
-      "key": "14_5",
-      "lineIndex": 14,
-      "wordIndex": 5,
-      "word": "day,",
-      "time": 26.6,
-      "source": "lrc"
+      "time": 23.725208,
+      "source": "line"
     },
     {
       "key": "15_0",
       "lineIndex": 15,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "to",
-      "time": 27.45,
-      "source": "lrc"
-    },
-    {
-      "key": "15_1",
-      "lineIndex": 15,
-      "wordIndex": 1,
-      "word": "get",
-      "time": 27.8595,
-      "source": "lrc"
-    },
-    {
-      "key": "15_2",
-      "lineIndex": 15,
-      "wordIndex": 2,
-      "word": "your",
-      "time": 28.269,
-      "source": "lrc"
-    },
-    {
-      "key": "15_3",
-      "lineIndex": 15,
-      "wordIndex": 3,
-      "word": "money",
-      "time": 28.6785,
-      "source": "lrc"
-    },
-    {
-      "key": "15_4",
-      "lineIndex": 15,
-      "wordIndex": 4,
-      "word": "to",
-      "time": 29.088,
-      "source": "lrc"
-    },
-    {
-      "key": "15_5",
-      "lineIndex": 15,
-      "wordIndex": 5,
-      "word": "buy",
-      "time": 29.4975,
-      "source": "lrc"
-    },
-    {
-      "key": "15_6",
-      "lineIndex": 15,
-      "wordIndex": 6,
-      "word": "you",
-      "time": 29.907,
-      "source": "lrc"
-    },
-    {
-      "key": "15_7",
-      "lineIndex": 15,
-      "wordIndex": 7,
-      "word": "things",
-      "time": 30.3165,
-      "source": "lrc"
+      "time": 27.127788,
+      "source": "line"
     },
     {
       "key": "16_0",
       "lineIndex": 16,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "And",
-      "time": 31.09,
-      "source": "lrc"
-    },
-    {
-      "key": "16_1",
-      "lineIndex": 16,
-      "wordIndex": 1,
-      "word": "it's",
-      "time": 31.395,
-      "source": "lrc"
-    },
-    {
-      "key": "16_2",
-      "lineIndex": 16,
-      "wordIndex": 2,
-      "word": "worth",
-      "time": 31.7,
-      "source": "lrc"
-    },
-    {
-      "key": "16_3",
-      "lineIndex": 16,
-      "wordIndex": 3,
-      "word": "it",
-      "time": 32.005,
-      "source": "lrc"
-    },
-    {
-      "key": "16_4",
-      "lineIndex": 16,
-      "wordIndex": 4,
-      "word": "just",
-      "time": 32.31,
-      "source": "lrc"
-    },
-    {
-      "key": "16_5",
-      "lineIndex": 16,
-      "wordIndex": 5,
-      "word": "to",
-      "time": 32.615,
-      "source": "lrc"
-    },
-    {
-      "key": "16_6",
-      "lineIndex": 16,
-      "wordIndex": 6,
-      "word": "hear",
-      "time": 32.92,
-      "source": "lrc"
-    },
-    {
-      "key": "16_7",
-      "lineIndex": 16,
-      "wordIndex": 7,
-      "word": "you",
-      "time": 33.225,
-      "source": "lrc"
-    },
-    {
-      "key": "16_8",
-      "lineIndex": 16,
-      "wordIndex": 8,
-      "word": "say",
-      "time": 33.53,
-      "source": "lrc"
+      "time": 30.594394,
+      "source": "line"
     },
     {
       "key": "17_0",
       "lineIndex": 17,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "You're",
-      "time": 34.14,
-      "source": "lrc"
-    },
-    {
-      "key": "17_1",
-      "lineIndex": 17,
-      "wordIndex": 1,
-      "word": "gonna",
-      "time": 34.7844,
-      "source": "lrc"
-    },
-    {
-      "key": "17_2",
-      "lineIndex": 17,
-      "wordIndex": 2,
-      "word": "give",
-      "time": 35.4288,
-      "source": "lrc"
-    },
-    {
-      "key": "17_3",
-      "lineIndex": 17,
-      "wordIndex": 3,
-      "word": "me",
-      "time": 36.0732,
-      "source": "lrc"
-    },
-    {
-      "key": "17_4",
-      "lineIndex": 17,
-      "wordIndex": 4,
-      "word": "everything",
-      "time": 36.7176,
-      "source": "lrc"
+      "time": 33.985659,
+      "source": "line"
     },
     {
       "key": "18_0",
       "lineIndex": 18,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "So",
-      "time": 37.72,
-      "source": "lrc"
-    },
-    {
-      "key": "18_1",
-      "lineIndex": 18,
-      "wordIndex": 1,
-      "word": "why",
-      "time": 37.90385714285714,
-      "source": "lrc"
-    },
-    {
-      "key": "18_2",
-      "lineIndex": 18,
-      "wordIndex": 2,
-      "word": "I",
-      "time": 38.087714285714284,
-      "source": "lrc"
-    },
-    {
-      "key": "18_3",
-      "lineIndex": 18,
-      "wordIndex": 3,
-      "word": "love",
-      "time": 38.27157142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "18_4",
-      "lineIndex": 18,
-      "wordIndex": 4,
-      "word": "to",
-      "time": 38.45542857142857,
-      "source": "lrc"
-    },
-    {
-      "key": "18_5",
-      "lineIndex": 18,
-      "wordIndex": 5,
-      "word": "come",
-      "time": 38.63928571428571,
-      "source": "lrc"
-    },
-    {
-      "key": "18_6",
-      "lineIndex": 18,
-      "wordIndex": 6,
-      "word": "home,",
-      "time": 38.823142857142855,
-      "source": "lrc"
+      "time": 37.469401,
+      "source": "line"
     },
     {
       "key": "19_0",
       "lineIndex": 19,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "cause",
-      "time": 39.15,
-      "source": "lrc"
-    },
-    {
-      "key": "19_1",
-      "lineIndex": 19,
-      "wordIndex": 1,
-      "word": "when",
-      "time": 39.429,
-      "source": "lrc"
-    },
-    {
-      "key": "19_2",
-      "lineIndex": 19,
-      "wordIndex": 2,
-      "word": "I",
-      "time": 39.708,
-      "source": "lrc"
-    },
-    {
-      "key": "19_3",
-      "lineIndex": 19,
-      "wordIndex": 3,
-      "word": "get",
-      "time": 39.986999999999995,
-      "source": "lrc"
-    },
-    {
-      "key": "19_4",
-      "lineIndex": 19,
-      "wordIndex": 4,
-      "word": "you",
-      "time": 40.266,
-      "source": "lrc"
-    },
-    {
-      "key": "19_5",
-      "lineIndex": 19,
-      "wordIndex": 5,
-      "word": "alone",
-      "time": 40.545,
-      "source": "lrc"
+      "time": 39.19352,
+      "source": "line"
     },
     {
       "key": "20_0",
       "lineIndex": 20,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "You",
-      "time": 41.01,
-      "source": "lrc"
-    },
-    {
-      "key": "20_1",
-      "lineIndex": 20,
-      "wordIndex": 1,
-      "word": "know",
-      "time": 41.6166,
-      "source": "lrc"
-    },
-    {
-      "key": "20_2",
-      "lineIndex": 20,
-      "wordIndex": 2,
-      "word": "I'll",
-      "time": 42.2232,
-      "source": "lrc"
-    },
-    {
-      "key": "20_3",
-      "lineIndex": 20,
-      "wordIndex": 3,
-      "word": "be",
-      "time": 42.8298,
-      "source": "lrc"
-    },
-    {
-      "key": "20_4",
-      "lineIndex": 20,
-      "wordIndex": 4,
-      "word": "okay.",
-      "time": 43.4364,
-      "source": "lrc"
+      "time": 40.951268,
+      "source": "line"
     },
     {
       "key": "24_0",
       "lineIndex": 24,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "When",
-      "time": 44.38,
-      "source": "lrc"
-    },
-    {
-      "key": "24_1",
-      "lineIndex": 24,
-      "wordIndex": 1,
-      "word": "I'm",
-      "time": 45.187000000000005,
-      "source": "lrc"
-    },
-    {
-      "key": "24_2",
-      "lineIndex": 24,
-      "wordIndex": 2,
-      "word": "home,",
-      "time": 45.994,
-      "source": "lrc"
+      "time": 44.381604,
+      "source": "line"
     },
     {
       "key": "25_0",
       "lineIndex": 25,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "everything",
-      "time": 47.07,
-      "source": "lrc"
-    },
-    {
-      "key": "25_1",
-      "lineIndex": 25,
-      "wordIndex": 1,
-      "word": "seems",
-      "time": 47.817,
-      "source": "lrc"
-    },
-    {
-      "key": "25_2",
-      "lineIndex": 25,
-      "wordIndex": 2,
-      "word": "to",
-      "time": 48.564,
-      "source": "lrc"
-    },
-    {
-      "key": "25_3",
-      "lineIndex": 25,
-      "wordIndex": 3,
-      "word": "be",
-      "time": 49.311,
-      "source": "lrc"
-    },
-    {
-      "key": "25_4",
-      "lineIndex": 25,
-      "wordIndex": 4,
-      "word": "right",
-      "time": 50.058,
-      "source": "lrc"
+      "time": 46.10934,
+      "source": "line"
     },
     {
       "key": "26_0",
       "lineIndex": 26,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "When",
-      "time": 51.22,
-      "source": "lrc"
-    },
-    {
-      "key": "26_1",
-      "lineIndex": 26,
-      "wordIndex": 1,
-      "word": "I'm",
-      "time": 51.976,
-      "source": "lrc"
-    },
-    {
-      "key": "26_2",
-      "lineIndex": 26,
-      "wordIndex": 2,
-      "word": "home,",
-      "time": 52.732,
-      "source": "lrc"
+      "time": 51.252322,
+      "source": "line"
     },
     {
       "key": "27_0",
       "lineIndex": 27,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "feeling",
-      "time": 53.74,
-      "source": "lrc"
-    },
-    {
-      "key": "27_1",
-      "lineIndex": 27,
-      "wordIndex": 1,
-      "word": "you",
-      "time": 54.330400000000004,
-      "source": "lrc"
-    },
-    {
-      "key": "27_2",
-      "lineIndex": 27,
-      "wordIndex": 2,
-      "word": "holding",
-      "time": 54.9208,
-      "source": "lrc"
-    },
-    {
-      "key": "27_3",
-      "lineIndex": 27,
-      "wordIndex": 3,
-      "word": "me",
-      "time": 55.5112,
-      "source": "lrc"
-    },
-    {
-      "key": "27_4",
-      "lineIndex": 27,
-      "wordIndex": 4,
-      "word": "tight,",
-      "time": 56.101600000000005,
-      "source": "lrc"
+      "time": 53.056246,
+      "source": "line"
     },
     {
       "key": "28_0",
       "lineIndex": 28,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "tight",
-      "time": 57.02,
-      "source": "lrc"
-    },
-    {
-      "key": "28_1",
-      "lineIndex": 28,
-      "wordIndex": 1,
-      "word": "yeah.",
-      "time": 57.7355,
-      "source": "lrc"
+      "time": 56.435725,
+      "source": "line"
     },
     {
       "key": "32_0",
       "lineIndex": 32,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "It's",
-      "time": 58.61,
-      "source": "lrc"
-    },
-    {
-      "key": "32_1",
-      "lineIndex": 32,
-      "wordIndex": 1,
-      "word": "been",
-      "time": 59.117,
-      "source": "lrc"
-    },
-    {
-      "key": "32_2",
-      "lineIndex": 32,
-      "wordIndex": 2,
-      "word": "a",
-      "time": 59.624,
-      "source": "lrc"
-    },
-    {
-      "key": "32_3",
-      "lineIndex": 32,
-      "wordIndex": 3,
-      "word": "hard",
-      "time": 60.131,
-      "source": "lrc"
-    },
-    {
-      "key": "32_4",
-      "lineIndex": 32,
-      "wordIndex": 4,
-      "word": "day's",
-      "time": 60.638,
-      "source": "lrc"
-    },
-    {
-      "key": "32_5",
-      "lineIndex": 32,
-      "wordIndex": 5,
-      "word": "night,",
-      "time": 61.145,
-      "source": "lrc"
+      "time": 58.198486,
+      "source": "line"
     },
     {
       "key": "33_0",
       "lineIndex": 33,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "and",
-      "time": 61.99,
-      "source": "lrc"
-    },
-    {
-      "key": "33_1",
-      "lineIndex": 33,
-      "wordIndex": 1,
-      "word": "I've",
-      "time": 62.44257142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "33_2",
-      "lineIndex": 33,
-      "wordIndex": 2,
-      "word": "been",
-      "time": 62.89514285714286,
-      "source": "lrc"
-    },
-    {
-      "key": "33_3",
-      "lineIndex": 33,
-      "wordIndex": 3,
-      "word": "working",
-      "time": 63.34771428571429,
-      "source": "lrc"
-    },
-    {
-      "key": "33_4",
-      "lineIndex": 33,
-      "wordIndex": 4,
-      "word": "like",
-      "time": 63.80028571428572,
-      "source": "lrc"
-    },
-    {
-      "key": "33_5",
-      "lineIndex": 33,
-      "wordIndex": 5,
-      "word": "a",
-      "time": 64.25285714285715,
-      "source": "lrc"
-    },
-    {
-      "key": "33_6",
-      "lineIndex": 33,
-      "wordIndex": 6,
-      "word": "dog",
-      "time": 64.70542857142857,
-      "source": "lrc"
+      "time": 61.70408,
+      "source": "line"
     },
     {
       "key": "34_0",
       "lineIndex": 34,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "It's",
-      "time": 65.51,
-      "source": "lrc"
-    },
-    {
-      "key": "34_1",
-      "lineIndex": 34,
-      "wordIndex": 1,
-      "word": "been",
-      "time": 65.9945,
-      "source": "lrc"
-    },
-    {
-      "key": "34_2",
-      "lineIndex": 34,
-      "wordIndex": 2,
-      "word": "a",
-      "time": 66.479,
-      "source": "lrc"
-    },
-    {
-      "key": "34_3",
-      "lineIndex": 34,
-      "wordIndex": 3,
-      "word": "hard",
-      "time": 66.9635,
-      "source": "lrc"
-    },
-    {
-      "key": "34_4",
-      "lineIndex": 34,
-      "wordIndex": 4,
-      "word": "day's",
-      "time": 67.448,
-      "source": "lrc"
-    },
-    {
-      "key": "34_5",
-      "lineIndex": 34,
-      "wordIndex": 5,
-      "word": "night,",
-      "time": 67.9325,
-      "source": "lrc"
+      "time": 65.159913,
+      "source": "line"
     },
     {
       "key": "35_0",
       "lineIndex": 35,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "I",
-      "time": 68.74,
-      "source": "lrc"
-    },
-    {
-      "key": "35_1",
-      "lineIndex": 35,
-      "wordIndex": 1,
-      "word": "should",
-      "time": 69.20671428571428,
-      "source": "lrc"
-    },
-    {
-      "key": "35_2",
-      "lineIndex": 35,
-      "wordIndex": 2,
-      "word": "be",
-      "time": 69.67342857142857,
-      "source": "lrc"
-    },
-    {
-      "key": "35_3",
-      "lineIndex": 35,
-      "wordIndex": 3,
-      "word": "sleeping",
-      "time": 70.14014285714286,
-      "source": "lrc"
-    },
-    {
-      "key": "35_4",
-      "lineIndex": 35,
-      "wordIndex": 4,
-      "word": "like",
-      "time": 70.60685714285714,
-      "source": "lrc"
-    },
-    {
-      "key": "35_5",
-      "lineIndex": 35,
-      "wordIndex": 5,
-      "word": "a",
-      "time": 71.07357142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "35_6",
-      "lineIndex": 35,
-      "wordIndex": 6,
-      "word": "log",
-      "time": 71.54028571428572,
-      "source": "lrc"
+      "time": 68.633214,
+      "source": "line"
     },
     {
       "key": "36_0",
       "lineIndex": 36,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "But",
-      "time": 72.37,
-      "source": "lrc"
-    },
-    {
-      "key": "36_1",
-      "lineIndex": 36,
-      "wordIndex": 1,
-      "word": "when",
-      "time": 72.586,
-      "source": "lrc"
-    },
-    {
-      "key": "36_2",
-      "lineIndex": 36,
-      "wordIndex": 2,
-      "word": "I",
-      "time": 72.802,
-      "source": "lrc"
-    },
-    {
-      "key": "36_3",
-      "lineIndex": 36,
-      "wordIndex": 3,
-      "word": "get",
-      "time": 73.018,
-      "source": "lrc"
-    },
-    {
-      "key": "36_4",
-      "lineIndex": 36,
-      "wordIndex": 4,
-      "word": "home",
-      "time": 73.234,
-      "source": "lrc"
-    },
-    {
-      "key": "36_5",
-      "lineIndex": 36,
-      "wordIndex": 5,
-      "word": "to",
-      "time": 73.45,
-      "source": "lrc"
-    },
-    {
-      "key": "36_6",
-      "lineIndex": 36,
-      "wordIndex": 6,
-      "word": "you,",
-      "time": 73.666,
-      "source": "lrc"
+      "time": 72.166019,
+      "source": "line"
     },
     {
       "key": "37_0",
       "lineIndex": 37,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "I",
-      "time": 74.05,
-      "source": "lrc"
-    },
-    {
-      "key": "37_1",
-      "lineIndex": 37,
-      "wordIndex": 1,
-      "word": "find",
-      "time": 74.25314285714285,
-      "source": "lrc"
-    },
-    {
-      "key": "37_2",
-      "lineIndex": 37,
-      "wordIndex": 2,
-      "word": "the",
-      "time": 74.45628571428571,
-      "source": "lrc"
-    },
-    {
-      "key": "37_3",
-      "lineIndex": 37,
-      "wordIndex": 3,
-      "word": "things",
-      "time": 74.65942857142856,
-      "source": "lrc"
-    },
-    {
-      "key": "37_4",
-      "lineIndex": 37,
-      "wordIndex": 4,
-      "word": "that",
-      "time": 74.86257142857143,
-      "source": "lrc"
-    },
-    {
-      "key": "37_5",
-      "lineIndex": 37,
-      "wordIndex": 5,
-      "word": "you",
-      "time": 75.06571428571428,
-      "source": "lrc"
-    },
-    {
-      "key": "37_6",
-      "lineIndex": 37,
-      "wordIndex": 6,
-      "word": "do",
-      "time": 75.26885714285714,
-      "source": "lrc"
+      "time": 73.909092,
+      "source": "line"
     },
     {
       "key": "38_0",
       "lineIndex": 38,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "Will",
-      "time": 75.63,
-      "source": "lrc"
+      "time": 75.63298,
+      "source": "line"
     },
     {
-      "key": "38_1",
-      "lineIndex": 38,
-      "wordIndex": 1,
-      "word": "made",
-      "time": 76.5606,
-      "source": "lrc"
+      "key": "46_0",
+      "lineIndex": 46,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "So",
+      "time": 93.029287,
+      "source": "line"
     },
     {
-      "key": "38_2",
-      "lineIndex": 38,
-      "wordIndex": 2,
-      "word": "me",
-      "time": 77.49119999999999,
-      "source": "lrc"
+      "key": "47_0",
+      "lineIndex": 47,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "cause",
+      "time": 94.752889,
+      "source": "line"
     },
     {
-      "key": "38_3",
-      "lineIndex": 38,
-      "wordIndex": 3,
-      "word": "feel",
-      "time": 78.42179999999999,
-      "source": "lrc"
+      "key": "48_0",
+      "lineIndex": 48,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "You",
+      "time": 96.487882,
+      "source": "line"
     },
     {
-      "key": "38_4",
-      "lineIndex": 38,
-      "wordIndex": 4,
-      "word": "alright",
-      "time": 79.3524,
-      "source": "lrc"
+      "key": "53_0",
+      "lineIndex": 53,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "When",
+      "time": 99.908448,
+      "source": "line"
+    },
+    {
+      "key": "54_0",
+      "lineIndex": 54,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "everything",
+      "time": 101.690443,
+      "source": "line"
+    },
+    {
+      "key": "55_0",
+      "lineIndex": 55,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "When",
+      "time": 106.835159,
+      "source": "line"
+    },
+    {
+      "key": "56_0",
+      "lineIndex": 56,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "feeling",
+      "time": 108.637901,
+      "source": "line"
+    },
+    {
+      "key": "57_0",
+      "lineIndex": 57,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "tight",
+      "time": 112.036028,
+      "source": "line"
+    },
+    {
+      "key": "61_0",
+      "lineIndex": 61,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "It's",
+      "time": 113.829553,
+      "source": "line"
+    },
+    {
+      "key": "62_0",
+      "lineIndex": 62,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "and",
+      "time": 117.3357,
+      "source": "line"
+    },
+    {
+      "key": "63_0",
+      "lineIndex": 63,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "It's",
+      "time": 120.787825,
+      "source": "line"
+    },
+    {
+      "key": "64_0",
+      "lineIndex": 64,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "I",
+      "time": 124.266263,
+      "source": "line"
+    },
+    {
+      "key": "65_0",
+      "lineIndex": 65,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "But",
+      "time": 127.743619,
+      "source": "line"
+    },
+    {
+      "key": "66_0",
+      "lineIndex": 66,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "I",
+      "time": 129.445653,
+      "source": "line"
+    },
+    {
+      "key": "67_0",
+      "lineIndex": 67,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "Will",
+      "time": 131.211895,
+      "source": "line"
     },
     {
       "key": "70_0",
       "lineIndex": 70,
       "wordIndex": 0,
+      "syllableIndex": 0,
       "word": "You",
-      "time": 80.8,
-      "source": "lrc"
+      "time": 133.446259,
+      "source": "line"
     },
     {
-      "key": "70_1",
-      "lineIndex": 70,
-      "wordIndex": 1,
-      "word": "know",
-      "time": 83.1274,
-      "source": "lrc"
-    },
-    {
-      "key": "70_2",
-      "lineIndex": 70,
-      "wordIndex": 2,
-      "word": "I",
-      "time": 85.45479999999999,
-      "source": "lrc"
-    },
-    {
-      "key": "70_3",
-      "lineIndex": 70,
-      "wordIndex": 3,
-      "word": "feel",
-      "time": 87.78219999999999,
-      "source": "lrc"
-    },
-    {
-      "key": "70_4",
-      "lineIndex": 70,
-      "wordIndex": 4,
-      "word": "alright",
-      "time": 90.10959999999999,
-      "source": "lrc"
+      "key": "71_0",
+      "lineIndex": 71,
+      "wordIndex": 0,
+      "syllableIndex": 0,
+      "word": "You",
+      "time": 136.958408,
+      "source": "line"
     }
   ]
 }
