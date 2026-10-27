@@ -242,6 +242,18 @@
             overflow-y: auto !important;
         }
         /* ===== FIN PLEIN ÉCRAN PAROLES ===== */
+    
+        /* ── Cases d'affichage : barre d'onglets + barre d'outils de la frame chanson ── */
+        #tabs { flex-wrap: wrap; row-gap: 6px; }          /* écran étroit : la ligne passe à la ligne plutôt que de déborder */
+        #tabs .tab-opt {
+            display: inline-flex; align-items: center; gap: 5px; align-self: center;
+            margin-left: 6px; font-size: 13px; color: var(--c-text-secondary);
+            cursor: pointer; user-select: none; white-space: nowrap;
+        }
+        .song-opt {      /* même présentation que la case 🎹 Piano voisine */
+            font-size: 14px; font-weight: normal; cursor: pointer; user-select: none;
+            display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+        }
     </style>
     <style>
         /* ===== Auto-scroll karaoké : surlignage des accords en lecture ===== */
@@ -447,20 +459,6 @@
             <!-- Tooltip BPM : affiché en dessous, pleine largeur de la sidebar -->
             <div id="bpm-suggest-tip" style="display:none; margin-top:6px;"></div>
         </div>
-        <!-- Bouton pour afficher/masquer les accords -->
-        <div style="margin: 10px 0; display: flex; align-items: center; gap: 10px;">
-            <label style="display: flex; align-items: center; cursor: pointer;">
-                <input type="checkbox" id="showChordsToggle" checked>
-                <span style="margin-left: 5px;">Afficher les accords</span>
-            </label>
-        </div>
-        <!-- Bouton pour afficher/masquer le panneau des accords -->
-        <div style="margin: 10px 0; display: flex; align-items: center; gap: 10px;">
-            <label style="display: flex; align-items: center; cursor: pointer;">
-                <input type="checkbox" id="showChordsPanelToggle" checked>
-                <span style="margin-left: 5px;">Afficher le panneau accords</span>
-            </label>
-        </div>                
     </div>
 
     <!-- Contenu principal -->
@@ -470,6 +468,11 @@
             <button class="tab active" onclick="App.showTab(0)">Accueil</button>
             <button class="tab" onclick="App.showTab(2)">Listes</button>
             <button class="tab" onclick="App.newSong()">Nouvelle Chanson</button>
+            <!-- Affiche/masque le panneau des accords à droite de la chanson (voir App.toggleChordsPanel) -->
+            <label class="tab-opt" title="Afficher ou masquer le panneau des accords, à droite de la chanson">
+                <input type="checkbox" id="showChordsPanelToggle" checked>
+                <span>Afficher le panneau accords</span>
+            </label>
             <div id="auth-account-bar"></div>
             <img src="img/phizic-banner.png" alt="Phizic" class="app-banner"
                  title="Auteur : Philippe ANGER — Premier Assistant : Claude AI — Second assistant : Moise AI">
@@ -819,7 +822,14 @@
                 <div class="song-main">
                     <h2 id="song-title-display"></h2>
                     <div id="song-toolbar-row" class="song-toolbar-row">
-                        <div id="song-controls-left" class="song-toolbar-zone song-toolbar-left"></div>
+                        <div id="song-controls-left" class="song-toolbar-zone song-toolbar-left">
+                            <!-- Affiche/masque les accords dans les paroles (voir App.toggleChordsVisibility). Les autres
+                                 contrôles de cette zone (🎹 Piano, ⛶) sont ajoutés à la suite par app.js. -->
+                            <label class="song-opt" title="Afficher ou masquer les accords dans les paroles">
+                                <input type="checkbox" id="showChordsToggle" checked>
+                                <span>Afficher les accords</span>
+                            </label>
+                        </div>
                         <div class="song-toolbar-zone song-toolbar-center">
                             <div id="song-info-badge" class="song-info-badge"></div>
                         </div>
@@ -980,7 +990,7 @@
     <!-- Synchro multi-appareils : voir js/sync.js et servAcc.js.
          Les scripts marqués data-master-only ne sont envoyés qu'au PC maître ;
          les autres appareils reçoivent seulement l'affichage du maître. -->
-    <script src="js/sync.js?v=2"></script>
+    <script src="js/sync.js?v=5"></script>
     <script data-master-only src="js/auth-gate.js?v=1"></script>
     <script data-master-only src="js/chords.js?v=3"></script>
     <script data-master-only src="js/app.js?v=50"></script>
