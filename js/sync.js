@@ -38,6 +38,10 @@
     // Diagnostic : ouvrir la page avec ?syncdebug=1 affiche les temps de calcul dans la pastille
     const PRUNE_MIN_DESC = 40;      // un bloc caché n'est élagué que s'il contient au moins ce nombre d'éléments
     const PRUNE_MAX_DEPTH = 5;      // profondeur maximale de recherche des blocs cachés
+    // Plein écran NATIF (requestFullscreen) : c'est un état du navigateur, absent du DOM, donc invisible pour les
+    // autres écrans. Le maître ajoute alors, dans l'instantané seulement (sa propre page n'est pas touchée), la classe
+    // de repli CSS que l'appli utilise déjà pour imiter le plein écran (voir style.css : .lyrics-css-fullscreen...).
+    const FS_CLASS = { 'song-content-display': 'lyrics-css-fullscreen', 'editor-container': 'editor-css-fullscreen' };
     const DEBUG = /[?&]syncdebug(=1|&|$)/.test(location.search);
 
     // ---------------------------------------------------------------
@@ -114,6 +118,7 @@
         function buildSnapshot() {
             const body = document.body;
             const pruned = findPruned();
+            const fsEl = document.fullscreenElement || document.webkitFullscreenElement || null;
             const live = body.querySelectorAll('*');
             const clone = inertDoc.importNode(body, true);
             const copy = clone.querySelectorAll('*');
@@ -134,6 +139,15 @@
                         ratio(a.scrollTop, a.scrollHeight - a.clientHeight)]);
                 }
                 idx++;
+
+                // Ajustement à la page (1 ou 2 colonnes) : chaque écran le recalcule avec ses propres dimensions
+                // (voir viewerFit) ; la classe du maître n'est donc pas envoyée.
+                if (a.id === 'song-content-display') b.classList.remove('lyrics-fit-2col');
+
+                if (fsEl && a === fsEl) {          // plein écran natif : reproduit côté écrans déportés
+                    const cls = FS_CLASS[a.id];
+                    if (cls) b.classList.add(cls); else b.setAttribute('data-sync-fs', '');
+                }
 
                 if (tag === 'INPUT') {
                     const type = (a.type || '').toLowerCase();
@@ -294,6 +308,8 @@
             markView();
         }, true);
         window.addEventListener('resize', markDom);
+        document.addEventListener('fullscreenchange', markDom);          // entrée/sortie du plein écran natif
+        document.addEventListener('webkitfullscreenchange', markDom);
         setInterval(() => {
             if (!viewers) return;
             tick++;
@@ -448,7 +464,8 @@
         function showDebug() {
             badge.set('● Synchronisé · lecture ' + dbg.read + ' + MAJ ' + dbg.upd + ' ms · ' + dbg.kb + ' Ko · pire MAJ ' +
                 Math.max(dbg.maxApply, dbg.lastMaxApply) + ' ms · pire image ' + dbg.worstFrame + ' ms (' + dbg.slowFrames +
-                ' > 100 ms)' + (lite ? ' · mode léger' : ''), 'corner');
+                ' > 100 ms)' + (lite ? ' · mode léger' : '') +
+                (fitSig ? ' · texte ' + (fitMode === 2 ? '2 colonnes' : fitMode === 0 ? 'défilement' : '1 colonne') : ''), 'corner');
         }
         // Mesure l'écart entre images affichées : une saccade perçue = un grand écart, quelle qu'en soit la cause.
         // Tourne seulement tant que des mises à jour arrivent (sauf en mode diagnostic) : pas de coût au repos.
@@ -487,11 +504,14 @@
         function applyScroll() {
             if (!scrollState) return;
             const { els, win } = scrollState;
+            const lyr = fitMode === 0 ? document.getElementById('song-content-display') : null;
+            const following = !!(lyr && lyr.classList.contains('lyrics-css-fullscreen') && followLyrics(lyr));
             if (els && els.length) {
                 const list = elList || (elList = document.body.querySelectorAll('*'));
                 els.forEach(([i, rx, ry]) => {
                     const el = list[i];
                     if (!el) return;
+                    if (following && el === lyr) return;        // position suivie sur la ligne en cours, pas celle du maître
                     const mx = el.scrollWidth - el.clientWidth, my = el.scrollHeight - el.clientHeight;
                     if (mx > 0) el.scrollLeft = rx * mx;
                     if (my > 0) el.scrollTop = ry * my;
@@ -506,12 +526,49 @@
         }
         function reapplyScrollSoon() {
             if (reapplyRaf || !scrollState) return;
-            reapplyRaf = requestAnimationFrame(() => { reapplyRaf = 0; applyScroll(); });
+            reapplyRaf = requestAnimationFrame(() => { reapplyRaf = 0; viewerFit(false); applyScroll(); });
         }
         window.addEventListener('load', reapplyScrollSoon);
         window.addEventListener('resize', reapplyScrollSoon);
         document.addEventListener('load', reapplyScrollSoon, true);   // images, iframes…
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(reapplyScrollSoon);
+
+        // ---- Plein écran paroles : ajustement à la page, recalculé avec les dimensions de CET écran ----
+        // Le maître a choisi sa disposition (1 ou 2 colonnes) pour SON écran. Ici on refait la même décision
+        // (js/lyrics-fit.js, même module) pour celui-ci, sans jamais recopier celle du maître. La disposition est
+        // portée par une feuille de style propre au viewer (#sync-fit) : le DOM recopié n'est pas touché.
+        const fitStyle = document.createElement('style');
+        fitStyle.id = 'sync-fit';
+        const LYRICS_FS = '#song-content-display.lyrics-css-fullscreen';
+        let fitMode = 1, fitSig = '';             // 1 : 1 colonne, 2 : 2 colonnes, 0 : ne tient pas (défilement)
+        function setFit2(on) {
+            const css = on ? LyricsFit.css(LYRICS_FS) : '';
+            if (fitStyle.textContent !== css) fitStyle.textContent = css;
+            if (!fitStyle.parentNode) document.head.appendChild(fitStyle);
+        }
+        function viewerFit(force) {
+            if (typeof LyricsFit === 'undefined') return;
+            const el = document.getElementById('song-content-display');
+            if (!el || !el.classList.contains('lyrics-css-fullscreen')) {      // pas de plein écran paroles : affichage normal
+                if (fitSig !== '') { setFit2(false); fitSig = ''; fitMode = 1; }
+                return;
+            }
+            const sig = LyricsFit.signature(el);
+            if (!force && sig === fitSig) return;                              // rien n'a changé : pas de nouvelle mesure
+            fitSig = sig;
+            const r = LyricsFit.fit(el, setFit2);
+            if (r !== -1) fitMode = r;
+            elList = null;                                                     // la disposition a changé
+        }
+        // Écran trop petit pour tout afficher : le maître (plus grand) ne défile peut-être pas, donc rien à recopier.
+        // On garde alors visible la ligne en cours (accord actif de la lecture), comme le fait le maître en défilement.
+        function followLyrics(el) {
+            const b = el.querySelector('.chord-active-scroll');
+            if (!b) return false;
+            const max = el.scrollHeight - el.clientHeight;
+            if (max > 0) el.scrollTop = Math.min(max, Math.max(0, b.offsetTop - el.clientHeight / 2 + b.offsetHeight / 2));
+            return true;
+        }
 
         // ---- Application d'un instantané ----------------------------------
         function apply(m) {
@@ -539,6 +596,7 @@
                 morphChildren(document.body, doc.body);
                 syncControls(doc.body);
                 elList = null;                      // le DOM a pu changer : la liste d'éléments mise en cache est périmée
+                viewerFit(false);                   // plein écran paroles : ajustement à la page de CET écran
                 if (DEBUG) {
                     const read = Math.round(t1 - t0), upd = Math.round(performance.now() - t1);
                     dbg.read = read; dbg.upd = upd; dbg.kb = Math.round(m.body.length / 1024);

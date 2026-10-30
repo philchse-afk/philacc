@@ -123,8 +123,8 @@
     "title": "The Best of you",
     "artist": "Foo Fighters",
     "capo": "0",
-    "bpm": "300",
-    "recommendedCapo": "",
+    "bpm": "130",
+    "recommendedCapo": "4",
     "file": "the best of you.json"
   },
   {

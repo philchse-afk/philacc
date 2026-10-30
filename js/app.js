@@ -1,4 +1,10 @@
-// app.js — v50
+// app.js — v51
+// FEAT : plein écran paroles — ajustement automatique à la page (voir _fitLyricsFullscreen et
+//        js/lyrics-fit.js) : le texte est présenté sur 1 colonne s'il tient sans défilement, sinon sur
+//        2 colonnes (maximum) s'il tient ainsi, sinon sur 1 colonne avec défilement comme avant.
+//        Taille du texte inchangée ; une ligne n'est jamais coupée entre deux colonnes. Recalculé à
+//        l'entrée en plein écran, au changement de contenu et au redimensionnement/rotation. Les écrans
+//        déportés refont le même calcul avec leurs propres dimensions (sync.js).
 // FEAT : bouton "[|] Syllabe" dans l'éditeur, à côté de "🎤 Marquer" — insère
 //        le séparateur de syllabe [|] à la position exacte du curseur (dans
 //        un mot, contrairement aux boutons vvvv[]/pppp[] qui forcent un
@@ -429,6 +435,14 @@ const App = {
         }
 
         // Case "Plein écran" de la frame accords (voir toggleChordsFullscreen)
+        // Plein écran paroles : l'ajustement à la page dépend des dimensions de la zone (voir _fitLyricsFullscreen)
+        const refitLyrics = () => {
+            clearTimeout(this._lyricsFitTimer);
+            this._lyricsFitTimer = setTimeout(() => this._fitLyricsFullscreen(true), 100);
+        };
+        window.addEventListener('resize', refitLyrics);
+        document.addEventListener('fullscreenchange', refitLyrics);
+        document.addEventListener('webkitfullscreenchange', refitLyrics);
         const chordsFsToggle = document.getElementById("chords-fullscreen-toggle");
         if (chordsFsToggle) {
             chordsFsToggle.addEventListener("change", () => this.toggleChordsFullscreen(chordsFsToggle.checked));
@@ -1167,6 +1181,7 @@ const App = {
         document.getElementById("song-content-display").innerHTML = this.formatSongContent(this.currentSong.content);
         this._renderRythmDisplay();
         if (typeof ChordDB !== 'undefined') ChordDB.bindAll(document.getElementById("song-content-display"));
+        this._fitLyricsFullscreen(true);   // si le plein écran paroles est actif : réajuste à la page
         this._renderPostits();
         document.getElementById("capo").value = this.currentSong.capo || "";
         document.getElementById("recommendedCapo").value = this.currentSong.recommendedCapo || "";
@@ -7253,6 +7268,7 @@ const App = {
                 // API native OK : ajouter quand même le bouton fermer flottant
                 this._injectFullscreenCloseBtn();
                 if (btn) { btn.textContent = '✕'; btn.title = 'Quitter le plein écran'; btn.style.opacity = '1'; }
+                this._fitLyricsFullscreen(true);
                 this._renderPostits(); // le passage plein écran peut changer le retour à la ligne du texte
                 // Quand l'utilisateur appuie sur Échap, nettoyer l'UI
                 const onFsChange = () => {
@@ -7279,12 +7295,14 @@ const App = {
         this._injectFullscreenCloseBtn();
         if (btn) { btn.textContent = '✕'; btn.title = 'Quitter le plein écran'; btn.style.opacity = '1'; }
         this._bodyScrollLock();
+        this._fitLyricsFullscreen(true);
         this._renderPostits();
     },
 
     _exitLyricsCSSFullscreen() {
         const el = document.getElementById('song-content-display');
-        if (el) el.classList.remove('lyrics-css-fullscreen');
+        if (el) { el.classList.remove('lyrics-css-fullscreen'); el.classList.remove('lyrics-fit-2col'); }
+        this._lyricsFitSig = '';
         this._bodyScrollUnlock();
         const closeBtn = document.getElementById('lyrics-fs-close');
         if (closeBtn) closeBtn.remove();
@@ -7364,6 +7382,38 @@ const App = {
         });
         document.body.appendChild(close);
     },
+    // ===== AJUSTEMENT À LA PAGE (plein écran paroles) =====
+    // En plein écran (natif ou repli CSS), le texte est réparti sur 1 colonne s'il tient sans défilement,
+    // sinon sur 2 colonnes (maximum) s'il tient ainsi, sinon on garde 1 colonne avec défilement (comportement
+    // d'origine). La taille du texte n'est jamais modifiée. La décision est prise par LyricsFit
+    // (js/lyrics-fit.js), le même module que celui utilisé par sync.js pour refaire ce calcul sur chaque
+    // écran déporté : leurs dimensions diffèrent de celles de ce poste.
+    // La disposition est portée par la classe lyrics-fit-2col (règles injectées par lyrics-fit.js).
+    _isLyricsFullscreenActive() {
+        const el = document.getElementById('song-content-display');
+        return !!el && (el.classList.contains('lyrics-css-fullscreen')
+            || document.fullscreenElement === el || document.webkitFullscreenElement === el);
+    },
+
+    // force = true : recalcule même si le contenu et les dimensions n'ont pas changé.
+    _fitLyricsFullscreen(force) {
+        const el = document.getElementById('song-content-display');
+        if (!el || typeof LyricsFit === 'undefined') return;
+        const cls = LyricsFit.CLASS_2COL;
+        if (!this._isLyricsFullscreenActive()) {          // hors plein écran : affichage normal, sans colonnes
+            if (el.classList.contains(cls)) el.classList.remove(cls);
+            this._lyricsFitSig = '';
+            return;
+        }
+        const sig = LyricsFit.signature(el);
+        if (!force && sig === this._lyricsFitSig) return;
+        this._lyricsFitSig = sig;
+        const was = el.classList.contains(cls);
+        LyricsFit.fit(el, on => el.classList.toggle(cls, on));
+        if (el.classList.contains(cls) !== was) this._renderPostits();   // les ancres des post-its ont changé de place
+    },
+    // ===== FIN AJUSTEMENT À LA PAGE =====
+
     // ===== FIN PLEIN ÉCRAN PAROLES =====
 
     // ===== PLEIN ÉCRAN ACCORDS =====
