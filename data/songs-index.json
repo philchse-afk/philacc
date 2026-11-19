@@ -374,5 +374,13 @@
     "bpm": "",
     "recommendedCapo": "",
     "file": "la ballade des gens heureux.json"
+  },
+  {
+    "title": "Breaking the Habit",
+    "artist": "Linkin Park",
+    "capo": "0",
+    "bpm": "150",
+    "recommendedCapo": "",
+    "file": "breaking the habit.json"
   }
 ]
