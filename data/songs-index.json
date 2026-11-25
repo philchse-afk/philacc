@@ -299,7 +299,7 @@
     "title": "Les Cardinaux en Costume",
     "artist": "Francis Cabrel",
     "capo": "2",
-    "bpm": "",
+    "bpm": "83",
     "recommendedCapo": "",
     "file": "les cardinaux en costume.json"
   },
@@ -379,7 +379,7 @@
     "title": "Breaking the Habit",
     "artist": "Linkin Park",
     "capo": "0",
-    "bpm": "150",
+    "bpm": "105",
     "recommendedCapo": "",
     "file": "breaking the habit.json"
   }
