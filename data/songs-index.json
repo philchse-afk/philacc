@@ -338,8 +338,8 @@
   {
     "title": "in the air tonight",
     "artist": "phil collins (cover River Crombie)",
-    "capo": "",
-    "bpm": "",
+    "capo": "0",
+    "bpm": "100",
     "recommendedCapo": "",
     "file": "in the air tonight.json"
   },
